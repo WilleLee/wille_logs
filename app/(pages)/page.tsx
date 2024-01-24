@@ -23,6 +23,8 @@ const usePingpong = () => {
 };
 
 export default function Home() {
+  return <main>hi</main>;
+  /*
   const { data, isLoading } = usePingpong();
   console.log(isLoading, data);
   if (isLoading)
@@ -42,4 +44,5 @@ export default function Home() {
       </p>
     </main>
   );
+  */
 }
