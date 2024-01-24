@@ -24,7 +24,7 @@
       "@hooks/*": ["./app/_hooks/*"],
       "@models/*": ["./app/_models/*"],
       "@libs/*": ["./app/_libs/*"],
-      "@utils/*": ["./app/_utils/*"],
+      "@mocks/*": ["./app/_mocks/*"],
       "@assets/*": ["./public/*"]
     }
   },

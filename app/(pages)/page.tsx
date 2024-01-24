@@ -1,12 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import fetcher from "./_libs/fetcher";
+import fetcher from "@libs/fetcher";
 import useSWR from "swr";
-import avatar1200 from "@assets/avatar_1200.png";
+import avatar128 from "@assets/avatar_128.png";
 
 export interface Pingpong {
   message: string;
+  status: number;
 }
 
 const usePingpong = () => {
@@ -26,9 +27,19 @@ export default function Home() {
   console.log(isLoading, data);
   if (isLoading)
     return (
-      <main>
-        <Image src={avatar1200} alt="avatar" />
+      <main className="w-screen h-screen flex items-center justify-center">
+        <Image src={avatar128} alt="avatar" priority />
       </main>
     );
-  return <main>hello world</main>;
+  return (
+    <main className="w-screen h-full flex flex-col">
+      <p>hi</p>
+      <p>bye</p>
+      <p>
+        {!!data && data.status === 200
+          ? data.message
+          : "failed to ping pong 🙄"}
+      </p>
+    </main>
+  );
 }
