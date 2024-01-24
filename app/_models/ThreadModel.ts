@@ -1,5 +1,17 @@
 import mongoose, { Schema } from "mongoose";
 
+export interface IThread {
+  _id?: string;
+  text: string;
+  tags: string[];
+  book: {
+    title: string;
+    author: string;
+    page: number;
+  };
+  createdAt?: Date;
+}
+
 const threadSchema = new Schema({
   text: { type: String, required: true },
   tags: { type: [String], required: true },
