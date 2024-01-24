@@ -27,12 +27,12 @@ export default function Home() {
   console.log(isLoading, data);
   if (isLoading)
     return (
-      <main className="w-screen h-screen flex items-center justify-center">
+      <main>
         <Image src={avatar128} alt="avatar" priority />
       </main>
     );
   return (
-    <main className="w-screen h-full flex flex-col">
+    <main>
       <p>hi</p>
       <p>bye</p>
       <p>
