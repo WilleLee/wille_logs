@@ -10,6 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
+    "@next/third-parties": "^14.1.0",
     "axios": "^1.6.5",
     "mongoose": "^8.1.0",
     "next": "14.0.3",
