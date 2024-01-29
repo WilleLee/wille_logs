@@ -2,8 +2,12 @@ import React from "react";
 
 type Props = {};
 
-const ThreadsPage = (props: Props) => {
-  return <div>threads</div>;
+const Page = (props: Props) => {
+  return (
+    <div>
+      <h1>Threads</h1>
+    </div>
+  );
 };
 
-export default ThreadsPage;
+export default Page;
