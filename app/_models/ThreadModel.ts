@@ -14,7 +14,7 @@ export interface IThread {
 
 const threadSchema = new Schema({
   text: { type: String, required: true },
-  tags: { type: [String], required: true },
+  tags: [{ type: mongoose.Schema.Types.ObjectId, required: true, ref: "Tag" }],
   book: {
     title: { type: String, required: true },
     author: { type: String, required: true },
