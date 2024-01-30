@@ -1,3 +1,5 @@
+"use client";
+
 import useThreads from "./useThreads";
 
 export default function Page() {
