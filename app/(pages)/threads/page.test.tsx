@@ -10,3 +10,9 @@ test("renders the page", () => {
   });
   expect(heading).toBeDefined();
 });
+
+test("renders thread item", () => {
+  render(<Page />);
+  const title = screen.findByText("book1");
+  expect(title).toBeDefined();
+});

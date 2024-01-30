@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 export interface IThread {
   _id?: string;
   text: string;
-  tags: string[];
+  tags: [{ _id: string; name: string }];
   book: {
     title: string;
     author: string;
