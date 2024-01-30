@@ -1,4 +1,4 @@
-## Wille Logs
+## Wille Logs 🍊
 
 ### Purpose of the project
 
@@ -6,7 +6,7 @@
 2. to enable customizing my own resumé
 3. to create a browser alarm modal to routinize my daily life
 
-### Development Environment
+### Dev Environment
 
 1. Next.js 14.0.3 (React ^18)
 2. MongoDB Atlas with Mongoose ^8.1.0
@@ -27,3 +27,20 @@ root
 ├── public // static assets
 └── config and env files
 ```
+
+### TODOs
+
+- [x] connect to mongodb
+- [x] deploy to vercel
+- [ ] build models
+  - [x] thread
+  - [x] tag
+  - [ ] plan
+- [ ] build APIs
+  - [ ] `/login` (necessary?)
+  - [ ] `/threads` (ing)
+  - [ ] `/tags` (ing)
+  - [ ] `/plans`
+- [ ] design UI
+- [ ] build pages
+- [x] connect to google analytics

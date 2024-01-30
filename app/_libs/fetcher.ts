@@ -32,6 +32,18 @@ axiosInstance.interceptors.response.use(
 );
 
 const fetcher = {
+  get: async (url: string) => {
+    try {
+      const res = await axiosInstance.get(url);
+      return fetcher.handleResponse(res);
+    } catch (err) {
+      console.log(err);
+      return {
+        message: "Something went wrong",
+        status: 500,
+      };
+    }
+  },
   post: async (url: string, obj?: any) => {
     try {
       const res = await axiosInstance.post(url, obj);

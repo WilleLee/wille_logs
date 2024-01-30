@@ -1,45 +1,21 @@
 "use client";
 
-import Image from "next/image";
-import fetcher from "@libs/fetcher";
-import useSWR from "swr";
-import avatar128 from "@assets/avatar_128.png";
+import useThreads from "./useThreads";
 
-export interface Pingpong {
-  message: string;
-  status: number;
-}
-
-const usePingpong = () => {
-  const { data, isLoading } = useSWR<Pingpong>(
-    ["/api/ping", { message: "ping" }],
-    ([url, opt]) => fetcher.post(url, opt),
-  );
-
-  return {
-    data,
-    isLoading,
-  };
-};
-
-export default function Home() {
-  const { data, isLoading } = usePingpong();
-  console.log(isLoading, data);
-  if (isLoading)
-    return (
-      <main>
-        <Image src={avatar128} alt="avatar" priority />
-      </main>
-    );
+export default function Page() {
+  const { threads } = useThreads();
   return (
-    <main>
-      <p>hi</p>
-      <p>bye</p>
-      <p>
-        {!!data && data.status === 200
-          ? data.message
-          : "failed to ping pong 🙄"}
-      </p>
-    </main>
+    <div>
+      <h2>threads</h2>
+      {threads.length > 0 ? (
+        <ul>
+          {threads.map((thread) => (
+            <li key={thread._id}>{thread.book.title}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>no thread&rsquo;s found</p>
+      )}
+    </div>
   );
 }
