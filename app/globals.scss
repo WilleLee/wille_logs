@@ -46,4 +46,6 @@ body {
   background: rgb(var(--background));
   transition: background 0.2s ease;
   transition: color 0.2s ease;
+  margin: 0;
+  box-sizing: border-box;
 }

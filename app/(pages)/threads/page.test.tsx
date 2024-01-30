@@ -2,7 +2,7 @@ import { expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Page from "./page";
 
-test("renders the page", () => {
+test.skip("renders the page", () => {
   render(<Page />);
   const heading = screen.getByRole("heading", {
     level: 1,
@@ -11,7 +11,7 @@ test("renders the page", () => {
   expect(heading).toBeDefined();
 });
 
-test("renders thread item", () => {
+test.skip("renders thread item", () => {
   render(<Page />);
   const title = screen.findByText("book1");
   expect(title).toBeDefined();

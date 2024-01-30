@@ -1,18 +1,20 @@
 import fetcher from "@/_libs/fetcher";
+import { IThread } from "@/_models/ThreadModel";
 import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export interface Pingpong {
+export interface ThreadResponse {
   message: string;
   status: number;
+  data: IThread[];
 }
 
-const usePingpong = () => {
+const useThreads = () => {
   let status: Status = "idle";
-  const { data, isLoading } = useSWR<Pingpong>(
-    ["/api/ping", { message: "ping" }],
-    ([url, opt]) => fetcher.post(url, opt),
+  const { data, isLoading } = useSWR<ThreadResponse>(
+    "/api/threads",
+    fetcher.get,
   );
 
   if (isLoading) {
@@ -24,9 +26,9 @@ const usePingpong = () => {
   }
 
   return {
-    data,
+    threads: data ? data.data : [],
     status,
   };
 };
 
-export default usePingpong;
+export default useThreads;
