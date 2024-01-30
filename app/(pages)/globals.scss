@@ -1,23 +1,49 @@
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: 255, 255, 255;
+  --background-hover: 0, 0, 0, 0.04;
+
+  --text: 0, 0, 0;
+  --text-faded: 166, 166, 166;
+
+  --icon: 0, 0, 0;
+  --icon-faded: 184, 184, 184;
+
+  --box: 255, 255, 255;
+  --text-box: 250, 250, 250;
+
+  --divider: 217, 217, 217;
+
+  --alert: 255, 53, 69;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background: 16, 16, 16;
+    --background-hover: 0, 0, 0, 0.05;
+
+    --text: 242, 245, 247;
+    --text-faded: 119, 119, 119;
+
+    --icon: 242, 245, 247;
+    --icon-faded: 77, 77, 77;
+
+    --box: 24, 24, 24;
+    --text-box: 30, 30, 30;
+
+    --divider: 46, 46, 47;
+
+    --alert: 252, 46, 63;
   }
 }
 
+html {
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+}
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: rgb(var(--text));
+  background: rgb(var(--background));
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
 }
