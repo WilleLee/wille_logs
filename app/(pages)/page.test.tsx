@@ -1,11 +1,9 @@
-import { beforeEach, describe, expect, test } from "vitest";
+import { beforeAll, beforeEach, describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
 import Page from "./page";
-import { server } from "@mocks/server";
-import { http, HttpResponse } from "msw";
 
 describe("home page", () => {
-  beforeEach(() => {
+  beforeAll(() => {
     render(<Page />);
   });
 
@@ -20,5 +18,13 @@ describe("home page", () => {
   test("should get threads list, if there're items", async () => {
     const title = await screen.findAllByText(/book1/i);
     expect(title).toBeDefined();
+  });
+
+  test("should get all the thread list", async () => {
+    const title = await screen.findAllByRole("heading", {
+      level: 3,
+      name: /^book/i,
+    });
+    expect(title.length).toEqual(2);
   });
 });
