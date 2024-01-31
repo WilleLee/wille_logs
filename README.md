@@ -1,4 +1,4 @@
-## Wille Logs 🍊
+## Wille logs&hellip; 🍊
 
 ### Purpose of the project
 
@@ -41,6 +41,12 @@ root
   - [ ] `/threads` (ing)
   - [ ] `/tags` (ing)
   - [ ] `/plans`
-- [ ] design UI
-- [ ] build pages
+- [ ] build UIs
+  - [ ] layouts
+    - [ ] header (desktop / mobile)
+    - [ ] bottom navigation bar (mobile)
+  - [ ] `/`
+    - [ ] profile?
+    - [ ] tags
+    - [ ] threads
 - [x] connect to google analytics
