@@ -1,5 +1,5 @@
-import fetcher from "@/_libs/fetcher";
-import { IThread } from "@/_models/ThreadModel";
+import fetcher from "@libs/fetcher";
+import { IThread } from "@models/ThreadModel";
 import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
