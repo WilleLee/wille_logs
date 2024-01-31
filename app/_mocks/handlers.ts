@@ -14,6 +14,16 @@ export const handlers = [
             page: 1,
           },
         },
+        {
+          _id: "2",
+          text: "test text",
+          tags: ["tag1", "tag2"],
+          book: {
+            title: "book2",
+            author: "author2",
+            page: 4442,
+          },
+        },
       ],
       message: "",
       status: 200,

@@ -15,6 +15,9 @@ const useThreads = () => {
   const { data, isLoading } = useSWR<ThreadResponse>(
     "/api/threads",
     fetcher.get,
+    {
+      revalidateOnFocus: false,
+    },
   );
 
   if (isLoading) {

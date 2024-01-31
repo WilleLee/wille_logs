@@ -1,21 +1,15 @@
-"use client";
-
-import useThreads from "./useThreads";
+import HomeContextProvider from "./HomeContextProvider";
+import Tags from "./Tags";
+import Threads from "./Threads";
 
 export default function Page() {
-  const { threads } = useThreads();
   return (
     <div>
       <h2>threads</h2>
-      {threads.length > 0 ? (
-        <ul>
-          {threads.map((thread) => (
-            <li key={thread._id}>{thread.book.title}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>no thread&rsquo;s found</p>
-      )}
+      <HomeContextProvider>
+        <Tags />
+        <Threads />
+      </HomeContextProvider>
     </div>
   );
 }
