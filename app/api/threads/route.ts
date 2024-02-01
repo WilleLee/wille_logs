@@ -12,7 +12,6 @@ export async function GET(request: NextRequest) {
     const threads = await Thread.find(
       tag ? { tags: { $in: [tag] } } : {},
     ).populate("tags");
-    console.log("threads", threads);
     threads.map((t) => console.log(t.tags));
     return NextResponse.json({
       data: threads,

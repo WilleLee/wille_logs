@@ -20,9 +20,13 @@ root
 │   ├── (pages) // pages(page.tsx) and their UI logic(components, styles, hooks etc.)
 │   ├── api // api entry points (route.ts)
 │   ├── _components
+│   │   ├── pages
+│   │   ├── svgs
+│   │   └── loading
 │   ├── _hooks
 │   ├── _libs
 │   ├── _mocks
+│   ├── __tests__
 │   └── _models
 ├── public // static assets
 └── config and env files
@@ -50,3 +54,7 @@ root
     - [ ] tags
     - [ ] threads
 - [x] connect to google analytics
+
+### Notable Issues
+
+1. no route groups for the entry page ("/")

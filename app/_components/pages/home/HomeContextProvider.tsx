@@ -39,6 +39,13 @@ function homeReducer(state: IHome, action: any) {
   }
 }
 
+export const homeActions = {
+  setSelectedTagId: (payload: string) => ({
+    type: "SET_SELECTED_TAG_ID",
+    payload,
+  }),
+};
+
 export const useHome = () => {
   return useContext(HomeContext);
 };
