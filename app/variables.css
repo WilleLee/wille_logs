@@ -19,7 +19,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: 16, 16, 16;
-    --background-hover: 0, 0, 0, 0.05;
+    --background-hover: 255, 255, 255, 0.05;
+    --background-active: 255, 255, 255, 0.1;
 
     --text: 242, 245, 247;
     --text-faded: 119, 119, 119;
@@ -34,25 +35,4 @@
 
     --alert: 252, 46, 63;
   }
-}
-
-html {
-  -webkit-font-smoothing: antialiased;
-  touch-action: manipulation;
-}
-
-body {
-  color: rgb(var(--text));
-  background: rgb(var(--background));
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-ul,
-ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }

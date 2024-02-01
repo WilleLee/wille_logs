@@ -17,8 +17,7 @@
 ```
 root
 ├── app
-│   ├── (pages) // pages(page.tsx) and their UI logic(components, styles, hooks etc.)
-│   ├── api // api entry points (route.ts)
+│   ├── __tests__
 │   ├── _components
 │   │   ├── pages
 │   │   ├── svgs
@@ -26,8 +25,9 @@ root
 │   ├── _hooks
 │   ├── _libs
 │   ├── _mocks
-│   ├── __tests__
-│   └── _models
+│   ├── _models
+│   ├── _api // api entry points (route.ts)
+│   └── layouts and pages
 ├── public // static assets
 └── config and env files
 ```

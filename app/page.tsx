@@ -5,13 +5,12 @@ import Threads from "@components/pages/home/Threads";
 
 export default function Page() {
   return (
-    <div>
-      <h2>threads</h2>
+    <>
       <Profile />
       <HomeContextProvider>
         <Tags />
         <Threads />
       </HomeContextProvider>
-    </div>
+    </>
   );
 }

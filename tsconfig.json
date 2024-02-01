@@ -25,6 +25,7 @@
       "@models/*": ["./app/_models/*"],
       "@libs/*": ["./app/_libs/*"],
       "@mocks/*": ["./app/_mocks/*"],
+      "@styles/*": ["./app/_styles/*"],
       "@assets/*": ["./public/*"],
       "@images/*": ["./public/images/*"]
     }
