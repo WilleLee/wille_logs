@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "@components/layouts/Header";
+// import Header from "@components/layouts/Header";
 
 interface Props {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ interface Props {
 const Template = ({ children }: Props) => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
     </>
   );
