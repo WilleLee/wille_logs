@@ -3,7 +3,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import avatar128 from "@images/avatar128.png";
-import styles from "./header.module.css";
+import styles from "./header.module.scss";
 import Link from "next/link";
 import HomeSvg from "../svgs/HomeSvg";
 import WriteSvg from "../svgs/WriteSvg";
