@@ -1,0 +1,25 @@
+.nav {
+  width: 480px;
+  height: 74px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.linkButton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(var(--background));
+  transition: background-color var(--bg-transition);
+  &:hover,
+  &:focus {
+    background-color: rgba(var(--background-hover));
+  }
+  &:active {
+    background-color: rgba(var(--background-active));
+  }
+}

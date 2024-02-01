@@ -1,8 +1,8 @@
 import React from "react";
 import profile262 from "@images/profile262.png";
 import Image from "next/image";
-import styles from "./profile.module.css";
-import InstagramSvg from "../../svgs/InstagramSvg";
+import styles from "./profile.module.scss";
+import InstagramSvg from "@/_components/svgs/InstagramSvg";
 import ThreadsSvg from "@/_components/svgs/ThreadsSvg";
 
 type Props = {};

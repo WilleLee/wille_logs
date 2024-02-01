@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeAll, describe, expect, test } from "vitest";
-import Threads from "@components/pages/home/Threads";
+import Threads from "@/_components/pages/home/Threads";
 
 describe("Threads component", () => {
   beforeAll(() => {

@@ -15,14 +15,14 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
-    // return Promise.reject(error);
-    return {
-      data: {
-        data: null,
-        message: "Something went wrong",
-        status: 500,
-      },
-    };
+    return Promise.reject(error);
+    // return {
+    //   data: {
+    //     data: null,
+    //     message: "Something went wrong",
+    //     status: 500,
+    //   },
+    // };
   },
 );
 
@@ -34,14 +34,14 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    // return Promise.reject(error);
-    return {
-      data: {
-        data: null,
-        message: "Something went wrong",
-        status: 500,
-      },
-    };
+    return Promise.reject(error);
+    // return {
+    //   data: {
+    //     data: null,
+    //     message: "Something went wrong",
+    //     status: 500,
+    //   },
+    // };
   },
 );
 

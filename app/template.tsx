@@ -1,17 +1,16 @@
 import React from "react";
-// import Header from "@components/layouts/Header";
+import Header from "@components/layouts/Header";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
-}
-
-const Template = ({ children }: Props) => {
-  return (
-    <>
-      {/* <Header /> */}
-      <main>{children}</main>
-    </>
-  );
 };
 
-export default Template;
+export default function Template({ children }: Props) {
+  return (
+    <>
+      <Header />
+      <main>{children}</main>
+      <footer>footer</footer>
+    </>
+  );
+}
