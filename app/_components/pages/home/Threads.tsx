@@ -1,7 +1,7 @@
 "use client";
 
-import ThreadsList, { IThreadsListProps } from "./ThreadsList";
-import useThreads from "./useThreads";
+import ThreadsListView, { IThreadsListProps } from "./ThreadsListView";
+import useThreads from "@hooks/useThreads";
 
 export default function Threads() {
   const { threads, status } = useThreads();
@@ -12,13 +12,12 @@ export default function Threads() {
     <>
       {status === "success" ? (
         threads.length > 0 ? (
-          <ThreadsList {...threadsListProps} />
+          <ThreadsListView {...threadsListProps} />
         ) : (
           <p>no thread</p>
         )
-      ) : (
-        <p>loading...</p>
-      )}
+      ) : null}
+      {status === "loading" && <p>loading&hellip;</p>}
     </>
   );
 }

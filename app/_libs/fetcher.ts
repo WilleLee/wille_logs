@@ -15,7 +15,14 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
+    // return Promise.reject(error);
+    return {
+      data: {
+        data: null,
+        message: "Something went wrong",
+        status: 500,
+      },
+    };
   },
 );
 
@@ -27,7 +34,14 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    return Promise.reject(error);
+    // return Promise.reject(error);
+    return {
+      data: {
+        data: null,
+        message: "Something went wrong",
+        status: 500,
+      },
+    };
   },
 );
 
@@ -39,6 +53,7 @@ const fetcher = {
     } catch (err) {
       console.log(err);
       return {
+        data: null,
         message: "Something went wrong",
         status: 500,
       };
@@ -51,6 +66,7 @@ const fetcher = {
     } catch (err) {
       console.log(err);
       return {
+        data: null,
         message: "Something went wrong",
         status: 500,
       };
@@ -59,6 +75,7 @@ const fetcher = {
   handleResponse: (res: AxiosResponse<any, any>) => {
     if (!res.data || !res.data.status || res.data.status !== 200) {
       return {
+        data: null,
         message: res.data.message || "Something went wrong",
         status: 500,
       };

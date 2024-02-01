@@ -25,7 +25,9 @@
       "@models/*": ["./app/_models/*"],
       "@libs/*": ["./app/_libs/*"],
       "@mocks/*": ["./app/_mocks/*"],
-      "@assets/*": ["./public/*"]
+      "@styles/*": ["./app/_styles/*"],
+      "@assets/*": ["./public/*"],
+      "@images/*": ["./public/images/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

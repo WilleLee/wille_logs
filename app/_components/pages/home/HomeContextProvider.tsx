@@ -1,5 +1,4 @@
 "use client";
-
 import React, { createContext, useContext, useReducer } from "react";
 
 interface Props {
@@ -39,6 +38,13 @@ function homeReducer(state: IHome, action: any) {
       return state;
   }
 }
+
+export const homeActions = {
+  setSelectedTagId: (payload: string) => ({
+    type: "SET_SELECTED_TAG_ID",
+    payload,
+  }),
+};
 
 export const useHome = () => {
   return useContext(HomeContext);

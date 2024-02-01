@@ -1,8 +1,5 @@
-"use client";
-
-import fetcher from "@/_libs/fetcher";
-import { ITag } from "@/_models/TagModel";
-import React from "react";
+import fetcher from "@libs/fetcher";
+import { ITag } from "@models/TagModel";
 import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -13,7 +10,7 @@ export interface TagResponse {
   data: ITag[];
 }
 
-const useTags = () => {
+export default function useTags() {
   let status: Status = "idle";
   const { data, isLoading } = useSWR<TagResponse>("/api/tags", fetcher.get, {
     revalidateOnFocus: false,
@@ -31,23 +28,4 @@ const useTags = () => {
     tags: data?.data || [],
     status,
   };
-};
-
-interface Props {}
-
-const Tags = (props: Props) => {
-  const { tags, status } = useTags();
-  return (
-    <>
-      {status === "success" && tags.length > 0 ? (
-        <ul>
-          {tags.map((tag) => {
-            return <li key={tag._id}>{tag.name}</li>;
-          })}
-        </ul>
-      ) : null}
-    </>
-  );
-};
-
-export default Tags;
+}

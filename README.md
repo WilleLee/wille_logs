@@ -1,4 +1,4 @@
-## Wille Logs 🍊
+## Wille logs&hellip; 🍊
 
 ### Purpose of the project
 
@@ -17,13 +17,17 @@
 ```
 root
 ├── app
-│   ├── (pages) // pages(page.tsx) and their UI logic(components, styles, hooks etc.)
-│   ├── api // api entry points (route.ts)
+│   ├── __tests__
 │   ├── _components
+│   │   ├── pages
+│   │   ├── svgs
+│   │   └── loading
 │   ├── _hooks
 │   ├── _libs
 │   ├── _mocks
-│   └── _models
+│   ├── _models
+│   ├── _api // api entry points (route.ts)
+│   └── layouts and pages
 ├── public // static assets
 └── config and env files
 ```
@@ -41,6 +45,16 @@ root
   - [ ] `/threads` (ing)
   - [ ] `/tags` (ing)
   - [ ] `/plans`
-- [ ] design UI
-- [ ] build pages
+- [ ] build UIs
+  - [ ] layouts
+    - [ ] header (desktop / mobile)
+    - [ ] bottom navigation bar (mobile)
+  - [ ] `/`
+    - [ ] profile?
+    - [ ] tags
+    - [ ] threads
 - [x] connect to google analytics
+
+### Notable Issues
+
+1. no route groups for the entry page ("/")

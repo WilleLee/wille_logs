@@ -1,0 +1,19 @@
+@import "./reset.css";
+@import "./variables.css";
+
+html {
+  -webkit-font-smoothing: antialiased;
+  touch-action: manipulation;
+}
+
+body {
+  color: rgb(var(--text));
+  background: rgb(var(--background));
+  transition: background 0.2s ease;
+  transition: color 0.2s ease;
+  box-sizing: border-box;
+}
+
+button {
+  outline: none;
+}

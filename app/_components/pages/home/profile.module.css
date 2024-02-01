@@ -1,0 +1,7 @@
+.imageWrapper {
+  position: relative;
+  width: 131px;
+  height: 131px;
+  border-radius: 50%;
+  overflow: hidden;
+}
