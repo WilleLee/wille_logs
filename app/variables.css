@@ -1,6 +1,7 @@
 :root {
   --background: 255, 255, 255;
   --background-hover: 0, 0, 0, 0.04;
+  --background-active: 0, 0, 0, 0.1;
 
   --text: 0, 0, 0;
   --text-faded: 166, 166, 166;

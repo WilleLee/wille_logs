@@ -1,20 +1,22 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import avatar128 from "@images/avatar128.png";
-// import ButtonWrapper from "../buttons/ButtonWrapper";
-// import { useRouter } from "next/navigation";
 import styles from "./header.module.css";
 import Link from "next/link";
 import HomeSvg from "../svgs/HomeSvg";
 import WriteSvg from "../svgs/WriteSvg";
 import UserSvg from "../svgs/UserSvg";
+import { createPortal } from "react-dom";
+import Modal from "../modals/Modal";
+import { usePathname } from "next/navigation";
 
 type Props = {};
 
 export default function Header({}: Props) {
-  // const router = useRouter();
+  const [showWriteModal, setShowWriteModal] = useState(false);
+  const pathname = usePathname();
   return (
     <header>
       <Link href="/">
@@ -26,24 +28,49 @@ export default function Header({}: Props) {
           alt="Wille logs..."
         />
       </Link>
-      <nav>
-        <HomeSvg width="36" isActive={false} aria-hidden={true} />
-        <WriteSvg width="36" aria-hidden={true} />
-        <UserSvg width="36" isActive={false} aria-hidden={true} />
+      <nav className={styles.nav}>
+        <div>
+          <Link href="/">
+            <HomeSvg
+              width="36"
+              isActive={pathname === "/"}
+              color={
+                pathname === "/" ? "rgb(var(--icon)" : "rgb(var(--icon-faded))"
+              }
+              aria-hidden={true}
+            />
+          </Link>
+        </div>
+        <div>
+          <WriteSvg
+            onClick={() => setShowWriteModal(true)}
+            width="36"
+            color="rgb(var(--icon-faded))"
+            aria-hidden={true}
+          />
+        </div>
+        <div>
+          <Link href="/wille">
+            <UserSvg
+              width="36"
+              isActive={pathname === "/wille"}
+              color={
+                pathname === "/wille"
+                  ? "rgb(var(--icon)"
+                  : "rgb(var(--icon-faded))"
+              }
+              aria-hidden={true}
+            />
+          </Link>
+        </div>
       </nav>
-      <div>
-        {/* <svg
-          aria-hidden={true}
-          viewBox="0 0 24 24"
-          fill="rgb(var(--icon))"
-          width="24"
-          height="24"
-        >
-          <rect rx="1.25" x="3" y="7" />
-          <rect rx="1.25" x="10" y="15" />
-        </svg> */}
-      </div>
+      <div></div>
       <h1 className={styles.h1}>Wille logs&hellip;</h1>
+      {showWriteModal &&
+        createPortal(
+          <Modal onClick={() => setShowWriteModal(false)}>hihihihi</Modal>,
+          document.body,
+        )}
     </header>
   );
 }
