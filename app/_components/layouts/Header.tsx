@@ -1,76 +1,64 @@
 "use client";
 
-import Image from "next/image";
-import React, { useState } from "react";
-import avatar128 from "@images/avatar128.png";
+import { usePathname, useRouter } from "next/navigation";
+import React, { AllHTMLAttributes } from "react";
+import HomeSvg from "@components/svgs/HomeSvg";
+import UserSvg from "@components/svgs/UserSvg";
+import WriteSvg from "@components/svgs/WriteSvg";
 import styles from "./header.module.scss";
 import Link from "next/link";
-import HomeSvg from "../svgs/HomeSvg";
-import WriteSvg from "../svgs/WriteSvg";
-import UserSvg from "../svgs/UserSvg";
-import { createPortal } from "react-dom";
-import Modal from "../modals/Modal";
-import { usePathname } from "next/navigation";
 
 type Props = {};
 
 export default function Header({}: Props) {
-  const [showWriteModal, setShowWriteModal] = useState(false);
   const pathname = usePathname();
+  return <HeaderView pathname={pathname} />;
+}
+
+interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
+  pathname: string;
+}
+
+function HeaderView({ pathname, ...props }: HeaderViewProps) {
+  const router = useRouter();
   return (
-    <header>
-      <Link href="/">
-        <Image
-          className={styles.image}
-          src={avatar128}
-          width={36}
-          height={36}
-          alt="Wille logs..."
-        />
-      </Link>
+    <div {...props}>
       <nav className={styles.nav}>
-        <div>
-          <Link href="/">
-            <HomeSvg
-              width="36"
-              isActive={pathname === "/"}
-              color={
-                pathname === "/" ? "rgb(var(--icon)" : "rgb(var(--icon-faded))"
-              }
-              aria-hidden={true}
-            />
-          </Link>
-        </div>
-        <div>
-          <WriteSvg
-            onClick={() => setShowWriteModal(true)}
-            width="36"
-            color="rgb(var(--icon-faded))"
-            aria-hidden={true}
+        <button
+          aria-label="home page"
+          className={styles.linkButton}
+          onClick={() => router.push("/")}
+        >
+          <HomeSvg
+            aria-hidden
+            isActive={pathname === "/"}
+            color={
+              pathname === "/" ? "rgb(var(--icon))" : "rgb(var(--icon-faded))"
+            }
           />
-        </div>
-        <div>
-          <Link href="/wille">
-            <UserSvg
-              width="36"
-              isActive={pathname === "/wille"}
-              color={
-                pathname === "/wille"
-                  ? "rgb(var(--icon)"
-                  : "rgb(var(--icon-faded))"
-              }
-              aria-hidden={true}
-            />
-          </Link>
-        </div>
+        </button>
+        <button
+          aria-label="open thread form modal"
+          className={styles.linkButton}
+        >
+          <WriteSvg aria-hidden />
+        </button>
+        <button
+          aria-label="wille's resumé"
+          className={styles.linkButton}
+          onClick={() => router.push("/wille")}
+        >
+          <UserSvg
+            aria-hidden
+            isActive={pathname === "/wille"}
+            color={
+              pathname === "/wille"
+                ? "rgb(var(--icon))"
+                : "rgb(var(--icon-faded))"
+            }
+          />
+        </button>
       </nav>
-      <div></div>
-      <h1 className={styles.h1}>Wille logs&hellip;</h1>
-      {showWriteModal &&
-        createPortal(
-          <Modal onClick={() => setShowWriteModal(false)}>hihihihi</Modal>,
-          document.body,
-        )}
-    </header>
+    </div>
   );
 }
