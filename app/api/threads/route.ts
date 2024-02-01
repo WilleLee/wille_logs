@@ -1,6 +1,6 @@
-import connectDB from "@/_libs/connectDB";
-import Tag, { ITag } from "@/_models/TagModel";
-import Thread from "@/_models/ThreadModel";
+import connectDB from "@libs/connectDB";
+import Tag, { ITag } from "@models/TagModel";
+import Thread from "@models/ThreadModel";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(request: NextRequest) {
