@@ -47,7 +47,7 @@ export default function HeaderView({ pathname, ...props }: HeaderViewProps) {
           aria-label="open thread form modal"
           className={styles.linkButton}
         >
-          <WriteSvg aria-hidden />
+          <WriteSvg aria-hidden color="rgb(var(--icon-faded))" />
         </button>
         <button
           aria-label="wille's resumé"

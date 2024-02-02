@@ -3,7 +3,9 @@
   height: 74px;
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 480px 1fr;
+  // grid-template-columns: 1fr 480px 1fr;
+  grid-template-columns: 1fr 300px 1fr;
+  transition: grid-template-columns var(--slow-transition);
   position: fixed;
   top: 0;
   left: 0;
@@ -19,6 +21,12 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 16px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 1fr 480px 1fr;
   }
 }
 

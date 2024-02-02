@@ -3,7 +3,6 @@
 
 * {
   box-sizing: border-box;
-  color: var(--text);
 }
 
 html {
@@ -34,16 +33,19 @@ main {
   }
 }
 
+button,
+a {
+  cursor: pointer;
+  color: rgb(var(--text));
+}
+
 button {
   outline: none;
   border: none;
-  cursor: pointer;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
-  cursor: pointer;
 }
 
 h2 {
