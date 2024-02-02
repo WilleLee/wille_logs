@@ -11,6 +11,7 @@
 
   --box: 255, 255, 255;
   --text-box: 250, 250, 250;
+  --text-link: 153, 153, 153;
 
   --divider: 217, 217, 217;
 
@@ -18,6 +19,8 @@
 
   --bg-transition: 0.15s ease-in;
   --scale-transiton: 0.1s ease-in;
+
+  --default-padding: 16px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +31,7 @@
 
     --text: 242, 245, 247;
     --text-faded: 119, 119, 119;
+    --text-link: 95, 95, 95;
 
     --icon: 242, 245, 247;
     --icon-faded: 77, 77, 77;
