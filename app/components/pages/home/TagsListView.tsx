@@ -1,4 +1,4 @@
-import { ITag } from "@/_models/TagModel";
+import { ITag } from "@models/TagModel";
 import React, { AllHTMLAttributes } from "react";
 
 interface TagsListViewProps extends AllHTMLAttributes<HTMLUListElement> {

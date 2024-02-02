@@ -15,6 +15,7 @@ body {
   background: rgb(var(--background));
   transition: background 0.2s ease;
   transition: color 0.2s ease;
+  overflow-x: hidden;
   // box-sizing: border-box;
 }
 
@@ -32,20 +33,28 @@ main {
   }
 }
 
+button,
+a {
+  cursor: pointer;
+  color: rgb(var(--text));
+}
+
 button {
   outline: none;
   border: none;
-  cursor: pointer;
 }
 
 a {
   text-decoration: none;
-  color: inherit;
-  cursor: pointer;
 }
 
 h2 {
   font-size: 24px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 16px;
   font-weight: 700;
 }
 

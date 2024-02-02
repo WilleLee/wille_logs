@@ -1,10 +1,10 @@
 "use client";
 
-import LoadingFullpage from "@/_components/loading/LoadingFullpage";
+import LoadingFullpage from "@components/loading/LoadingFullpage";
 import useTags from "@hooks/useTags";
 import React, { AllHTMLAttributes } from "react";
 import { homeActions, useHomeDispatch } from "./HomeContextProvider";
-import { ITag } from "@/_models/TagModel";
+import { ITag } from "@models/TagModel";
 
 const Tags = () => {
   const { tags, status } = useTags();

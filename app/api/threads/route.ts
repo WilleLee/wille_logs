@@ -2,6 +2,8 @@ import connectDB from "@libs/connectDB";
 import Tag, { ITag } from "@models/TagModel";
 import Thread from "@models/ThreadModel";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
+import { cookies } from "next/headers";
 
 export async function GET(request: NextRequest) {
   try {
@@ -29,9 +31,33 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
+    const cookieStore = cookies();
+    const accessToken = cookieStore.get("accessToken");
+    const accessSecret = process.env.ACCESS_SECRET as string;
+
+    if (!accessToken) {
+      console.log("no accessToken");
+      return NextResponse.json({
+        data: false,
+        message: "You are not Wille 😡",
+        status: 401,
+      });
+    }
+
+    const isAccepted = await bcrypt.compare(accessSecret, accessToken.value);
+    if (!isAccepted) {
+      console.log("not accepted");
+      return NextResponse.json({
+        data: false,
+        message: "You are not Wille 😡",
+        status: 401,
+      });
+    }
+
     const { text, tags, book } = await request.json();
     if (!text || typeof text !== "string") {
       return NextResponse.json({
+        data: false,
         message: "Please type your thread text",
         status: 400,
       });
@@ -46,6 +72,7 @@ export async function POST(request: NextRequest) {
       typeof book.page !== "number"
     ) {
       return NextResponse.json({
+        data: false,
         message: "Please leave a book title, author, and page number",
         status: 400,
       });
@@ -73,12 +100,14 @@ export async function POST(request: NextRequest) {
 
     await Thread.create({ text, tags: newTags, book });
     return NextResponse.json({
+      data: true,
       message: "Thread added successfully ✅",
       status: 200,
     });
   } catch (err) {
     console.log(err);
     return NextResponse.json({
+      data: false,
       message: "Something went wrong",
       status: 500,
     });

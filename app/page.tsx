@@ -1,12 +1,10 @@
-import HomeContextProvider from "@/_components/pages/home/HomeContextProvider";
-import Profile from "@/_components/pages/home/Profile";
-import Tags from "@/_components/pages/home/Tags";
-import Threads from "@/_components/pages/home/Threads";
+import HomeContextProvider from "@components/pages/home/HomeContextProvider";
+import Tags from "@components/pages/home/Tags";
+import Threads from "@components/pages/home/Threads";
 
 export default function Page() {
   return (
     <>
-      <Profile />
       <HomeContextProvider>
         <Tags />
         <Threads />

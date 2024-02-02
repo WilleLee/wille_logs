@@ -2,6 +2,7 @@
   --background: 255, 255, 255;
   --background-hover: 0, 0, 0, 0.04;
   --background-active: 0, 0, 0, 0.1;
+  --background-modal: 255, 255, 255, 0.5;
 
   --text: 0, 0, 0;
   --text-faded: 166, 166, 166;
@@ -17,10 +18,13 @@
 
   --alert: 255, 53, 69;
 
+  --slow-transition: 0.3s ease-in;
   --bg-transition: 0.15s ease-in;
   --scale-transiton: 0.1s ease-in;
 
   --default-padding: 16px;
+
+  --box-border: 0.5px solid rgb(var(--icon), 0.15);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +32,7 @@
     --background: 16, 16, 16;
     --background-hover: 255, 255, 255, 0.05;
     --background-active: 255, 255, 255, 0.1;
+    --background-modal: 16, 16, 16, 0.5;
 
     --text: 242, 245, 247;
     --text-faded: 119, 119, 119;

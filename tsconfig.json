@@ -15,21 +15,21 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next"
-      }
+        "name": "next",
+      },
     ],
     "paths": {
       "@/*": ["./app/*"],
-      "@components/*": ["./app/_components/*"],
-      "@hooks/*": ["./app/_hooks/*"],
-      "@models/*": ["./app/_models/*"],
-      "@libs/*": ["./app/_libs/*"],
-      "@mocks/*": ["./app/_mocks/*"],
-      "@styles/*": ["./app/_styles/*"],
+      "@components/*": ["./app/components/*"],
+      "@hooks/*": ["./app/hooks/*"],
+      "@models/*": ["./app/models/*"],
+      "@libs/*": ["./app/libs/*"],
+      "@mocks/*": ["./app/mocks/*"],
+      "@styles/*": ["./app/styles/*"],
       "@assets/*": ["./public/*"],
-      "@images/*": ["./public/images/*"]
-    }
+      "@images/*": ["./public/images/*"],
+    },
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
 }

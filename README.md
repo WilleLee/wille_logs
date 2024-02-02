@@ -18,15 +18,15 @@
 root
 ├── app
 │   ├── __tests__
-│   ├── _components
+│   ├── api // api entry points (route.ts)
+│   ├── components
 │   │   ├── pages
 │   │   ├── svgs
 │   │   └── loading
-│   ├── _hooks
-│   ├── _libs
-│   ├── _mocks
-│   ├── _models
-│   ├── _api // api entry points (route.ts)
+│   ├── hooks
+│   ├── libs
+│   ├── mocks
+│   ├── models
 │   └── layouts and pages
 ├── public // static assets
 └── config and env files
