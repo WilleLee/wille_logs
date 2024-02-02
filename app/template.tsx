@@ -10,7 +10,6 @@ export default function Template({ children }: Props) {
     <>
       <Header />
       <main>{children}</main>
-      <footer>footer</footer>
     </>
   );
 }

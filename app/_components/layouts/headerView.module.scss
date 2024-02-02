@@ -4,6 +4,11 @@
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 480px 1fr;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(var(--background));
+  z-index: 100;
 
   > div:first-child {
     display: flex;
@@ -14,6 +19,17 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 16px;
+  }
+}
+
+.logoWrapper {
+  > img {
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform var(--scale-transiton);
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -34,7 +50,6 @@
   border-radius: 10px;
   background-color: rgb(var(--background));
   transition: background-color var(--bg-transition);
-  cursor: pointer;
   &:hover,
   &:focus {
     background-color: rgba(var(--background-hover));
@@ -44,11 +59,14 @@
   }
 }
 
-.settingSvg {
-  fill: rgb(var(--icon-faded));
-  transition: fill var(--bg-transition);
-  &:hover,
-  &:focus {
+.settingButton {
+  .settingSvg {
+    fill: rgb(var(--icon-faded));
+    transition: fill var(--bg-transition);
+  }
+  &:hover .settingSvg,
+  &:focus .settingSvg,
+  &:active .settingSvg {
     fill: rgb(var(--icon));
   }
 }
