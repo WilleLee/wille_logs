@@ -22,7 +22,9 @@ export default function RootLayout({
       <body suppressHydrationWarning={true} className={notoSansKR.className}>
         {children}
       </body>
-      {gaId.length > 0 && <GoogleAnalytics gaId={gaId} />}
+      {gaId.length > 0 && process.env.NODE_ENV === "production" ? (
+        <GoogleAnalytics gaId={gaId} />
+      ) : null}
     </html>
   );
 }

@@ -1,7 +1,31 @@
-.imageWrapper {
-  position: relative;
-  width: 131px;
-  height: 131px;
-  border-radius: 50%;
-  overflow: hidden;
+.wrapper {
+  width: 100%;
+  padding: var(--default-padding);
+}
+
+.header {
+  width: 100%;
+  height: 64px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 64px;
+  column-gap: 16px;
+
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  > div:last-child {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}
+
+.description {
+  margin-top: 16px;
 }

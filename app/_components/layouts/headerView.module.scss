@@ -1,0 +1,72 @@
+.wrapper {
+  width: 100%;
+  height: 74px;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 480px 1fr;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(var(--background));
+  z-index: 100;
+
+  > div:first-child {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 16px;
+  }
+  > div:last-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 16px;
+  }
+}
+
+.logoWrapper {
+  > img {
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform var(--scale-transiton);
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.nav {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+
+.linkButton {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background-color: rgb(var(--background));
+  transition: background-color var(--bg-transition);
+  &:hover,
+  &:focus {
+    background-color: rgba(var(--background-hover));
+  }
+  &:active {
+    background-color: rgba(var(--background-active));
+  }
+}
+
+.settingButton {
+  .settingSvg {
+    fill: rgb(var(--icon-faded));
+    transition: fill var(--bg-transition);
+  }
+  &:hover .settingSvg,
+  &:focus .settingSvg,
+  &:active .settingSvg {
+    fill: rgb(var(--icon));
+  }
+}

@@ -58,3 +58,4 @@ root
 ### Notable Issues
 
 1. no route groups for the entry page ("/")
+2. next.js doc says all the components called inside a client compoennt are also client components, but it does not exactly mean that I don't need to declare those components as client components explicitly, even in the case of common components like buttons or svgs.
