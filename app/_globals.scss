@@ -3,6 +3,7 @@
 
 * {
   box-sizing: border-box;
+  color: var(--text);
 }
 
 html {
@@ -15,6 +16,7 @@ body {
   background: rgb(var(--background));
   transition: background 0.2s ease;
   transition: color 0.2s ease;
+  overflow-x: hidden;
   // box-sizing: border-box;
 }
 
