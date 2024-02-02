@@ -7,6 +7,9 @@ import UserSvg from "@components/svgs/UserSvg";
 import WriteSvg from "@components/svgs/WriteSvg";
 import styles from "./header.module.scss";
 import Link from "next/link";
+import SettingSvg from "../svgs/SettingSvg";
+import Image from "next/image";
+import avatar128 from "@images/avatar128.png";
 
 type Props = {};
 
@@ -22,7 +25,10 @@ interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
 function HeaderView({ pathname, ...props }: HeaderViewProps) {
   const router = useRouter();
   return (
-    <div {...props}>
+    <div className={styles.wrapper} {...props}>
+      <div>
+        <Image role="button" width="40" src={avatar128} alt="home" />
+      </div>
       <nav className={styles.nav}>
         <button
           aria-label="home page"
@@ -59,6 +65,9 @@ function HeaderView({ pathname, ...props }: HeaderViewProps) {
           />
         </button>
       </nav>
+      <button aria-label="setting">
+        <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
+      </button>
     </div>
   );
 }

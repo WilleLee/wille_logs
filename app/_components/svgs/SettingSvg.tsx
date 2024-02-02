@@ -3,7 +3,7 @@ import { DefaultSvgProps } from ".";
 
 interface Props extends DefaultSvgProps {}
 
-export default function ThreadsSvg({
+export default function SettingSvg({
   color = "rgb(var(--icon))",
   width = "16",
   ...props
@@ -13,7 +13,6 @@ export default function ThreadsSvg({
       xmlns="http://www.w3.org/2000/svg"
       width={width}
       height={width}
-      fill={color}
       viewBox="0 0 16 16"
       {...props}
     >
