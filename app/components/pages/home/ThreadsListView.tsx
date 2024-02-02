@@ -1,4 +1,5 @@
-import { IThread } from "@/_models/ThreadModel";
+// import { IThread } from "@models/ThreadModel";
+import { IThread } from "@models/ThreadModel";
 import React, { AllHTMLAttributes } from "react";
 
 export interface IThreadsListProps

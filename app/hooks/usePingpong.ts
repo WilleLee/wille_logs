@@ -1,4 +1,4 @@
-import fetcher from "@/_libs/fetcher";
+import fetcher from "@libs/fetcher";
 import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";

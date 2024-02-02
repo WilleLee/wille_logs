@@ -11,12 +11,12 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./app"),
-      "@components": path.resolve(__dirname, "./app/_components"),
-      "@hooks": path.resolve(__dirname, "./app/_hooks"),
-      "@models": path.resolve(__dirname, "./app/_models"),
-      "@libs": path.resolve(__dirname, "./app/_libs"),
-      "@mocks": path.resolve(__dirname, "./app/_mocks"),
-      "@styles": path.resolve(__dirname, "./app/_styles"),
+      "@components": path.resolve(__dirname, "./app/components"),
+      "@hooks": path.resolve(__dirname, "./app/hooks"),
+      "@models": path.resolve(__dirname, "./app/models"),
+      "@libs": path.resolve(__dirname, "./app/libs"),
+      "@mocks": path.resolve(__dirname, "./app/mocks"),
+      "@styles": path.resolve(__dirname, "./app/styles"),
       "@assets": path.resolve(__dirname, "./public"),
       "@images": path.resolve(__dirname, "./public/images"),
     },

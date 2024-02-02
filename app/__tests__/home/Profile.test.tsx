@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeAll, describe, expect, test } from "vitest";
-import Profile from "@/_components/pages/home/Profile";
+import Profile from "@components/pages/home/Profile";
 
 describe("Profile component", () => {
   beforeAll(() => {

@@ -3,11 +3,11 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import avatar128 from "@images/avatar128.png";
-import HomeSvg from "../svgs/HomeSvg";
-import WriteSvg from "../svgs/WriteSvg";
-import UserSvg from "../svgs/UserSvg";
-import TransparentButton from "../buttons/TransparentButton";
-import SettingSvg from "../svgs/SettingSvg";
+import HomeSvg from "@components/svgs/HomeSvg";
+import WriteSvg from "@components/svgs/WriteSvg";
+import UserSvg from "@components/svgs/UserSvg";
+import TransparentButton from "@components/buttons/TransparentButton";
+import SettingSvg from "@components/svgs/SettingSvg";
 import { AllHTMLAttributes } from "react";
 import styles from "./headerView.module.scss";
 

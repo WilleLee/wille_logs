@@ -1,5 +1,5 @@
-import connectDB from "@/_libs/connectDB";
-import Tag from "@/_models/TagModel";
+import connectDB from "@libs/connectDB";
+import Tag from "@models/TagModel";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

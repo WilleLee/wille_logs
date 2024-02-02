@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { beforeAll, describe, expect, test } from "vitest";
-import Tags from "@/_components/pages/home/Tags";
+import Tags from "@components/pages/home/Tags";
 
 describe.skip("Tags component", () => {
   beforeAll(() => {
