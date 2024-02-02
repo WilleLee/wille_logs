@@ -3,27 +3,29 @@ import bcrypt from "bcrypt";
 
 export async function POST(request: NextRequest) {
   try {
-    const adminPassword = process.env.ADMIN_PASSWORD as string;
-    const { password } = await request.json();
-    const hashRounds = Math.floor(Math.random() * 10) + 1;
+    const { accessToken } = await request.json();
     const accessSecret = process.env.ACCESS_SECRET as string;
-    const hashedAccessSecret = await bcrypt.hash(accessSecret, hashRounds);
 
-    if (!password || typeof password !== "string") {
+    if (!accessToken || typeof accessToken !== "string") {
       return NextResponse.json({
-        message: "Type the password 🤷🏻‍♂️",
+        data: false,
+        message: "No accessToken 🤷🏻‍♂️",
         status: 400,
       });
     }
-    if (password !== adminPassword) {
+
+    const isAccepted = await bcrypt.compare(accessSecret, accessToken);
+
+    if (!isAccepted) {
       return NextResponse.json({
+        data: false,
         message: "Your are not Wille 😡",
         status: 400,
       });
     }
 
     return NextResponse.json({
-      data: hashedAccessSecret,
+      data: true,
       message: "Welcome, Wille 😎",
       status: 200,
     });
