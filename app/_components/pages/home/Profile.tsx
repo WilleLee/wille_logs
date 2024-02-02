@@ -15,6 +15,7 @@ export default function Profile({}: Props) {
           <h2>Wille</h2>
           <p>Inpyo Lee, web react frontend developer</p>
         </div>
+        {/* 64 x 64 */}
         <div className={styles.imageWrapper}>
           <Image src={profile262} fill sizes="131px" alt="profile" />
         </div>
