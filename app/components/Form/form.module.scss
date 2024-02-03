@@ -1,5 +1,52 @@
 .form {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+@media screen and (min-width: 700px) {
+  .form {
+    //height: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  color: rgb(var(--text));
+  caret-color: rgb(var(--text));
+  height: 28px;
+  font-size: 15px;
+  font-weight: 400;
+  border-bottom: 2px solid rgb(var(--divider));
+
+  &:focus {
+    outline: none;
+    // border-bottom: 2px solid rgb(var(--icon));
+  }
+
+  & + .inputBorder {
+    height: 2px;
+    width: 0px;
+    background-color: rgb(var(--icon));
+    z-index: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: width var(--bg-transition);
+  }
+
+  &:focus + .inputBorder {
+    width: 100%;
+  }
+
+  &::placeholder {
+    color: rgb(var(--text-faded));
+  }
 }

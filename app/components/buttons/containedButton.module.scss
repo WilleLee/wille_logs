@@ -1,0 +1,10 @@
+.button {
+  width: 100%;
+  border-radius: 8px;
+  height: 28px;
+  background-color: rgb(var(--icon)) !important;
+  color: rgb(var(--background));
+  &:disabled {
+    background-color: rgb(var(--icon-disabled)) !important;
+  }
+}
