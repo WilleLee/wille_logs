@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "./modal.module.scss";
+import TransparentButton from "../buttons/TransparentButton";
 
 interface Props extends React.AllHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -18,8 +19,11 @@ export default function Modal({
   return (
     <div className={styles.modal} onClick={handleClose} {...props}>
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
+        <TransparentButton className={styles.closeButton} onClick={handleClose}>
+          취소
+        </TransparentButton>
         <h3>{title}</h3>
-        {children}
+        <div>{children}</div>
       </div>
     </div>
   );
