@@ -42,6 +42,9 @@ a {
 button {
   outline: none;
   border: none;
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 a {

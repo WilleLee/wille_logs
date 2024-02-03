@@ -1,10 +1,6 @@
 "use client";
 
-import {
-  AllHTMLAttributes,
-  ButtonHTMLAttributes,
-  InputHTMLAttributes,
-} from "react";
+import { AllHTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
 import styles from "./form.module.scss";
 
 interface FormProps extends AllHTMLAttributes<HTMLFormElement> {
@@ -21,14 +17,14 @@ export default function Form({ children, ...props }: FormProps) {
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
-Form.Input = function Input({ ...props }: InputProps) {
-  return <input {...props} />;
-};
-
-interface SubmitProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-}
-
-Form.Submit = function Submit({ children, ...props }: SubmitProps) {
-  return <button {...props}>{children}</button>;
-};
+Form.Input = forwardRef(function Input(
+  { ...props }: InputProps,
+  ref: React.Ref<HTMLInputElement>,
+) {
+  return (
+    <div style={{ position: "relative", width: "100%" }}>
+      <input className={styles.input} ref={ref} {...props} />
+      <div className={styles.inputBorder} />
+    </div>
+  );
+});
