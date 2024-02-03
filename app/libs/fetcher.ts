@@ -1,5 +1,11 @@
 import axios, { AxiosResponse } from "axios";
 
+interface IResponse {
+  data: any;
+  message: string;
+  status: number;
+}
+
 const axiosInstance = axios.create({
   headers: {
     "Content-type": "application/json",
@@ -72,12 +78,16 @@ const fetcher = {
       };
     }
   },
-  handleResponse: (res: AxiosResponse<any, any>) => {
+  handleResponse: (
+    res: AxiosResponse<
+      IResponse | { data: any; message: string; status: number }
+    >,
+  ) => {
     if (!res.data || !res.data.status || res.data.status !== 200) {
       return {
         data: null,
         message: res.data.message || "Something went wrong",
-        status: 500,
+        status: res.data.status || 500,
       };
     } else {
       return res.data;
