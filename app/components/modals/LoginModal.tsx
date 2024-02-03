@@ -14,15 +14,24 @@ interface Props extends React.AllHTMLAttributes<HTMLDivElement> {
 export default function LoginModal({ handleClose }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isLoading) return;
+    setIsLoading(true);
 
-    console.log("password", password);
+    if (typeof password !== "string" || password.length < 1) {
+      setIsLoading(false);
+      alert("Type the password.");
+      return;
+    }
+
     const { data, message, status } = await fetcher.post("/api/login", {
       password,
     });
     if (status !== 200 || typeof data !== "string") {
+      setIsLoading(false);
       alert(message);
       return;
     }
@@ -45,8 +54,9 @@ export default function LoginModal({ handleClose }: Props) {
           placeholder="Password"
           ref={inputRef}
         />
-        {/* <Form.Submit type="submit">로그인</Form.Submit> */}
-        <ContainedButton type="submit">로그인</ContainedButton>
+        <ContainedButton disabled={isLoading || !password} type="submit">
+          로그인
+        </ContainedButton>
       </Form>
     </Modal>
   );

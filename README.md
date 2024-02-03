@@ -4,7 +4,7 @@
 
 1. to craeate a thread to save my daily book notes and thoughts
 2. to enable customizing my own resumé
-3. to create a browser alarm modal to routinize my daily life
+3. to build a modern web application with the latest technologies and design trends
 
 ### Dev Environment
 
@@ -56,13 +56,13 @@ root
     - [ ] threads
     - [ ] context controllers between tags and threads
   - [ ] `/wille` : resumé
-    - [x] tabs
+    - [x] tabs and functionality
     - [ ] content
       - [ ] layout
       - [ ] career
       - [ ] personal projects
       - [ ] etc. : education, skills, languages...
-- [x] connect to google analytics
+- [x] connect to google analytics - _has issues about the third-party cookies warning_
 
 ### Notable Issues
 

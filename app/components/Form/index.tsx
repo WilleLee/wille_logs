@@ -1,13 +1,7 @@
 "use client";
 
-import {
-  AllHTMLAttributes,
-  ButtonHTMLAttributes,
-  InputHTMLAttributes,
-  forwardRef,
-} from "react";
+import { AllHTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
 import styles from "./form.module.scss";
-import ContainedButton from "../buttons/ContainedButton";
 
 interface FormProps extends AllHTMLAttributes<HTMLFormElement> {
   children: React.ReactNode;
@@ -34,11 +28,3 @@ Form.Input = forwardRef(function Input(
     </div>
   );
 });
-
-interface SubmitProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-}
-
-Form.Submit = function Submit({ children, ...props }: SubmitProps) {
-  return <ContainedButton {...props}>{children}</ContainedButton>;
-};
