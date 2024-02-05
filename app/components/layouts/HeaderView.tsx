@@ -12,7 +12,7 @@ import { AllHTMLAttributes, useState } from "react";
 import styles from "./headerView.module.scss";
 import users from "@libs/users";
 import { createPortal } from "react-dom";
-import LoginModal from "../modals/LoginModal";
+import LoginModal from "@components/modals/LoginModal";
 
 interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
   //pathname: string;

@@ -6,9 +6,7 @@ describe("Tags component", () => {
   test("should render all tags", async () => {
     render(<Tags />);
 
-    const tags = await screen.findAllByRole("button", {
-      name: /^tag/i,
-    });
+    const tags = await screen.findAllByText(/^tag/i);
 
     expect(tags).toHaveLength(2);
   });
