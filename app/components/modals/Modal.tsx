@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
+import React, { AllHTMLAttributes } from "react";
 import styles from "./modal.module.scss";
 import TransparentButton from "../buttons/TransparentButton";
 
-interface Props extends React.AllHTMLAttributes<HTMLDivElement> {
+export interface DefaultModalProps extends AllHTMLAttributes<HTMLDivElement> {
+  handleClose: () => void;
+}
+
+interface Props extends AllHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   title: string;
   handleClose: () => void;

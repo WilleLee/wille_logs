@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useReducer } from "react";
+import React, { Dispatch, createContext, useContext, useReducer } from "react";
 
 interface Props {
   children: React.ReactNode;
@@ -13,8 +13,8 @@ const initialState: IHome = {
   selectedTagId: null,
 };
 
-const HomeContext = createContext<IHome | null>(null);
-const HomeDispatchContext = createContext<React.Dispatch<any> | null>(null);
+const HomeContext = createContext<IHome>(initialState);
+const HomeDispatchContext = createContext<Dispatch<any>>(() => {});
 
 export default function HomeContextProvider({ children }: Props) {
   const [state, dispatch] = useReducer(homeReducer, initialState);

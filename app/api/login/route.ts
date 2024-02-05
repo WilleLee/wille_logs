@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
     if (password !== adminPassword) {
       return NextResponse.json({
-        message: "Your are not Wille 😡",
+        message: "You are not Wille 😡",
         status: 400,
       });
     }

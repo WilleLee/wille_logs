@@ -1,6 +1,11 @@
 "use client";
 
-import { AllHTMLAttributes, InputHTMLAttributes, forwardRef } from "react";
+import {
+  AllHTMLAttributes,
+  InputHTMLAttributes,
+  TextareaHTMLAttributes,
+  forwardRef,
+} from "react";
 import styles from "./form.module.scss";
 
 interface FormProps extends AllHTMLAttributes<HTMLFormElement> {
@@ -27,4 +32,13 @@ Form.Input = forwardRef(function Input(
       <div className={styles.inputBorder} />
     </div>
   );
+});
+
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+Form.Textarea = forwardRef(function Textarea(
+  { ...props }: TextareaProps,
+  ref: React.Ref<HTMLTextAreaElement>,
+) {
+  return <textarea className={styles.textarea} ref={ref} {...props} />;
 });

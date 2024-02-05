@@ -1,6 +1,12 @@
 "use client";
 
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Modal from "./Modal";
 import Form from "@components/Form";
 import fetcher from "@libs/fetcher";
@@ -16,14 +22,21 @@ export default function LoginModal({ handleClose }: Props) {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  function handleError(message: string) {
+    setIsLoading(false);
+    setPassword("");
+    alert(message || "");
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isLoading) return;
     setIsLoading(true);
 
     if (typeof password !== "string" || password.length < 1) {
-      setIsLoading(false);
-      alert("Type the password.");
+      // setIsLoading(false);
+      // alert("Type the password.");
+      handleError("Type the password.");
       return;
     }
 
@@ -31,8 +44,9 @@ export default function LoginModal({ handleClose }: Props) {
       password,
     });
     if (status !== 200 || typeof data !== "string") {
-      setIsLoading(false);
-      alert(message);
+      // setIsLoading(false);
+      // alert(message);
+      handleError(message);
       return;
     }
     users.login(data);
@@ -53,6 +67,8 @@ export default function LoginModal({ handleClose }: Props) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
           ref={inputRef}
+          minLength={1}
+          maxLength={20}
         />
         <ContainedButton disabled={isLoading || !password} type="submit">
           로그인
