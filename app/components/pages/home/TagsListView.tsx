@@ -11,7 +11,6 @@ import React, {
 import OutlinedButton from "@components/buttons/OutlinedButton";
 import { ITag } from "@models/TagModel";
 import styles from "./tagsListView.module.scss";
-import TransparentButton from "@/components/buttons/TransparentButton";
 
 type TagsListState = {
   showAll: boolean;
@@ -63,15 +62,12 @@ interface TagsListViewProps extends AllHTMLAttributes<HTMLUListElement> {
   listLength: number;
 }
 
-export function TagsListView({
+export const TagsListView = React.memo(function TagsListView({
   children,
   listLength,
   ...props
 }: TagsListViewProps) {
   const { showAll } = useTagsListState();
-  const isActive = listLength <= 3 || showAll;
-  console.log("isActive", isActive);
-  console.log("showAll", showAll);
   return (
     <ul
       className={`${styles.ul} ${listLength <= 3 || showAll ? styles.isActive : ""}`}
@@ -80,7 +76,7 @@ export function TagsListView({
       {children}
     </ul>
   );
-}
+});
 
 interface TagsItemViewProps extends AllHTMLAttributes<HTMLLIElement> {
   tag: ITag;
