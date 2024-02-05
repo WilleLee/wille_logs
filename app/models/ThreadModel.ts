@@ -9,7 +9,7 @@ export interface IThread {
     author: string;
     page: number;
   };
-  createdAt?: Date;
+  createdAt?: string;
 }
 
 const threadSchema = new Schema({

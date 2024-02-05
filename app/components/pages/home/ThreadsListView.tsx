@@ -27,10 +27,31 @@ const ThreadsItemView = React.memo(function ThreadsItemView({
   thread,
   ...props
 }: ThreadsItemViewProps) {
+  const today = new Date();
+  const createdAt = new Date(thread.createdAt || "");
+  const diffInHour = Math.floor(
+    (today.getTime() - createdAt.getTime()) / 1000 / 60 / 60,
+  );
+  const diff =
+    diffInHour === 0
+      ? "방금 전"
+      : diffInHour < 24
+        ? `${diffInHour}시간 전`
+        : `${Math.floor(diffInHour / 24)}일 전`;
   return (
     <li {...props}>
-      <h3>{thread.book.title}</h3>
-      <p>{thread.text}</p>
+      <div>
+        <div>
+          <h3>Wille</h3>
+          <p>{diff}</p>
+        </div>
+        <p>{thread.text}</p>
+        <div>
+          <p>{thread.book.title}</p>
+          <p>{thread.book.author}</p>
+          <p>{thread.book.page}</p>
+        </div>
+      </div>
     </li>
   );
 });
