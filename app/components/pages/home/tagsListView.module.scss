@@ -1,6 +1,9 @@
 .wrapper {
   width: 100%;
+  padding: 0 var(--default-padding);
 }
+
+
 
 .ul {
   margin-top: 8px;
@@ -32,6 +35,7 @@
   z-index: 1;
   border-radius: 0 0 4px 4px;
   transition: background-color var(--bg-transition);
+  font-size: 8px !important;
 
   &:focus,
   &:active,
@@ -42,4 +46,21 @@
   &.hidden {
     display: none;
   }
+}
+
+.li > button {
+   font-size: 12px !important;
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    padding: 0;
+  }
+}
+
+@media screen and (min-width: 512px) {
+  .li > button {
+    font-size: 15px !important;
+  }
+  
 }

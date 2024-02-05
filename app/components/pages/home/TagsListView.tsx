@@ -43,7 +43,9 @@ export default function TagsListWrapper({
   return (
     <TagsListContext.Provider value={state}>
       <TagsListDispatchContext.Provider value={dispatch}>
-        <div {...props}>{children}</div>
+        <div className={styles.wrapper} {...props}>
+          {children}
+        </div>
       </TagsListDispatchContext.Provider>
     </TagsListContext.Provider>
   );
@@ -89,7 +91,10 @@ export const TagsItemView = React.memo(function TagsItemView({
   ...props
 }: TagsItemViewProps) {
   return (
-    <li onClick={() => handleClickTag(tag._id as string)} {...props}>
+    <li 
+    className={styles.li}
+    
+    onClick={() => handleClickTag(tag._id as string)} {...props}>
       <OutlinedButton aria-label={`view threads about ${tag.name} tag`}>
         {tag.name}
       </OutlinedButton>

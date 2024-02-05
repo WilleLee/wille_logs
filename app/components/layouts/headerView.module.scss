@@ -4,7 +4,7 @@
   display: grid;
   align-items: center;
   // grid-template-columns: 1fr 480px 1fr;
-  grid-template-columns: 1fr 300px 1fr;
+  grid-template-columns: 1fr 240px 1fr;
   transition: grid-template-columns var(--slow-transition);
   position: fixed;
   top: 0;
@@ -21,12 +21,6 @@
     display: flex;
     justify-content: flex-end;
     margin-right: 16px;
-  }
-}
-
-@media screen and (min-width: 700px) {
-  .wrapper {
-    grid-template-columns: 1fr 480px 1fr;
   }
 }
 
@@ -76,5 +70,17 @@
   &:focus .settingSvg,
   &:active .settingSvg {
     fill: rgb(var(--icon));
+  }
+}
+
+@media screen and (min-width: 512px) {
+  .wrapper {
+    grid-template-columns: 1fr 320px 1fr;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  .wrapper {
+    grid-template-columns: 1fr 480px 1fr;
   }
 }

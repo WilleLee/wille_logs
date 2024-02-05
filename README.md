@@ -42,7 +42,7 @@ root
 - [ ] build APIs
   - [x] `/login`
   - [ ] `/threads` (ing)
-  - [ ] `/tags` (ing)
+  - [x] `/tags` (ing)
 - [ ] build UIs
   - [ ] layouts
     - [ ] header
