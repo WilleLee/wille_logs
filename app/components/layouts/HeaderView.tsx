@@ -13,6 +13,7 @@ import styles from "./headerView.module.scss";
 import users from "@libs/users";
 import { createPortal } from "react-dom";
 import LoginModal from "@components/modals/LoginModal";
+import WriteModal from "../modals/WriteModal";
 
 interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
   //pathname: string;
@@ -25,11 +26,13 @@ export default function HeaderView({
   const pathname = usePathname();
   const router = useRouter();
   const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showWriteModal, setShowWriteModal] = useState(false);
   const handleClickWrite = () => {
-    console.log("logged in?", users.isLoggedIn());
     const isLoggedIn = users.isLoggedIn();
     if (!isLoggedIn) {
       setShowLoginModal(true);
+    } else {
+      setShowWriteModal(true);
     }
   };
   return (
@@ -37,6 +40,12 @@ export default function HeaderView({
       {showLoginModal
         ? createPortal(
             <LoginModal handleClose={() => setShowLoginModal(false)} />,
+            document.body,
+          )
+        : null}
+      {showWriteModal
+        ? createPortal(
+            <WriteModal handleClose={() => setShowWriteModal(false)} />,
             document.body,
           )
         : null}

@@ -1,9 +1,8 @@
 .wrapper {
   width: 100%;
   padding: 0 var(--default-padding);
+  margin-bottom: 16px;
 }
-
-
 
 .ul {
   margin-top: 8px;
@@ -49,7 +48,7 @@
 }
 
 .li > button {
-   font-size: 12px !important;
+  font-size: 12px !important;
 }
 
 @media screen and (min-width: 700px) {
@@ -62,5 +61,4 @@
   .li > button {
     font-size: 15px !important;
   }
-  
 }
