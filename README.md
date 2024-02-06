@@ -32,31 +32,35 @@ root
 └── config and env files
 ```
 
-### TODOs
+### TODOs (1.0)
 
 - [x] connect to mongodb
 - [x] deploy to vercel
-- [ ] build models
+- [x] build models
   - [x] thread
   - [x] tag
-- [ ] build APIs
+- [x] build APIs
   - [x] `/login`
-  - [ ] `/threads` (ing)
-  - [x] `/tags` (ing)
+  - [x] `/threads`
+  - [x] `/tags`
 - [ ] build UIs
   - [ ] layouts
-    - [x] header
+    - [ ] header
       - [x] navigations (home and `/wille`)
       - [x] write button
-        - [x] login modal & functionality
-        - [x] write modal & functionality
-    - [ ] ...
+        - [x] login modal & functionalities
+        - [x] write modal & functionalities
+      - [ ] setting?
   - [ ] `/`
-    - [ ] tags (need to have loading animation?)
-    - [ ] threads (need `DELETE`?)
+    - [ ] tags
+      - [x] basic UIs and functionalities
+      - [ ] loading?
+    - [x] threads
+      - [x] basic UIs and functionalities
+      - [ ] loading?
     - [x] context controllers between tags and threads
   - [ ] `/wille` : resumé
-    - [x] tabs and functionality
+    - [x] tabs and functionalities
     - [ ] content
       - [ ] layout
       - [ ] career

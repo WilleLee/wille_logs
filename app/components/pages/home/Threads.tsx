@@ -1,5 +1,6 @@
 "use client";
 
+import LoadingBox from "@/components/loading/LoadingBox";
 import { useHome } from "./HomeContextProvider";
 import ThreadsListView, { IThreadsListProps } from "./ThreadsListView";
 import useThreads from "@hooks/useThreads";
@@ -28,8 +29,9 @@ export default function Threads() {
             You haven&rsquo;t selected any tag OR there&rsquo;s no thread yet.
           </p>
         )
-      ) : null}
-      {status === "loading" && <p>loading&hellip;</p>}
+      ) : (
+        <LoadingBox height="120px" />
+      )}
     </>
   );
 }

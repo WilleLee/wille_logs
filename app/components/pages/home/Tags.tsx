@@ -5,6 +5,7 @@ import React from "react";
 import { homeActions, useHomeDispatch } from "./HomeContextProvider";
 
 import TagsList from "./TagsList";
+import LoadingBox from "@/components/loading/LoadingBox";
 
 const Tags = () => {
   const { tags, status } = useTags();
@@ -16,14 +17,15 @@ const Tags = () => {
   }
   return (
     <>
-      {status == "success" ? (
+      {status === "success" ? (
         tags.length > 0 ? (
           <TagsList tags={tags} handleClickTag={handleClickTag} />
         ) : (
           <p>no tag</p>
         )
-      ) : null}
-      {status === "loading" && <p>loading&hellip;</p>}
+      ) : (
+        <LoadingBox height="80px" />
+      )}
     </>
   );
 };
