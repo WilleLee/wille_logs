@@ -1,8 +1,8 @@
-import React, { AllHTMLAttributes } from "react";
+import React from "react";
 import styles from "./box.module.scss";
+import { DefaultBoxProps } from ".";
 
-interface Props extends AllHTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+interface Props extends DefaultBoxProps {
   height?: string;
 }
 
