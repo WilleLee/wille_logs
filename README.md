@@ -45,16 +45,16 @@ root
   - [x] `/tags` (ing)
 - [ ] build UIs
   - [ ] layouts
-    - [ ] header
+    - [x] header
       - [x] navigations (home and `/wille`)
-      - [ ] write button
+      - [x] write button
         - [x] login modal & functionality
-        - [ ] write modal & functionality
+        - [x] write modal & functionality
     - [ ] ...
   - [ ] `/`
     - [ ] tags (need to have loading animation?)
-    - [ ] threads
-    - [ ] context controllers between tags and threads
+    - [ ] threads (need `DELETE`?)
+    - [x] context controllers between tags and threads
   - [ ] `/wille` : resumé
     - [x] tabs and functionality
     - [ ] content
