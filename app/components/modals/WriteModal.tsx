@@ -1,50 +1,119 @@
 "use client";
 
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Modal, { DefaultModalProps } from "./Modal";
 import Form from "@components/Form";
 import ContainedButton from "@components/buttons/ContainedButton";
+import { IBook } from "@/models/ThreadModel";
+import fetcher from "@/libs/fetcher";
 
 interface Props extends DefaultModalProps {}
 
 export default function WriteModal({ handleClose }: Props) {
   const titleRef = useRef<HTMLInputElement>(null);
+  const [loading, setLoading] = useState(false);
+  const [text, setText] = useState("");
   const [tags, setTags] = useState("");
+  const [book, setBook] = useState<IBook>({
+    title: "",
+    author: "",
+    page: 0,
+  });
+  console.log(book);
 
   function handleChangeTags(e: ChangeEvent<HTMLInputElement>) {
     const replaced = e.target.value.replace(/[\s]/g, ",").replace(/,+/g, ",");
     setTags(replaced);
   }
 
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (loading) return;
+    setLoading(true);
+    const tagsToArr = tags.split(",").filter((tag) => tag.length > 0);
+    const { data, message } = await fetcher.post("/api/threads", {
+      text,
+      tags: tagsToArr,
+      book,
+    });
+    if (!data) {
+      alert(message);
+      setLoading(false);
+      return;
+    }
+    alert(message);
+    handleClose();
+  }
+
+  const buttonDisabled =
+    !book.title || !book.author || !book.page || !text || loading;
+
   useEffect(() => {
     // 초기 렌더링 시 title input에 포커스
     titleRef.current?.focus();
   }, []);
+
   return (
     <Modal title="새로운 이야기" handleClose={handleClose}>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Input
           type="text"
           placeholder="Title"
           minLength={1}
           maxLength={20}
           ref={titleRef}
+          value={book.title}
+          onChange={(e) => {
+            setBook({ ...book, title: e.target.value });
+          }}
         />
         <Form.Input
           type="text"
           placeholder="Author"
           minLength={1}
           maxLength={20}
+          value={book.author}
+          onChange={(e) => {
+            setBook({ ...book, author: e.target.value });
+          }}
         />
-        <Form.Input type="number" placeholder="Page" min={1} />
-        <Form.Textarea />
+        <Form.Input
+          type="string"
+          placeholder="Page"
+          minLength={0}
+          maxLength={10}
+          value={book.page}
+          onChange={(e) => {
+            console.log(e.target.value, typeof e.target.value);
+            let value = e.target.value;
+            value = value.replace(/\D/g, "").replace(/^0+/, "");
+            if (!value) value = "0";
+            setBook({ ...book, page: parseInt(value) });
+          }}
+          inputMode="numeric"
+        />
+        <Form.Textarea
+          placeholder="Text from the book"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        />
         <Form.Input
           type="text"
           placeholder="Tags, separated by commas( , )"
           value={tags}
           onChange={handleChangeTags}
         />
-        <ContainedButton type="submit">작성하기</ContainedButton>
+        <ContainedButton type="submit" disabled={buttonDisabled}>
+          작성하기
+        </ContainedButton>
       </Form>
     </Modal>
   );

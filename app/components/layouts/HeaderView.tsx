@@ -105,6 +105,7 @@ export default function HeaderView({
         <TransparentButton
           aria-label="setting"
           className={styles.settingButton}
+          onClick={() => alert("🛠️ Not available yet")}
         >
           <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
         </TransparentButton>
