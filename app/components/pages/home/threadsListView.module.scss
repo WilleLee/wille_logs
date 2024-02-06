@@ -1,0 +1,53 @@
+.ul {
+  width: 100%;
+  padding: 0 var(--default-padding);
+}
+
+@media screen and (min-width: 700px) {
+  .ul {
+    padding: 0;
+  }
+}
+
+.li {
+  width: 100%;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgb(var(--divider));
+
+  > div:first-child {
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 span {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    > div {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      > p {
+        color: rgb(var(--text-faded));
+      }
+      > button {
+        .copySvg {
+          fill: rgb(var(--icon-faded));
+          transition: fill var(--bg-transition);
+        }
+        &:hover .copySvg,
+        &:focus .copySvg,
+        &:active .copySvg {
+          fill: rgb(var(--icon));
+        }
+      }
+    }
+  }
+
+  > p {
+    margin-bottom: 8px;
+  }
+}
