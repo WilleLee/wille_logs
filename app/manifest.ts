@@ -11,8 +11,12 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#101010",
     screenshots: [
       {
-        src: "/logos/screenshot.PNG",
+        src: "/logos/screenshot_iphone12.PNG",
         sizes: "1170x2532",
+      },
+      {
+        src: "/logos/screenshot_macbook.png",
+        sizes: "2880x1560",
       },
     ],
     icons: [
