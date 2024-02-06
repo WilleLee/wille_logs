@@ -51,25 +51,26 @@ root
         - [x] login modal & functionalities
         - [x] write modal & functionalities
       - [ ] setting?
-  - [ ] `/`
-    - [ ] tags
+  - [x] `/`
+    - [x] tags
       - [x] basic UIs and functionalities
-      - [ ] loading?
+      - [x] loading
     - [x] threads
       - [x] basic UIs and functionalities
-      - [ ] loading?
+      - [x] loading
     - [x] context controllers between tags and threads
   - [ ] `/wille` : resumé
     - [x] tabs and functionalities
     - [ ] content
       - [ ] layout
-      - [ ] career
+      - [ ] career (ing)
       - [ ] personal projects
       - [ ] etc. : education, skills, languages...
 - [x] connect to google analytics - _has issues about the third-party cookies warning_
 
 ### Notable Issues
 
-1. no route groups for the entry page ("/")
+1. no route groups for the entry page (`/`)
 2. next.js doc says all the components called inside a client compoennt are also client components, but it does not exactly mean that I don't need to declare those components as client components explicitly, even in the case of common components like buttons or svgs.
 3. server preservation in dev mode sucks.
+4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
