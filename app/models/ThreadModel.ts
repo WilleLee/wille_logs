@@ -1,5 +1,11 @@
 import mongoose, { Schema } from "mongoose";
 
+export interface IBook {
+  title: string;
+  author: string;
+  page: number;
+}
+
 export interface IThread {
   _id?: string;
   text: string;

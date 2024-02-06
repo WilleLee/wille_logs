@@ -11,9 +11,9 @@ export async function GET(request: NextRequest) {
     const searchParams = request.nextUrl.searchParams;
     const tag = searchParams.get("tag");
     // 해당 tag를 갖는 thread들을 찾는다.
-    const threads = await Thread.find(
-      tag ? { tags: { $in: [tag] } } : {},
-    ).populate("tags");
+    const threads = await Thread.find(tag ? { tags: { $in: [tag] } } : {})
+      .populate("tags")
+      .sort({ createdAt: -1 });
     threads.map((t) => console.log(t.tags));
     return NextResponse.json({
       data: threads,

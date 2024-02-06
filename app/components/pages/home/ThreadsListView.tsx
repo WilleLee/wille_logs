@@ -1,7 +1,8 @@
-// import { IThread } from "@models/ThreadModel";
+"use client";
+
 import { IThread } from "@models/ThreadModel";
 import React, { AllHTMLAttributes } from "react";
-
+import styles from "./threadsListView.module.scss";
 export interface IThreadsListProps
   extends React.AllHTMLAttributes<HTMLUListElement> {
   threads: IThread[];
@@ -45,7 +46,7 @@ const ThreadsItemView = React.memo(function ThreadsItemView({
           <h3>Wille</h3>
           <p>{diff}</p>
         </div>
-        <p>{thread.text}</p>
+        <p dangerouslySetInnerHTML={{ __html: thread.text }} />
         <div>
           <p>{thread.book.title}</p>
           <p>{thread.book.author}</p>
