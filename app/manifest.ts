@@ -6,9 +6,15 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "Wille logs",
     description: "see what Wille logs today",
     start_url: "/",
-    // display: "standalone",
+    display: "standalone",
     background_color: "#fff",
-    theme_color: "#fff",
+    theme_color: "#101010",
+    screenshots: [
+      {
+        src: "/logos/screenshot.PNG",
+        sizes: "1170x2532",
+      },
+    ],
     icons: [
       {
         src: "/logos/avatar48.png",

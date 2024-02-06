@@ -9,7 +9,36 @@ const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
 
 export const metadata: Metadata = {
   title: "Wille logs",
-  description: "what Wille logs today",
+  description: "check what Wille logs today",
+  authors: [
+    {
+      name: "Inpyo Lee (Wille)",
+      url: "https://github.com/WilleLee",
+    },
+  ],
+  creator: "Inpyo Lee",
+  publisher: "Inpyo Lee",
+  keywords: [
+    "wille",
+    "book",
+    "blog",
+    "resumé",
+    "typescript",
+    "next",
+    "react",
+    "vercel",
+  ],
+  twitter: {
+    card: "summary_large_image",
+    images: "https://wille-logs.vercel.app/images/avatar128png",
+  },
+  openGraph: {
+    title: "Wille logs...",
+    description: "check what Wille logs today",
+    type: "website",
+    images: ["https://wille-logs.vercel.app/images/avatar128png"],
+    url: "https://wille-logs.vercel.app/",
+  },
 };
 
 export default function RootLayout({
