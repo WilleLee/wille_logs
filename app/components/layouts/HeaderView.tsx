@@ -46,7 +46,7 @@ export default function HeaderView({
       {showWriteModal
         ? createPortal(
             <WriteModal handleClose={() => setShowWriteModal(false)} />,
-            document.body,
+            document.querySelector("main") as Element,
           )
         : null}
       <div className={styles.logoWrapper}>
