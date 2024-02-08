@@ -3,8 +3,9 @@
 import ThreadedBox from "@/components/boxes/ThreadedBox";
 import Image from "next/image";
 import React, { AllHTMLAttributes } from "react";
-import { IProject, careers } from "./careers";
+import { careers } from "./careers";
 import styles from "./careersContent.module.scss";
+import { IProject } from "../ProjectsContent/projects";
 
 type Props = {};
 

@@ -1,3 +1,5 @@
+"use client";
+
 import { DefaultBoxProps } from ".";
 import styles from "./threadedBox.module.scss";
 

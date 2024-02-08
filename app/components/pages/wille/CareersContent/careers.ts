@@ -1,12 +1,13 @@
 import newlinkLogo from "@images/newlink_logo.png";
 import { StaticImageData } from "next/image";
+import { IProject } from "../ProjectsContent/projects";
 
-export interface IProject {
-  title: string;
-  link: string;
-  techStack: string[];
-  descriptions: string[];
-}
+// export interface IProject {
+//   title: string;
+//   link: string;
+//   techStack: string[];
+//   descriptions: string[];
+// }
 
 export interface ICareer {
   _id: string;
@@ -28,6 +29,7 @@ export const careers: ICareer[] = [
     endDate: "2023.10",
     projects: [
       {
+        _id: "0",
         title: "cashierest",
         link: "http://www.cashierest.com/",
         techStack: ["javascript", "react", "next(pages)", "redux"],
@@ -38,6 +40,7 @@ export const careers: ICareer[] = [
         ],
       },
       {
+        _id: "1",
         title: "국제표준금거래소",
         link: "https://goodgold.co.kr/",
         techStack: ["javascript", "react", "next(pages)", "react-query"],
