@@ -1,6 +1,12 @@
 "use client";
 
-import React, { FormEvent, useEffect, useRef, useState } from "react";
+import React, {
+  ChangeEvent,
+  FormEvent,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Modal from "./Modal";
 import Form from "@components/Form";
 import fetcher from "@libs/fetcher";
@@ -20,6 +26,11 @@ export default function LoginModal({ handleClose }: Props) {
     setIsLoading(false);
     setPassword("");
     alert(message || "");
+  }
+
+  function handleChangePassword(e: ChangeEvent<HTMLInputElement>) {
+    const replaced = e.target.value.replace(/\s/g, "");
+    setPassword(replaced);
   }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -58,7 +69,7 @@ export default function LoginModal({ handleClose }: Props) {
         <Form.Input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleChangePassword}
           placeholder="Password"
           ref={inputRef}
           minLength={1}

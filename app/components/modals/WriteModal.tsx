@@ -36,7 +36,8 @@ export default function WriteModal({ handleClose }: Props) {
     e.preventDefault();
     if (loading) return;
     setLoading(true);
-    const tagsToArr = tags.split(",").filter((tag) => tag.length > 0);
+    const replacedTags = tags.replace(/,$/g, "");
+    const tagsToArr = replacedTags.split(",").filter((tag) => tag.length > 0);
     const { data, message } = await fetcher.post("/api/threads", {
       text,
       tags: tagsToArr,
@@ -70,7 +71,8 @@ export default function WriteModal({ handleClose }: Props) {
           ref={titleRef}
           value={book.title}
           onChange={(e) => {
-            setBook({ ...book, title: e.target.value });
+            const replaced = e.target.value.replace(/^\s+/g, "");
+            setBook({ ...book, title: replaced });
           }}
         />
         <Form.Input
@@ -80,7 +82,8 @@ export default function WriteModal({ handleClose }: Props) {
           maxLength={20}
           value={book.author}
           onChange={(e) => {
-            setBook({ ...book, author: e.target.value });
+            const replaced = e.target.value.replace(/^\s+/g, "");
+            setBook({ ...book, author: replaced });
           }}
         />
         <Form.Input
@@ -102,7 +105,8 @@ export default function WriteModal({ handleClose }: Props) {
           placeholder="Text from the book"
           value={text}
           onChange={(e) => {
-            setText(e.target.value);
+            const replaced = e.target.value.replace(/^\s+/g, "");
+            setText(replaced);
           }}
         />
         <Form.Input
