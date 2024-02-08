@@ -54,7 +54,7 @@ const SettingButton = React.memo(function SettingButton({
                   }
                 }}
               >
-                logout
+                <h4>logout</h4>
               </TransparentButton>
             ) : (
               <TransparentButton
@@ -64,7 +64,7 @@ const SettingButton = React.memo(function SettingButton({
                   setShowModal(false);
                 }}
               >
-                login
+                <h4>login</h4>
               </TransparentButton>
             )}
           </Box>
