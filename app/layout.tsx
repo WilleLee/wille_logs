@@ -30,13 +30,13 @@ export const metadata: Metadata = {
   ],
   twitter: {
     card: "summary_large_image",
-    images: "https://wille-logs.vercel.app/images/avatar128png",
+    images: "https://wille-logs.vercel.app/images/avatar128.png",
   },
   openGraph: {
     title: "Wille logs...",
     description: "check what Wille logs today",
     type: "website",
-    images: ["https://wille-logs.vercel.app/images/avatar128png"],
+    images: ["https://wille-logs.vercel.app/images/avatar128.png"],
     url: "https://wille-logs.vercel.app/",
   },
 };
