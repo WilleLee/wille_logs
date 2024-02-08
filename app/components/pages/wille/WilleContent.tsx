@@ -7,9 +7,6 @@ import ContentRenderer from "./ContentRenderer";
 import cookies from "@libs/cookies";
 
 export default function WilleContent() {
-  // const initialTabId = cookies.get("selectedTabId")
-  //   ? Number(cookies.get("selectedTabId"))
-  //   : 0;
   const [selectedTabId, setSelectedTabId] = useState(0);
   const handleClickTab = (tabNumbeer: number) => {
     setSelectedTabId(tabNumbeer);
