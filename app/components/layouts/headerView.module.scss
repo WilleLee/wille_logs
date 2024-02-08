@@ -61,6 +61,12 @@
   }
 }
 
+.settingButtonWrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .settingButton {
   .settingSvg {
     fill: rgb(var(--icon-faded));
@@ -71,6 +77,12 @@
   &:active .settingSvg {
     fill: rgb(var(--icon));
   }
+}
+
+.settingModal {
+  position: absolute;
+  top: 100%;
+  right: 0;
 }
 
 @media screen and (min-width: 512px) {

@@ -96,12 +96,7 @@ export default function HeaderView({
           />
         </button>
       </nav>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
+      <div className={styles.settingButtonWrapper}>
         <TransparentButton
           aria-label="setting"
           className={styles.settingButton}
@@ -109,6 +104,7 @@ export default function HeaderView({
         >
           <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
         </TransparentButton>
+        <div className={styles.settingModal}></div>
       </div>
     </div>
   );
