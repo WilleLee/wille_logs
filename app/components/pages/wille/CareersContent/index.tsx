@@ -7,9 +7,7 @@ import { careers } from "./careers";
 import styles from "./careersContent.module.scss";
 import { IProject } from "../ProjectsContent/projects";
 
-type Props = {};
-
-export default function CareersContent({}: Props) {
+export default function CareersContent() {
   return (
     <>
       {careers.map((career) => (
