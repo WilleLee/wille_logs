@@ -5,10 +5,34 @@
   > div:first-child {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-bottom: 16px;
 
-    p {
-      color: rgb(var(--text-faded));
+    > h4 a {
+      color: rgb(var(--text-faded)) !important;
+      transition: color var(--bg-transition);
+
+      &:hover {
+        color: rgb(var(--text)) !important;
+      }
+    }
+
+    > div:last-child {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      p {
+        color: rgb(var(--text-faded));
+      }
+      a {
+        svg {
+          fill: rgb(var(--icon-faded)) !important;
+          transition: fill var(--bg-transition);
+        }
+        &:hover svg {
+          fill: rgb(var(--icon)) !important;
+        }
+      }
     }
   }
   > ul {

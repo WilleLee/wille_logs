@@ -6,6 +6,7 @@ export interface IProject {
   title: string;
   imageSrc?: StaticImageData;
   link: string;
+  githubLink?: string;
   techStack: string[];
   descriptions: string[];
 }

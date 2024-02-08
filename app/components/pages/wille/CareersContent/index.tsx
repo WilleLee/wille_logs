@@ -44,7 +44,11 @@ function ProjectItem({ project }: ProjectItemProps) {
   return (
     <div key={project.title} className={styles.projectWrapper}>
       <h3>
-        <a href={project.link} target="_blank">
+        <a
+          href={project.link}
+          target="_blank"
+          aria-label={`visit ${project.title}`}
+        >
           <span>{project.title}</span>
         </a>
       </h3>
