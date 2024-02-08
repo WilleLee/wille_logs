@@ -5,20 +5,4 @@
   background-color: rgb(var(--background));
   border: var(--box-border);
   border-radius: var(--box-border-radius);
-  animation: loadingBackground 1.5s infinite ease-in-out;
-}
-
-@keyframes loadingBackground {
-  0% {
-    background-color: rgb(var(--background));
-  }
-  45% {
-    background-color: rgb(var(--background-hover));
-  }
-  55% {
-    background-color: rgb(var(--background-hover));
-  }
-  100% {
-    background-color: rgb(var(--background));
-  }
 }

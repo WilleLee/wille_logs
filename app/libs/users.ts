@@ -5,6 +5,9 @@ const users = {
     if (!accessToken || typeof accessToken !== "string") return;
     cookies.set("accessToken", accessToken, 1);
   },
+  logout: () => {
+    cookies.delete("accessToken");
+  },
   isLoggedIn: () => {
     const accessToken = cookies.get("accessToken");
     return typeof accessToken === "string" && accessToken.length > 0;

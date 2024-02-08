@@ -28,6 +28,11 @@ export default function LoginModal({ handleClose }: Props) {
     alert(message || "");
   }
 
+  function handleChangePassword(e: ChangeEvent<HTMLInputElement>) {
+    const replaced = e.target.value.replace(/\s/g, "");
+    setPassword(replaced);
+  }
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isLoading) return;
@@ -64,7 +69,7 @@ export default function LoginModal({ handleClose }: Props) {
         <Form.Input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleChangePassword}
           placeholder="Password"
           ref={inputRef}
           minLength={1}

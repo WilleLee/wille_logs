@@ -44,13 +44,13 @@ root
   - [x] `/threads`
   - [x] `/tags`
 - [ ] build UIs
-  - [ ] layouts
-    - [ ] header
+  - [x] layouts
+    - [x] header
       - [x] navigations (home and `/wille`)
       - [x] write button
         - [x] login modal & functionalities
         - [x] write modal & functionalities
-      - [ ] setting?
+      - [x] setting (UI, login, logout)
   - [x] `/`
     - [x] tags
       - [x] basic UIs and functionalities
@@ -61,6 +61,7 @@ root
     - [x] context controllers between tags and threads
   - [ ] `/wille` : resumé
     - [x] tabs and functionalities
+      - [x] added a tab initializer using cookie
     - [ ] content
       - [ ] layout
       - [ ] career (ing)

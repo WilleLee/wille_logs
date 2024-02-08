@@ -1,28 +1,23 @@
 "use client";
 
+import React from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import avatar128 from "@images/avatar128.png";
 import HomeSvg from "@components/svgs/HomeSvg";
 import WriteSvg from "@components/svgs/WriteSvg";
 import UserSvg from "@components/svgs/UserSvg";
-import TransparentButton from "@components/buttons/TransparentButton";
-import SettingSvg from "@components/svgs/SettingSvg";
 import { AllHTMLAttributes, useState } from "react";
 import styles from "./headerView.module.scss";
 import users from "@libs/users";
 import { createPortal } from "react-dom";
 import LoginModal from "@components/modals/LoginModal";
-import WriteModal from "../modals/WriteModal";
+import WriteModal from "@components/modals/WriteModal";
+import SettingButton from "./SettingButton";
 
-interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
-  //pathname: string;
-}
+interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {}
 
-export default function HeaderView({
-  //pathname,
-  ...props
-}: HeaderViewProps) {
+export default function HeaderView({ ...props }: HeaderViewProps) {
   const pathname = usePathname();
   const router = useRouter();
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -46,7 +41,7 @@ export default function HeaderView({
       {showWriteModal
         ? createPortal(
             <WriteModal handleClose={() => setShowWriteModal(false)} />,
-            document.body,
+            document.querySelector("main") as Element,
           )
         : null}
       <div className={styles.logoWrapper}>
@@ -96,20 +91,7 @@ export default function HeaderView({
           />
         </button>
       </nav>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <TransparentButton
-          aria-label="setting"
-          className={styles.settingButton}
-          onClick={() => alert("🛠️ Not available yet")}
-        >
-          <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
-        </TransparentButton>
-      </div>
+      <SettingButton setShowLoginModal={setShowLoginModal} />
     </div>
   );
 }
