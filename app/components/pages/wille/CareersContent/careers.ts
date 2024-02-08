@@ -2,13 +2,6 @@ import newlinkLogo from "@images/newlink_logo.png";
 import { StaticImageData } from "next/image";
 import { IProject } from "../ProjectsContent/projects";
 
-// export interface IProject {
-//   title: string;
-//   link: string;
-//   techStack: string[];
-//   descriptions: string[];
-// }
-
 export interface ICareer {
   _id: string;
   company: string;

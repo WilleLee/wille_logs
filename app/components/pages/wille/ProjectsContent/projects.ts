@@ -17,6 +17,9 @@ export const projects: IProject[] = [
     imageSrc: avatar128,
     link: "https://wille-logs.vercel.app/",
     techStack: ["typescript", "react", "next(app)", "swr", "vitest", "mongodb"],
-    descriptions: [],
+    descriptions: [
+      "a blog app to save daily book marks with authentication",
+      "full stack application with next.js and mongodb",
+    ],
   },
 ];
