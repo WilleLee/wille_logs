@@ -1,12 +1,6 @@
 "use client";
 
-import React, {
-  ChangeEvent,
-  FormEvent,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { FormEvent, useEffect, useRef, useState } from "react";
 import Modal from "./Modal";
 import Form from "@components/Form";
 import fetcher from "@libs/fetcher";
