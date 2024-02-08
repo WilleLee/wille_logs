@@ -50,7 +50,7 @@ root
       - [x] write button
         - [x] login modal & functionalities
         - [x] write modal & functionalities
-      - [ ] setting?
+      - [x] setting (UI, login, logout)
   - [x] `/`
     - [x] tags
       - [x] basic UIs and functionalities
