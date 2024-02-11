@@ -1,0 +1,55 @@
+.universityWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    > p {
+      color: rgb(var(--text-faded));
+    }
+  }
+
+  > div:last-child {
+    display: grid;
+    grid-template-columns: 1fr minmax(120px, 1fr);
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      li span {
+        color: rgb(var(--text-faded)) !important;
+      }
+    }
+
+    p {
+      min-width: 120px;
+      text-align: right;
+    }
+  }
+}
+
+.tags {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 4px;
+  row-gap: 2px;
+}
+
+@media screen and (min-width: 478px) {
+  .tags {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (min-width: 548px) {
+  .tags {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

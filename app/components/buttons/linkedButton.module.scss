@@ -1,0 +1,12 @@
+.button {
+  width: 100%;
+  border-radius: 30px;
+  height: 25px;
+  border: none;
+  background-color: rgba(var(--text-box), 1) !important;
+  color: rgb(var(--text-faded));
+  font-size: 12px;
+  &:disabled {
+    background-color: rgba(var(--text-box)) !important;
+  }
+}
