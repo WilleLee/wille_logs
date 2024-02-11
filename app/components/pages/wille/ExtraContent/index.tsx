@@ -9,6 +9,13 @@ import LinkedButton from "@/components/buttons/LinkedButton";
 
 type Props = {};
 
+const skills = [
+  { name: "javascript", backgroundColor: "rgb(247,223,30)", color: "black" },
+  { name: "typescript", backgroundColor: "rgb(47,146,204)", color: "white" },
+  { name: "react", backgroundColor: "rgb(19,158,202)", color: "white" },
+  { name: "next", backgroundColor: "rgb(0,0,0)", color: "white" },
+];
+
 const languages = ["Korean (native)", "English", "German"];
 
 const interests = [
@@ -25,6 +32,22 @@ const interests = [
 export default function ExtraContent({}: Props) {
   return (
     <>
+      <ThreadedBox withImage={false}>
+        <h4>Skills</h4>
+        <ul className={`${styles.tags} ${styles.skills}`}>
+          {skills.map((skill, index) => (
+            <li
+              key={`skill_${index}`}
+              style={{
+                backgroundColor: skill.backgroundColor,
+                color: skill.color,
+              }}
+            >
+              {skill.name}
+            </li>
+          ))}
+        </ul>
+      </ThreadedBox>
       <ThreadedBox>
         <div>
           <Image
