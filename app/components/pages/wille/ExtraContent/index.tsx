@@ -6,30 +6,9 @@ import yonseiLogo from "@images/yonsei_logo.png";
 import Image from "next/image";
 import styles from "./extraContent.module.scss";
 import LinkedButton from "@/components/buttons/LinkedButton";
+import { interests, languages, skills } from "./data";
 
-type Props = {};
-
-const skills = [
-  { name: "javascript", backgroundColor: "rgb(247,223,30)", color: "black" },
-  { name: "typescript", backgroundColor: "rgb(47,146,204)", color: "white" },
-  { name: "react", backgroundColor: "rgb(19,158,202)", color: "white" },
-  { name: "next", backgroundColor: "rgb(0,0,0)", color: "white" },
-];
-
-const languages = ["Korean (native)", "English", "German"];
-
-const interests = [
-  "workout",
-  "philosophy",
-  "karaoke",
-  "youtube",
-  "maplestory",
-  "diablo3",
-  "walking",
-  "travels",
-];
-
-export default function ExtraContent({}: Props) {
+export default function ExtraContent() {
   return (
     <>
       <ThreadedBox withImage={false}>
