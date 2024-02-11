@@ -14,6 +14,7 @@ export default function ProjectsContent() {
         <ThreadedBox key={project._id}>
           <div>
             <Image
+              className={styles.image}
               src={project.imageSrc as StaticImageData}
               width={36}
               alt={project.title}
@@ -22,7 +23,11 @@ export default function ProjectsContent() {
           <div className={styles.threadContent}>
             <div>
               <h4>
-                <a href={project.link} aria-label="visit wille logs">
+                <a
+                  href={project.link}
+                  aria-label="visit wille logs"
+                  target="_blank"
+                >
                   {project.title}
                 </a>
               </h4>
@@ -32,6 +37,7 @@ export default function ProjectsContent() {
                 <a
                   href={project.githubLink}
                   aria-label="visit github repositiory of will logs"
+                  target="_blank"
                 >
                   <GithubSvg aria-hidden />
                 </a>

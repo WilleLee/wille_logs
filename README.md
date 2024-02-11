@@ -21,6 +21,11 @@ root
 │   ├── api // api entry points (route.ts)
 │   ├── components
 │   │   ├── pages
+│   │   ├── boxes
+│   │   ├── buttons
+│   │   ├── Form
+│   │   ├── layouts
+│   │   ├── modals
 │   │   ├── svgs
 │   │   └── loading
 │   ├── hooks
@@ -43,7 +48,7 @@ root
   - [x] `/login`
   - [x] `/threads`
   - [x] `/tags`
-- [ ] build UIs
+- [x] build UIs
   - [x] layouts
     - [x] header
       - [x] navigations (home and `/wille`)
@@ -59,14 +64,14 @@ root
       - [x] basic UIs and functionalities
       - [x] loading
     - [x] context controllers between tags and threads
-  - [ ] `/wille` : resumé
+  - [x] `/wille` : resumé
     - [x] tabs and functionalities
       - [x] added a tab initializer using cookie
-    - [ ] content
-      - [ ] layout
-      - [ ] career (ing)
-      - [ ] personal projects
-      - [ ] etc. : education, skills, languages...
+    - [x] content
+      - [x] layout
+      - [x] career
+      - [x] personal projects
+      - [x] etc. : education, skills, languages...
 - [x] connect to google analytics - _has issues about the third-party cookies warning_
 
 ### Notable Issues

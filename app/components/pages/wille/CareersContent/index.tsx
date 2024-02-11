@@ -5,7 +5,7 @@ import Image from "next/image";
 import React, { AllHTMLAttributes } from "react";
 import { careers } from "./careers";
 import styles from "./careersContent.module.scss";
-import { IProject } from "../ProjectsContent/projects";
+import { IProject } from "@components/pages/wille/ProjectsContent/projects";
 
 export default function CareersContent() {
   return (
@@ -18,7 +18,8 @@ export default function CareersContent() {
           <div className={styles.threadContent}>
             <div>
               <h4>
-                {career.company.toUpperCase()} <span>({career.position})</span>
+                {career.company.toUpperCase()}
+                <span>({career.position})</span>
               </h4>
               <p>
                 {career.startDate} ~ {career.endDate}
