@@ -7,6 +7,11 @@ const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
 
+const ogBaseUrl =
+  process.env.mode === "production"
+    ? "https://wille-logs.vercel.app"
+    : "https://wille-logs-git-dev-willelee.vercel.app";
+
 export const metadata: Metadata = {
   title: "Wille logs",
   description: "check what Wille logs today",
@@ -30,14 +35,15 @@ export const metadata: Metadata = {
   ],
   twitter: {
     card: "summary_large_image",
-    images: "https://wille-logs.vercel.app/images/avatar128.png",
+    images: [ogBaseUrl + "/images/avatar128.png"],
   },
   openGraph: {
     title: "Wille logs...",
     description: "check what Wille logs today",
     type: "website",
-    images: ["https://wille-logs.vercel.app/images/avatar128.png"],
-    url: "https://wille-logs.vercel.app/",
+    images: ogBaseUrl + "/images/avatar128.png",
+
+    url: ogBaseUrl,
   },
 };
 
