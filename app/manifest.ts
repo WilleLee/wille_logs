@@ -2,9 +2,9 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Wille logs... (daily book log)",
+    name: "Wille logs...",
     short_name: process.env.MODE === "production" ? "Wille logs" : "Wille(dev)",
-    description: "see what Wille logs today",
+    description: "see what Wille read today",
     start_url: "/",
     display: "standalone",
     background_color: "#fff",

@@ -37,7 +37,9 @@ root
 └── config and env files
 ```
 
-### TODOs (1.0)
+### TODOs
+
+#### v1.0.0
 
 - [x] connect to mongodb
 - [x] deploy to vercel
@@ -73,6 +75,16 @@ root
       - [x] personal projects
       - [x] etc. : education, skills, languages...
 - [x] connect to google analytics - _has issues about the third-party cookies warning_
+
+#### v1.1.0
+
+- [ ] add Kr/En language switcher
+  - [ ] language switcher in the setting modal
+  - [ ] state management to handle the default or selected language
+- [ ] light/dark mode switcher
+  - [ ] switcher in the setting modal
+  - [ ] state management to handle the default or selected mode
+- [ ] pageNo for calling threads ?
 
 ### Notable Issues
 
