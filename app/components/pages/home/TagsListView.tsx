@@ -70,13 +70,21 @@ export const TagsListView = React.memo(function TagsListView({
   ...props
 }: TagsListViewProps) {
   const { showAll } = useTagsListState();
+  console.log("showAll", showAll);
+  console.log("listLength", listLength);
   return (
-    <ul
-      className={`${styles.ul} ${listLength <= 3 || showAll ? styles.isActive : ""}`}
-      {...props}
-    >
-      {children}
-    </ul>
+    <>
+      <p>
+        {String(showAll)}
+        {String(listLength)}
+      </p>
+      <ul
+        className={`${styles.ul} ${listLength <= 3 || showAll ? styles.isActive : ""}`}
+        {...props}
+      >
+        {children}
+      </ul>
+    </>
   );
 });
 
@@ -91,10 +99,11 @@ export const TagsItemView = React.memo(function TagsItemView({
   ...props
 }: TagsItemViewProps) {
   return (
-    <li 
-    className={styles.li}
-    
-    onClick={() => handleClickTag(tag._id as string)} {...props}>
+    <li
+      className={styles.li}
+      onClick={() => handleClickTag(tag._id as string)}
+      {...props}
+    >
       <OutlinedButton aria-label={`view threads about ${tag.name} tag`}>
         {tag.name}
       </OutlinedButton>
