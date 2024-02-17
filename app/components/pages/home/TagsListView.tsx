@@ -70,21 +70,13 @@ export const TagsListView = React.memo(function TagsListView({
   ...props
 }: TagsListViewProps) {
   const { showAll } = useTagsListState();
-  console.log("showAll", showAll);
-  console.log("listLength", listLength);
   return (
-    <>
-      <p>
-        {String(showAll)}
-        {String(listLength)}
-      </p>
-      <ul
-        className={`${styles.ul} ${listLength <= 3 || showAll ? styles.isActive : ""}`}
-        {...props}
-      >
-        {children}
-      </ul>
-    </>
+    <ul
+      className={`${styles.ul} ${listLength <= 3 || showAll ? styles.isActive : ""}`}
+      {...props}
+    >
+      {children}
+    </ul>
   );
 });
 
