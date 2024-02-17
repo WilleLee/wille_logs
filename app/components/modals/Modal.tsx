@@ -21,7 +21,16 @@ export default function Modal({
   ...props
 }: Props) {
   return (
-    <div className={styles.modal} onClick={handleClose} {...props}>
+    <div
+      className={styles.modal}
+      onClick={() => {
+        const ok = confirm("Are you sure you want to cancel?");
+        if (ok) {
+          handleClose();
+        }
+      }}
+      {...props}
+    >
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         <TransparentButton className={styles.closeButton} onClick={handleClose}>
           취소

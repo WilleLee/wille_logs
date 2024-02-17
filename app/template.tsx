@@ -1,5 +1,10 @@
+"use client";
+
 import React from "react";
 import Header from "@components/layouts/Header";
+import { RecoilRoot } from "recoil";
+import InitScreenMode from "./components/layouts/InitScreenMode";
+import InitLanguageMode from "./components/layouts/InitLanguageMode";
 
 type Props = {
   children: React.ReactNode;
@@ -8,8 +13,12 @@ type Props = {
 export default function Template({ children }: Props) {
   return (
     <>
-      <Header />
-      <main>{children}</main>
+      <RecoilRoot>
+        <Header />
+        <main>{children}</main>
+        <InitScreenMode />
+        <InitLanguageMode />
+      </RecoilRoot>
     </>
   );
 }

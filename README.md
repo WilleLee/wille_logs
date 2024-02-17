@@ -80,10 +80,12 @@ root
 
 - [ ] add Kr/En language switcher
   - [ ] language switcher in the setting modal
-  - [ ] state management to handle the default or selected language
+  - [x] add recoil state for the default or selected language
+  - [ ] add initializer function
 - [ ] light/dark mode switcher
   - [ ] switcher in the setting modal
-  - [ ] state management to handle the default or selected mode
+  - [x] add recoil state for the default or selected mode
+  - [ ] add initializer function
 - [ ] improve SEO
   - [ ] optimize meta tags for each page
   - [ ] separate open graph tags for each page and production/development environment

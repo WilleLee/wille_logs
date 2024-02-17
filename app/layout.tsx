@@ -54,7 +54,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body suppressHydrationWarning={true} className={notoSansKR.className}>
+      <body
+        suppressHydrationWarning={true}
+        className={`${notoSansKR.className} dark`}
+      >
         {children}
       </body>
       {gaId.length > 0 && process.env.NODE_ENV === "production" ? (

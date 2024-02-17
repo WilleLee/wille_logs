@@ -6,6 +6,9 @@ import SettingSvg from "@components/svgs/SettingSvg";
 import Box from "@components/boxes/Box";
 import styles from "./settingButton.module.scss";
 import users from "@libs/users";
+import { useRecoilState } from "recoil";
+import { screenModeActions, screenModeState } from "@/atoms/screenModeState";
+import cookies from "@/libs/cookies";
 
 interface Props extends AllHTMLAttributes<HTMLDivElement> {
   setShowLoginModal: (value: boolean) => void;
@@ -17,6 +20,8 @@ const SettingButton = React.memo(function SettingButton({
 }: Props) {
   const [showModal, setShowModal] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
+
+  const [screenMode, setScreenMode] = useRecoilState(screenModeState);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -43,6 +48,18 @@ const SettingButton = React.memo(function SettingButton({
       {showModal ? (
         <div ref={modalRef} className={styles.modal}>
           <Box>
+            <TransparentButton
+              onClick={() => {
+                setScreenMode(screenModeActions.toggle);
+                cookies.set(
+                  "screenMode",
+                  screenModeActions.toggle(screenMode),
+                  30,
+                );
+              }}
+            >
+              <h4>light/dark</h4>
+            </TransparentButton>
             {users.isLoggedIn() ? (
               <TransparentButton
                 className={styles.modalButton}

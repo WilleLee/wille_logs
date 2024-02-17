@@ -17,6 +17,7 @@ export default defineConfig({
       "@libs": path.resolve(__dirname, "./app/libs"),
       "@mocks": path.resolve(__dirname, "./app/mocks"),
       "@styles": path.resolve(__dirname, "./app/styles"),
+      "@atoms": path.resolve(__dirname, "./app/atoms"),
       "@assets": path.resolve(__dirname, "./public"),
       "@images": path.resolve(__dirname, "./public/images"),
     },
