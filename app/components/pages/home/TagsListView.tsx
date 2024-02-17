@@ -91,10 +91,11 @@ export const TagsItemView = React.memo(function TagsItemView({
   ...props
 }: TagsItemViewProps) {
   return (
-    <li 
-    className={styles.li}
-    
-    onClick={() => handleClickTag(tag._id as string)} {...props}>
+    <li
+      className={styles.li}
+      onClick={() => handleClickTag(tag._id as string)}
+      {...props}
+    >
       <OutlinedButton aria-label={`view threads about ${tag.name} tag`}>
         {tag.name}
       </OutlinedButton>
