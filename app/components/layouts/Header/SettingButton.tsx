@@ -7,12 +7,16 @@ import React, {
   useRef,
   useState,
 } from "react";
-import users from "@libs/users";
 import { useRecoilState } from "recoil";
-import { screenModeActions, screenModeState } from "@atoms/screenModeState";
+import users from "@libs/users";
 import cookies from "@libs/cookies";
-import SettingButtonView, { SettingButtonViewProps } from "./SettingButtonView";
+import { screenModeActions, screenModeState } from "@atoms/screenModeState";
+import {
+  languageModeActions,
+  languageModeState,
+} from "@atoms/languageModeState";
 import useClickOutside from "@hooks/useClickOutside";
+import SettingButtonView, { SettingButtonViewProps } from "./SettingButtonView";
 
 interface Props extends AllHTMLAttributes<HTMLDivElement> {
   setShowLoginModal: (value: boolean) => void;
@@ -30,6 +34,7 @@ const SettingButton = React.memo(function SettingButton({
 
   // recoil states
   const [screenMode, setScreenMode] = useRecoilState(screenModeState);
+  const [languageMode, setLanguageMode] = useRecoilState(languageModeState);
 
   // event handlers
   const handleClickOutside = useCallback(() => {
@@ -61,8 +66,23 @@ const SettingButton = React.memo(function SettingButton({
         setScreenMode(screenModeActions.toggle);
         cookies.set("screenMode", screenModeActions.toggle(screenMode), 30);
       },
+      handleToggleLanguageMode: () => {
+        setLanguageMode(languageModeActions.toggle);
+        cookies.set(
+          "languageMode",
+          languageModeActions.toggle(languageMode),
+          30,
+        );
+      },
     }),
-    [showModal, screenMode, setShowLoginModal, setScreenMode],
+    [
+      showModal,
+      screenMode,
+      setShowLoginModal,
+      setScreenMode,
+      setLanguageMode,
+      languageMode,
+    ],
   );
 
   return (

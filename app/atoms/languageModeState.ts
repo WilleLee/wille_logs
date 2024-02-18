@@ -1,10 +1,12 @@
 import { atom } from "recoil";
 
-export const languageModeState = atom({
+type ILanguageMode = "en" | "ko";
+
+export const languageModeState = atom<ILanguageMode>({
   key: "languageModeState",
   default: "en",
 });
 
 export const languageModeActions = {
-  toggle: (prev: string) => (prev === "en" ? "ko" : "en"),
+  toggle: (prev: ILanguageMode) => (prev === "en" ? "ko" : "en"),
 };

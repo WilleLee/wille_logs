@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import { projects } from "./projects";
-import ThreadedBox from "@/components/boxes/ThreadedBox";
 import Image, { StaticImageData } from "next/image";
+import { useRecoilValue } from "recoil";
 import styles from "./projectsContent.module.scss";
-import GithubSvg from "@/components/svgs/GithubSvg";
+import { projects } from "./projects";
+import ThreadedBox from "@components/boxes/ThreadedBox";
+import GithubSvg from "@components/svgs/GithubSvg";
+import { languageModeState } from "@/atoms/languageModeState";
 
 export default function ProjectsContent() {
+  const languageMode = useRecoilValue(languageModeState);
   return (
     <>
       {projects.map((project) => (
@@ -45,9 +48,13 @@ export default function ProjectsContent() {
             </div>
             <ul>
               <li>&bull; {project.techStack.join(", ")}</li>
-              {project.descriptions.map((description, index) => (
-                <li key={`${project.title}_${index}`}>&bull; {description}</li>
-              ))}
+              {project.descriptions[languageMode || "en"].map(
+                (description, index) => (
+                  <li key={`${project.title}_${index}`}>
+                    &bull; {description}
+                  </li>
+                ),
+              )}
             </ul>
           </div>
         </ThreadedBox>

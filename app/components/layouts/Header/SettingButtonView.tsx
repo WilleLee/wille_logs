@@ -14,6 +14,7 @@ export interface SettingButtonViewProps
   handleClickLogin: () => void;
   handleClickLogout: () => void;
   handleToggleScreenMode: () => void;
+  handleToggleLanguageMode: () => void;
 }
 
 const SettingButtonView = React.forwardRef(function SettingButtonView(
@@ -24,6 +25,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
     handleClickLogin,
     handleClickLogout,
     handleToggleScreenMode,
+    handleToggleLanguageMode,
     ...props
   }: SettingButtonViewProps,
   ref: React.Ref<HTMLDivElement>,
@@ -40,7 +42,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
       {showModal ? (
         <div ref={ref} className={styles.modal}>
           <Box>
-            <TransparentButton>
+            <TransparentButton onClick={handleToggleLanguageMode}>
               <h4>한/En</h4>
             </TransparentButton>
             <TransparentButton onClick={handleToggleScreenMode}>

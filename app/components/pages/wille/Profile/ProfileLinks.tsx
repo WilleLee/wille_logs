@@ -1,12 +1,10 @@
-import InstagramSvg from "@components/svgs/InstagramSvg";
-import ThreadsSvg from "@components/svgs/ThreadsSvg";
 import React from "react";
 import styles from "./profileLinks.module.scss";
-import LinkedinSvg from "@/components/svgs/LinkedinSvg";
+import InstagramSvg from "@components/svgs/InstagramSvg";
+import ThreadsSvg from "@components/svgs/ThreadsSvg";
+import LinkedinSvg from "@components/svgs/LinkedinSvg";
 
-type Props = {};
-
-export default function ProfileLinks({}: Props) {
+const ProfileLinks = React.memo(function ProfileLinks() {
   return (
     <div className={styles.wrapper}>
       <p>
@@ -28,4 +26,6 @@ export default function ProfileLinks({}: Props) {
       </div>
     </div>
   );
-}
+});
+
+export default ProfileLinks;

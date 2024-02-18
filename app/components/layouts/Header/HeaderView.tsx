@@ -2,11 +2,11 @@
 
 import React, { AllHTMLAttributes, ButtonHTMLAttributes } from "react";
 import Image from "next/image";
+import styles from "./headerView.module.scss";
 import avatar128 from "@images/avatar128.png";
 import HomeSvg from "@components/svgs/HomeSvg";
 import WriteSvg from "@components/svgs/WriteSvg";
 import UserSvg from "@components/svgs/UserSvg";
-import styles from "./headerView.module.scss";
 
 interface HeaderViewProps extends AllHTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
