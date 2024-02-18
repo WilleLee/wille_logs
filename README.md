@@ -103,3 +103,4 @@ root
 2. next.js doc says all the components called inside a client compoennt are also client components, but it does not exactly mean that I don't need to declare those components as client components explicitly, even in the case of common components like buttons or svgs.
 3. server preservation in dev mode sucks.
 4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
+5. event target and current target do not match if state changes that trigger content of a component to be switched happen by click event.

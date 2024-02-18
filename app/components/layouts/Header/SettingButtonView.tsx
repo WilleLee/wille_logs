@@ -16,6 +16,8 @@ export interface SettingButtonViewProps
   handleClickLogout: () => void;
   handleToggleScreenMode: () => void;
   handleToggleLanguageMode: () => void;
+  showDesign: boolean;
+  handleShowDesign: () => void;
 }
 
 const SettingButtonView = React.forwardRef(function SettingButtonView(
@@ -28,6 +30,8 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
     handleClickLogout,
     handleToggleScreenMode,
     handleToggleLanguageMode,
+    showDesign,
+    handleShowDesign,
     ...props
   }: SettingButtonViewProps,
   ref: React.Ref<HTMLDivElement>,
@@ -44,13 +48,16 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
       {showModal ? (
         <div ref={ref} className={styles.modal}>
           <Box>
-            <TransparentButton onClick={handleToggleLanguageMode}>
-              <h4>한 / En</h4>
-            </TransparentButton>
-            <TransparentButton onClick={handleToggleScreenMode}>
+            {/* <TransparentButton onClick={handleToggleScreenMode}>
               <h4>
                 {languageMode === "ko" ? "라이트 / 다크" : "light / dark"}
               </h4>
+            </TransparentButton> */}
+            {/* <TransparentButton onClick={handleShowDesign}>
+              <h4>{languageMode === "ko" ? "디자인" : "design"}</h4>
+            </TransparentButton>
+            <TransparentButton onClick={handleToggleLanguageMode}>
+              <h4>한 / En</h4>
             </TransparentButton>
             {isLoggedIn ? (
               <TransparentButton
@@ -66,6 +73,33 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
               >
                 <h4>{languageMode === "ko" ? "로그인" : "login"}</h4>
               </TransparentButton>
+            )} */}
+            {!showDesign ? (
+              <>
+                <TransparentButton onClick={handleShowDesign}>
+                  <h4>{languageMode === "ko" ? "디자인" : "design"}</h4>
+                </TransparentButton>
+                <TransparentButton onClick={handleToggleLanguageMode}>
+                  <h4>한 / En</h4>
+                </TransparentButton>
+                {isLoggedIn ? (
+                  <TransparentButton
+                    className={styles.modalButton}
+                    onClick={handleClickLogout}
+                  >
+                    <h4>{languageMode === "ko" ? "로그아웃" : "logout"}</h4>
+                  </TransparentButton>
+                ) : (
+                  <TransparentButton
+                    className={styles.modalButton}
+                    onClick={handleClickLogin}
+                  >
+                    <h4>{languageMode === "ko" ? "로그인" : "login"}</h4>
+                  </TransparentButton>
+                )}
+              </>
+            ) : (
+              <div>hihih</div>
             )}
           </Box>
         </div>

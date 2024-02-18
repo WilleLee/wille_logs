@@ -31,13 +31,19 @@ const SettingButton = React.memo(function SettingButton({
 
   // states
   const [showModal, setShowModal] = useState(false);
+  const [showDesign, setShowDesign] = useState(false);
 
   // recoil states
   const [screenMode, setScreenMode] = useRecoilState(screenModeState);
   const [languageMode, setLanguageMode] = useRecoilState(languageModeState);
 
   // event handlers
+  function handleShowDesign() {
+    setShowDesign((prev) => !prev);
+  }
+
   const handleClickOutside = useCallback(() => {
+    console.log("outside clicked!");
     if (!showModal) return;
     setShowModal(false);
   }, [showModal]);
@@ -75,6 +81,8 @@ const SettingButton = React.memo(function SettingButton({
           30,
         );
       },
+      showDesign,
+      handleShowDesign,
     }),
     [
       showModal,
@@ -83,6 +91,7 @@ const SettingButton = React.memo(function SettingButton({
       setScreenMode,
       setLanguageMode,
       languageMode,
+      showDesign,
     ],
   );
 
