@@ -2,15 +2,19 @@
 
 import React, { AllHTMLAttributes } from "react";
 import Image from "next/image";
-import { useRecoilValue } from "recoil";
+// import { useRecoilValue } from "recoil";
 import styles from "./careersContent.module.scss";
 import { careers } from "./careers";
 import ThreadedBox from "@/components/boxes/ThreadedBox";
 import { IProject } from "@components/pages/wille/ProjectsContent/projects";
-import { languageModeState } from "@/atoms/languageModeState";
+// import { languageModeState } from "@/atoms/languageModeState";
 
-export default function CareersContent() {
-  const languageMode = useRecoilValue(languageModeState);
+type Props = {
+  languageMode: "en" | "ko";
+};
+
+export default function CareersContent({ languageMode }: Props) {
+  // const languageMode = useRecoilValue(languageModeState);
   return (
     <>
       {careers.map((career) => (

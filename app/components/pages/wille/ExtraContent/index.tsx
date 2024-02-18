@@ -1,18 +1,22 @@
 "use client";
 
-import ThreadedBox from "@/components/boxes/ThreadedBox";
 import React from "react";
-import yonseiLogo from "@images/yonsei_logo.png";
 import Image from "next/image";
+import yonseiLogo from "@images/yonsei_logo.png";
 import styles from "./extraContent.module.scss";
-import LinkedButton from "@/components/buttons/LinkedButton";
 import { interests, languages, skills } from "./data";
+import ThreadedBox from "@components/boxes/ThreadedBox";
+import LinkedButton from "@components/buttons/LinkedButton";
 
-export default function ExtraContent() {
+type Props = {
+  languageMode: "en" | "ko";
+};
+
+export default function ExtraContent({ languageMode }: Props) {
   return (
     <>
       <ThreadedBox withImage={false}>
-        <h4>Skills</h4>
+        <h4>{languageMode === "ko" ? "기술" : "Skills"}</h4>
         <ul className={`${styles.tags} ${styles.skills}`}>
           {skills.map((skill, index) => (
             <li
@@ -39,24 +43,36 @@ export default function ExtraContent() {
         </div>
         <div className={styles.universityWrapper}>
           <div>
-            <h4>Yonsei University (Mirae Campus), South Korea</h4>
+            <h4>
+              {languageMode === "ko"
+                ? "연세대학교 (미래캠퍼스)"
+                : "Yonsei University (Mirae Campus), South Korea"}
+            </h4>
             <p>2013.03 ~ 2017.02</p>
           </div>
           <div>
             <ul>
-              <li>B.A in Philosophy</li>
               <li>
-                <span>(minor in Biology)</span>
+                {languageMode === "ko" ? "철학 학사" : "B.A. in Philosophy"}
+              </li>
+              <li>
+                <span>
+                  (
+                  {languageMode === "ko"
+                    ? "생명과학 부전공"
+                    : "minor in biology"}
+                  )
+                </span>
               </li>
             </ul>
-            <p>4.12/4.3</p>
+            <p>4.12/4.3 (GPA)</p>
           </div>
         </div>
       </ThreadedBox>
       <ThreadedBox withImage={false}>
-        <h4>Languages</h4>
+        <h4>{languageMode === "ko" ? "언어" : "Languages"}</h4>
         <ul className={styles.tags}>
-          {languages.map((language, index) => (
+          {languages[languageMode || "en"].map((language, index) => (
             <li key={`language_${index}`}>
               <LinkedButton aria-hidden disabled>
                 {language}
@@ -66,10 +82,10 @@ export default function ExtraContent() {
         </ul>
       </ThreadedBox>
       <ThreadedBox withImage={false}>
-        <h4>Personal Interests</h4>
+        <h4>{languageMode === "ko" ? "관심사" : "Personal Interests"}</h4>
         <div>
           <ul className={styles.tags}>
-            {interests.map((interest, index) => (
+            {interests[languageMode || "en"].map((interest, index) => (
               <li key={`interest_${index}`}>
                 <LinkedButton aria-hidden disabled>
                   #{interest}

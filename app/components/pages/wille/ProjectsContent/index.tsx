@@ -2,15 +2,19 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import { useRecoilValue } from "recoil";
+// import { useRecoilValue } from "recoil";
 import styles from "./projectsContent.module.scss";
 import { projects } from "./projects";
 import ThreadedBox from "@components/boxes/ThreadedBox";
 import GithubSvg from "@components/svgs/GithubSvg";
-import { languageModeState } from "@/atoms/languageModeState";
+// import { languageModeState } from "@/atoms/languageModeState";
 
-export default function ProjectsContent() {
-  const languageMode = useRecoilValue(languageModeState);
+type Props = {
+  languageMode: "en" | "ko";
+};
+
+export default function ProjectsContent({ languageMode }: Props) {
+  // const languageMode = useRecoilValue(languageModeState);
   return (
     <>
       {projects.map((project) => (
