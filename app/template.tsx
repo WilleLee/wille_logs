@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import Header from "@components/layouts/Header";
+import Header from "@/components/layouts/Header";
 import { RecoilRoot } from "recoil";
 import InitScreenMode from "./components/layouts/InitScreenMode";
 import InitLanguageMode from "./components/layouts/InitLanguageMode";

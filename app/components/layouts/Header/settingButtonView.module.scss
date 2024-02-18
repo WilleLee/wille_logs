@@ -1,0 +1,31 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.button {
+  .settingSvg {
+    fill: rgb(var(--icon-faded));
+    transition: fill var(--bg-transition);
+  }
+  &:hover .settingSvg,
+  &:focus .settingSvg,
+  &:active .settingSvg {
+    fill: rgb(var(--icon));
+  }
+}
+
+.modal {
+  position: absolute;
+  width: 170px;
+  top: 100%;
+  right: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.modalButton {
+  justify-content: flex-start !important;
+  width: 100%;
+}

@@ -78,6 +78,7 @@ root
 
 #### v1.1.0
 
+- [ ] refactor header component
 - [ ] add Kr/En language switcher
   - [ ] language switcher in the setting modal
   - [x] add recoil state for the default or selected language
