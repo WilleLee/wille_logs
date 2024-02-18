@@ -13,8 +13,6 @@ if (typeof window !== "undefined") {
 
 export default function InitScreenMode() {
   const [screenMode, setScreenMode] = useRecoilState(screenModeState);
-  console.log("cookie", initialScreenMode);
-  console.log(screenMode);
 
   useEffect(() => {
     if (typeof initialScreenMode === "string" && initialScreenMode.length > 0) {
