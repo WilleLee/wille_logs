@@ -8,9 +8,11 @@
 
 ### Dev Environment
 
-1. Next.js 14.1.0 (React ^18)
-2. MongoDB Atlas with Mongoose ^8.1.0
-3. Typescript ^5
+- Next.js 14.1.0 (React ^18)
+- MongoDB Atlas with Mongoose ^8.1.0
+- Typescript ^5
+- Recoil ^0.7.7
+- CI/CD & deplyment with Vercel
 
 ### Project Structure
 
@@ -75,6 +77,10 @@ root
       - [x] personal projects
       - [x] etc. : education, skills, languages...
 - [x] connect to google analytics - _has issues about the third-party cookies warning_
+
+#### v1.0.1
+
+- [x] fixed an issue about tags expanding button
 
 #### v1.1.0
 
