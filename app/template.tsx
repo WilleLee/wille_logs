@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import Header from "@/components/layouts/Header";
 import { RecoilRoot } from "recoil";
-import InitScreenMode from "./components/layouts/InitScreenMode";
-import InitLanguageMode from "./components/layouts/InitLanguageMode";
+import Header from "@/components/layouts/Header";
+import InitScreenMode from "@components/layouts/InitScreenMode";
+import InitLanguageMode from "@components/layouts/InitLanguageMode";
 
 type Props = {
   children: React.ReactNode;

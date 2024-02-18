@@ -50,6 +50,7 @@ const SettingButton = React.memo(function SettingButton({
     () => ({
       isLoggedIn: users.isLoggedIn(),
       showModal,
+      languageMode,
       handleClickSetting: () => setShowModal((prev) => !prev),
       handleClickLogin: () => {
         setShowLoginModal(true);

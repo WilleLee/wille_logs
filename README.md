@@ -84,19 +84,18 @@ root
 
 #### v1.1.0
 
-- [ ] refactor header component
+- [x] refactor header component
 - [ ] add Kr/En language switcher
   - [ ] language switcher in the setting modal
   - [x] add recoil state for the default or selected language
-  - [ ] add initializer function
+  - [x] add initializer function
 - [ ] light/dark mode switcher
   - [ ] switcher in the setting modal
   - [x] add recoil state for the default or selected mode
-  - [ ] add initializer function
-- [ ] improve SEO
-  - [ ] optimize meta tags for each page
-  - [ ] separate open graph tags for each page and production/development environment
-- [ ] pageNo for calling threads ?
+  - [x] add initializer function
+- [x] improve SEO
+  - [x] optimize meta tags for each page
+  - [x] separate open graph tags for each page and production/development environment
 
 ### Notable Issues
 

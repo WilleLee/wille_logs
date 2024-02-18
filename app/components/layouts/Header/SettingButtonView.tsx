@@ -10,6 +10,7 @@ export interface SettingButtonViewProps
   extends AllHTMLAttributes<HTMLDivElement> {
   isLoggedIn: boolean;
   showModal: boolean;
+  languageMode: "ko" | "en";
   handleClickSetting: () => void;
   handleClickLogin: () => void;
   handleClickLogout: () => void;
@@ -21,6 +22,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
   {
     isLoggedIn,
     showModal,
+    languageMode,
     handleClickSetting,
     handleClickLogin,
     handleClickLogout,
@@ -43,24 +45,26 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
         <div ref={ref} className={styles.modal}>
           <Box>
             <TransparentButton onClick={handleToggleLanguageMode}>
-              <h4>한/En</h4>
+              <h4>한 / En</h4>
             </TransparentButton>
             <TransparentButton onClick={handleToggleScreenMode}>
-              <h4>light/dark</h4>
+              <h4>
+                {languageMode === "ko" ? "라이트 / 다크" : "light / dark"}
+              </h4>
             </TransparentButton>
             {isLoggedIn ? (
               <TransparentButton
                 className={styles.modalButton}
                 onClick={handleClickLogout}
               >
-                <h4>logout</h4>
+                <h4>{languageMode === "ko" ? "로그아웃" : "logout"}</h4>
               </TransparentButton>
             ) : (
               <TransparentButton
                 className={styles.modalButton}
                 onClick={handleClickLogin}
               >
-                <h4>login</h4>
+                <h4>{languageMode === "ko" ? "로그인" : "login"}</h4>
               </TransparentButton>
             )}
           </Box>

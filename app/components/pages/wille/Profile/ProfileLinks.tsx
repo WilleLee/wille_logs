@@ -8,7 +8,9 @@ const ProfileLinks = React.memo(function ProfileLinks() {
   return (
     <div className={styles.wrapper}>
       <p>
-        <a href="https://github.com/WilleLee/wille_logs">github.com/WilleLee</a>
+        <a href="https://github.com/WilleLee/wille_logs" target="_blank">
+          github.com/WilleLee
+        </a>
       </p>
       <div>
         <a

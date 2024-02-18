@@ -3,6 +3,7 @@
 
 * {
   box-sizing: border-box;
+  transition: background-color var(--bg-transition);
 }
 
 html {
@@ -13,16 +14,11 @@ html {
 body {
   color: rgb(var(--text));
   background: rgb(var(--background));
-  transition: background 0.2s ease;
-  transition: color 0.2s ease;
   overflow-x: hidden;
-  // box-sizing: border-box;
 }
 
 main {
   padding-top: 74px;
-  // min-height: 100vh;
-  // max-width: 520px;
   width: 100%;
   margin: 0 auto;
 }
