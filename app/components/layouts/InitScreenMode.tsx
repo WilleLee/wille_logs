@@ -5,16 +5,15 @@ import { screenModeState } from "@atoms/screenModeState";
 import { useEffect } from "react";
 import cookies from "@libs/cookies";
 
-let initialScreenMode = "dark";
-
-if (typeof window !== "undefined") {
-  initialScreenMode = cookies.get("screenMode");
-}
-
 export default function InitScreenMode() {
   const [screenMode, setScreenMode] = useRecoilState(screenModeState);
 
   useEffect(() => {
+    let initialScreenMode = "dark";
+
+    if (typeof window !== "undefined") {
+      initialScreenMode = cookies.get("screenMode");
+    }
     if (
       typeof initialScreenMode === "string" &&
       (initialScreenMode === "dark" || initialScreenMode === "light")
@@ -24,6 +23,7 @@ export default function InitScreenMode() {
   }, [setScreenMode]);
 
   useEffect(() => {
+    console.log("screen mode", screenMode);
     if (screenMode === "dark") {
       document.body.classList.add("dark");
     } else {

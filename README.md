@@ -97,6 +97,10 @@ root
   - [x] optimize meta tags for each page
   - [x] separate open graph tags for each page and production/development environment
 
+#### v1.1.1 (HOTFIX)
+
+- [x] fix the issue that the screen mode doesn't persist after navigating to another page
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
