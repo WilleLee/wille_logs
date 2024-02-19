@@ -15,7 +15,10 @@ export default function InitScreenMode() {
   const [screenMode, setScreenMode] = useRecoilState(screenModeState);
 
   useEffect(() => {
-    if (typeof initialScreenMode === "string" && initialScreenMode.length > 0) {
+    if (
+      typeof initialScreenMode === "string" &&
+      (initialScreenMode === "dark" || initialScreenMode === "light")
+    ) {
       setScreenMode(initialScreenMode);
     }
   }, [setScreenMode]);

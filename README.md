@@ -85,12 +85,12 @@ root
 #### v1.1.0
 
 - [x] refactor header component
-- [ ] add Kr/En language switcher
-  - [ ] language switcher in the setting modal
+- [x] add Kr/En language switcher
+  - [x] language switcher in the setting modal
   - [x] add recoil state for the default or selected language
   - [x] add initializer function
-- [ ] light/dark mode switcher
-  - [ ] switcher in the setting modal
+- [x] light/dark mode switcher
+  - [x] switcher in the setting modal
   - [x] add recoil state for the default or selected mode
   - [x] add initializer function
 - [x] improve SEO
