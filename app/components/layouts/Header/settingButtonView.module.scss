@@ -27,7 +27,54 @@
   transition: width var(--scale-transition);
 
   &.design {
-    width: 340px;
+    width: 320px;
+  }
+}
+
+.designHeader {
+  position: relative;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  > h4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.designIndicatorWrapper {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  background-color: rgb(var(--in-box));
+  border-radius: var(--in-box-border-radius);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  > button {
+    height: 100% !important;
+    z-index: 2;
+  }
+}
+
+.designIndicator {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  border: var(--box-border);
+  border-radius: var(--in-box-border-radius);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background-color: rgb(var(--indicator));
+  transition: all var(--slow-transition) !important;
+  &.dark {
+    left: 50%;
   }
 }
 
@@ -35,8 +82,3 @@
 //   justify-content: flex-start !important;
 //   width: 100%;
 // }
-
-.designModal {
-  width: 480px;
-  height: 300px;
-}

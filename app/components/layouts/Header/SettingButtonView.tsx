@@ -12,6 +12,7 @@ export interface SettingButtonViewProps
   isLoggedIn: boolean;
   showModal: boolean;
   languageMode: "ko" | "en";
+  screenMode: "light" | "dark";
   handleClickSetting: () => void;
   handleClickLogin: () => void;
   handleClickLogout: () => void;
@@ -26,6 +27,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
     isLoggedIn,
     showModal,
     languageMode,
+    screenMode,
     handleClickSetting,
     handleClickLogin,
     handleClickLogout,
@@ -86,7 +88,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
               </>
             ) : (
               <div>
-                <div>
+                <div className={styles.designHeader}>
                   <TransparentButton
                     aria-label="모달 끄기"
                     onClick={(e) => {
@@ -97,6 +99,23 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
                     <LeftArrowSvg aria-hidden />
                   </TransparentButton>
                   <h4>{languageMode === "ko" ? "디자인" : "Design"}</h4>
+                </div>
+                <div className={styles.designIndicatorWrapper}>
+                  <TransparentButton
+                    aria-label="화면 모드 변경"
+                    onClick={handleToggleScreenMode}
+                  >
+                    {languageMode === "ko" ? "밝게" : "lighter"}
+                  </TransparentButton>
+                  <TransparentButton
+                    aria-label="화면 모드 변경"
+                    onClick={handleToggleScreenMode}
+                  >
+                    {languageMode === "ko" ? "어둡게" : "darker"}
+                  </TransparentButton>
+                  <div
+                    className={`${styles.designIndicator} ${screenMode === "dark" ? styles.dark : ""}`}
+                  />
                 </div>
               </div>
             )}

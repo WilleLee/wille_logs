@@ -67,6 +67,7 @@ const SettingButton = React.memo(function SettingButton({
       isLoggedIn: users.isLoggedIn(),
       showModal,
       languageMode,
+      screenMode,
       handleClickSetting: () => setShowModal((prev) => !prev),
       handleClickLogin: () => {
         setShowLoginModal(true);
@@ -107,57 +108,6 @@ const SettingButton = React.memo(function SettingButton({
 
   return (
     <SettingButtonView {...settingButtonViewProps} ref={modalRef} {...props} />
-    // <div className={styles.wrapper} {...props}>
-    //   <TransparentButton
-    //     aria-label="setting"
-    //     className={styles.button}
-    //     onClick={() => setShowModal((prev) => !prev)}
-    //   >
-    //     <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
-    //   </TransparentButton>
-    //   {showModal ? (
-    //     <div ref={modalRef} className={styles.modal}>
-    //       <Box>
-    //         <TransparentButton
-    //           onClick={() => {
-    //             setScreenMode(screenModeActions.toggle);
-    //             cookies.set(
-    //               "screenMode",
-    //               screenModeActions.toggle(screenMode),
-    //               30,
-    //             );
-    //           }}
-    //         >
-    //           <h4>light/dark</h4>
-    //         </TransparentButton>
-    //         {users.isLoggedIn() ? (
-    //           <TransparentButton
-    //             className={styles.modalButton}
-    //             onClick={() => {
-    //               const ok = confirm("Are you sure to logout?");
-    //               if (ok) {
-    //                 users.logout();
-    //                 setShowModal(false);
-    //               }
-    //             }}
-    //           >
-    //             <h4>logout</h4>
-    //           </TransparentButton>
-    //         ) : (
-    //           <TransparentButton
-    //             className={styles.modalButton}
-    //             onClick={() => {
-    //               setShowLoginModal(true);
-    //               setShowModal(false);
-    //             }}
-    //           >
-    //             <h4>login</h4>
-    //           </TransparentButton>
-    //         )}
-    //       </Box>
-    //     </div>
-    //   ) : null}
-    // </div>
   );
 });
 

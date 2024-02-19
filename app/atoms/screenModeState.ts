@@ -1,6 +1,8 @@
 import { atom } from "recoil";
 
-export const screenModeState = atom({
+type IScreenMode = "dark" | "light";
+
+export const screenModeState = atom<IScreenMode>({
   key: "screenModeState",
   default: "dark",
 });
