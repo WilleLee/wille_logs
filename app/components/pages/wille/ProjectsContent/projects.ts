@@ -9,7 +9,7 @@ export interface IProject {
   link: string;
   githubLink?: string;
   techStack: string[];
-  descriptions: string[];
+  descriptions: { en: string[]; ko: string[] };
 }
 
 export const projects: IProject[] = [
@@ -20,10 +20,16 @@ export const projects: IProject[] = [
     link: "https://wille-logs.vercel.app/",
     githubLink: "https://github.com/WilleLee/wille_logs",
     techStack: ["typescript", "react", "next(app)", "swr", "vitest", "mongodb"],
-    descriptions: [
-      "a blog app to save daily book marks with authentication",
-      "full stack application with next.js and mongodb",
-    ],
+    descriptions: {
+      en: [
+        "a blog web app to save daily book notes",
+        "full stack application with next.js and mongodb",
+      ],
+      ko: [
+        "감명 받은 책 내용을 저장하는 블로그 웹앱",
+        "넥스트와 몽고DB를 사용한 풀스택 어플리케이션",
+      ],
+    },
   },
   {
     _id: "1",
@@ -32,9 +38,15 @@ export const projects: IProject[] = [
     link: "https://github.com/WilleLee/rok-supporter",
     githubLink: "https://github.com/WilleLee/rok-supporter",
     techStack: ["javascript", "react", "zustand", "styled-components"],
-    descriptions: [
-      "a wep page to provide useful information and tools for the game rise of kingdoms",
-      "participated in the front-end development using react",
-    ],
+    descriptions: {
+      en: [
+        "a wep page to provide useful information and tools for the game rise of kingdoms",
+        "participated in the front-end development using react",
+      ],
+      ko: [
+        "모바일게임 라이즈 오브 킹덤즈를 위한 유용한 정보 및 도구를 제공하는 웹페이지",
+        "리액트를 사용한 프론트엔드 개발 참여",
+      ],
+    },
   },
 ];

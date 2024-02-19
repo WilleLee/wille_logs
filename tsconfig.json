@@ -15,8 +15,8 @@
     "incremental": true,
     "plugins": [
       {
-        "name": "next",
-      },
+        "name": "next"
+      }
     ],
     "paths": {
       "@/*": ["./app/*"],
@@ -26,10 +26,11 @@
       "@libs/*": ["./app/libs/*"],
       "@mocks/*": ["./app/mocks/*"],
       "@styles/*": ["./app/styles/*"],
+      "@atoms/*": ["./app/atoms/*"],
       "@assets/*": ["./public/*"],
-      "@images/*": ["./public/images/*"],
-    },
+      "@images/*": ["./public/images/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

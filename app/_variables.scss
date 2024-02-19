@@ -1,4 +1,15 @@
 :root {
+  --slow-transition: 0.3s ease-in;
+  --bg-transition: 0.15s ease-in;
+  --scale-transition: 0.1s ease-in;
+
+  --default-padding: 16px;
+
+  --box-border-radius: 8px;
+  --in-box-border-radius: 12px;
+}
+
+body {
   --background: 255, 255, 255;
   --background-hover: 0, 0, 0, 0.04;
   --background-active: 0, 0, 0, 0.1;
@@ -14,41 +25,40 @@
 
   --box: 255, 255, 255;
   --text-box: 250, 250, 250;
+  --in-box: 250, 250, 250;
+
+  --indicator: 245, 245, 245;
 
   --divider: 217, 217, 217;
 
   --alert: 255, 53, 69;
 
-  --slow-transition: 0.3s ease-in;
-  --bg-transition: 0.15s ease-in;
-  --scale-transiton: 0.1s ease-in;
-
-  --default-padding: 16px;
-
   --box-border: 0.5px solid rgb(var(--icon), 0.15);
-  --box-border-radius: 8px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 16, 16, 16;
-    --background-hover: 255, 255, 255, 0.05;
-    --background-active: 255, 255, 255, 0.1;
-    --background-modal: 16, 16, 16, 0.5;
+body.dark {
+  --background: 16, 16, 16;
+  --background-hover: 255, 255, 255, 0.05;
+  --background-active: 255, 255, 255, 0.1;
+  --background-modal: 16, 16, 16, 0.5;
 
-    --text: 242, 245, 247;
-    --text-faded: 119, 119, 119;
-    --text-link: 95, 95, 95;
+  --text: 242, 245, 247;
+  --text-faded: 119, 119, 119;
+  --text-link: 95, 95, 95;
 
-    --icon: 242, 245, 247;
-    --icon-faded: 77, 77, 77;
-    --icon-disabled: 94, 94, 94;
+  --icon: 242, 245, 247;
+  --icon-faded: 77, 77, 77;
+  --icon-disabled: 94, 94, 94;
 
-    --box: 24, 24, 24;
-    --text-box: 30, 30, 30;
+  --box: 24, 24, 24;
+  --text-box: 30, 30, 30;
+  --in-box: 16, 16, 16;
 
-    --divider: 46, 46, 47;
+  --indicator: 30, 30, 30;
 
-    --alert: 252, 46, 63;
-  }
+  --divider: 46, 46, 47;
+
+  --alert: 252, 46, 63;
+
+  --box-border: 0.5px solid rgb(var(--icon), 0.15);
 }

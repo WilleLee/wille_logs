@@ -8,9 +8,11 @@
 
 ### Dev Environment
 
-1. Next.js 14.1.0 (React ^18)
-2. MongoDB Atlas with Mongoose ^8.1.0
-3. Typescript ^5
+- Next.js 14.1.0 (React ^18)
+- MongoDB Atlas with Mongoose ^8.1.0
+- Typescript ^5
+- Recoil ^0.7.7
+- CI/CD & deplyment with Vercel
 
 ### Project Structure
 
@@ -37,7 +39,9 @@ root
 └── config and env files
 ```
 
-### TODOs (1.0)
+### TODOs
+
+#### v1.0.0
 
 - [x] connect to mongodb
 - [x] deploy to vercel
@@ -74,9 +78,29 @@ root
       - [x] etc. : education, skills, languages...
 - [x] connect to google analytics - _has issues about the third-party cookies warning_
 
+#### v1.0.1
+
+- [x] fixed an issue about tags expanding button
+
+#### v1.1.0
+
+- [x] refactor header component
+- [x] add Kr/En language switcher
+  - [x] language switcher in the setting modal
+  - [x] add recoil state for the default or selected language
+  - [x] add initializer function
+- [x] light/dark mode switcher
+  - [x] switcher in the setting modal
+  - [x] add recoil state for the default or selected mode
+  - [x] add initializer function
+- [x] improve SEO
+  - [x] optimize meta tags for each page
+  - [x] separate open graph tags for each page and production/development environment
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
 2. next.js doc says all the components called inside a client compoennt are also client components, but it does not exactly mean that I don't need to declare those components as client components explicitly, even in the case of common components like buttons or svgs.
 3. server preservation in dev mode sucks.
 4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
+5. event target and current target do not match if state changes that trigger content of a component to be switched happen by click event.

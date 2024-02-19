@@ -10,6 +10,7 @@
   top: 0;
   left: 0;
   background-color: rgb(var(--background));
+  transition: background-color var(--bg-transition);
   z-index: 100;
 
   > div:first-child {
@@ -28,7 +29,7 @@
   > img {
     cursor: pointer;
     transform: scale(1);
-    transition: transform var(--scale-transiton);
+    transition: transform var(--scale-transition);
     &:hover {
       transform: scale(1.1);
     }
@@ -50,7 +51,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  background-color: rgb(var(--background));
+  background-color: transparent;
   transition: background-color var(--bg-transition);
   &:hover,
   &:focus {

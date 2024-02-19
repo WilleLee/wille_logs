@@ -2,7 +2,10 @@
   width: 100%;
   margin: 3px;
   padding: var(--default-padding);
-  background-color: rgb(var(--background));
+  background-color: rgb(var(--box));
   border: var(--box-border);
   border-radius: var(--box-border-radius);
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
 }
