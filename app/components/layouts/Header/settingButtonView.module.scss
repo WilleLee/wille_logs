@@ -19,13 +19,24 @@
 .modal {
   position: absolute;
   width: 170px;
+  height: auto;
   top: 100%;
   right: 0;
   display: grid;
   grid-template-columns: 1fr;
+  transition: width var(--scale-transition);
+
+  &.design {
+    width: 340px;
+  }
 }
 
 // .modalButton {
 //   justify-content: flex-start !important;
 //   width: 100%;
 // }
+
+.designModal {
+  width: 480px;
+  height: 300px;
+}

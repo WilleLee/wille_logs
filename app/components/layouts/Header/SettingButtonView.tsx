@@ -5,6 +5,7 @@ import styles from "./settingButtonView.module.scss";
 import TransparentButton from "@components/buttons/TransparentButton";
 import SettingSvg from "@components/svgs/SettingSvg";
 import Box from "@components/boxes/Box";
+import LeftArrowSvg from "@/components/svgs/LeftArrowSvg";
 
 export interface SettingButtonViewProps
   extends AllHTMLAttributes<HTMLDivElement> {
@@ -46,8 +47,8 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
         <SettingSvg aria-hidden width="26" className={styles.settingSvg} />
       </TransparentButton>
       {showModal ? (
-        <div ref={ref} className={styles.modal}>
-          <Box>
+        <div className={`${styles.modal} ${showDesign ? styles.design : ""}`}>
+          <Box ref={ref}>
             {/* <TransparentButton onClick={handleToggleScreenMode}>
               <h4>
                 {languageMode === "ko" ? "라이트 / 다크" : "light / dark"}
@@ -76,15 +77,25 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
             )} */}
             {!showDesign ? (
               <>
-                <TransparentButton onClick={handleShowDesign}>
-                  <h4>{languageMode === "ko" ? "디자인" : "design"}</h4>
+                <TransparentButton
+                  data-id="setting-design"
+                  aria-label="디자인 모달 켜기. open design modal"
+                  onClick={handleShowDesign}
+                >
+                  <h4 data-id="setting-design">
+                    {languageMode === "ko" ? "디자인" : "design"}
+                  </h4>
                 </TransparentButton>
-                <TransparentButton onClick={handleToggleLanguageMode}>
+                <TransparentButton
+                  aria-label="한영모드 전환. toggle language mode between Korean and English"
+                  onClick={handleToggleLanguageMode}
+                >
                   <h4>한 / En</h4>
                 </TransparentButton>
                 {isLoggedIn ? (
                   <TransparentButton
                     className={styles.modalButton}
+                    aria-label="로그아웃. logout"
                     onClick={handleClickLogout}
                   >
                     <h4>{languageMode === "ko" ? "로그아웃" : "logout"}</h4>
@@ -92,6 +103,7 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
                 ) : (
                   <TransparentButton
                     className={styles.modalButton}
+                    aria-label="로그인. login"
                     onClick={handleClickLogin}
                   >
                     <h4>{languageMode === "ko" ? "로그인" : "login"}</h4>
@@ -99,7 +111,20 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
                 )}
               </>
             ) : (
-              <div>hihih</div>
+              <div>
+                <div>
+                  <TransparentButton
+                    aria-label="모달 끄기"
+                    onClick={(e) => {
+                      handleShowDesign();
+                      // handleClickSetting();
+                    }}
+                  >
+                    <LeftArrowSvg aria-hidden />
+                  </TransparentButton>
+                  <h4>{languageMode === "ko" ? "디자인" : "Design"}</h4>
+                </div>
+              </div>
             )}
           </Box>
         </div>

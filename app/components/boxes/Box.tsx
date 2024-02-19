@@ -6,7 +6,10 @@ interface Props extends DefaultBoxProps {
   height?: string;
 }
 
-export default function Box({ children, height = "auto", ...props }: Props) {
+const Box = React.forwardRef(function Box(
+  { children, height = "auto", ...props }: Props,
+  ref: React.Ref<HTMLDivElement>,
+) {
   // const boxStyles: CSSProperties = {
   //   height,
   //   width: "100%",
@@ -23,8 +26,12 @@ export default function Box({ children, height = "auto", ...props }: Props) {
     <div
       //style={boxStyles}
       className={className}
+      {...props}
+      ref={ref}
     >
       {children}
     </div>
   );
-}
+});
+
+export default Box;

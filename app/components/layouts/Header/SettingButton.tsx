@@ -42,11 +42,21 @@ const SettingButton = React.memo(function SettingButton({
     setShowDesign((prev) => !prev);
   }
 
-  const handleClickOutside = useCallback(() => {
-    console.log("outside clicked!");
-    if (!showModal) return;
-    setShowModal(false);
-  }, [showModal]);
+  const handleClickOutside = useCallback(
+    (e: MouseEvent) => {
+      if (e.target instanceof HTMLElement) {
+        if (
+          e.target.dataset.id === "setting-design" ||
+          e.target.parentElement?.dataset.id === "setting-design"
+        )
+          return;
+      }
+
+      if (!showModal) return;
+      setShowModal(false);
+    },
+    [showModal],
+  );
 
   // effects
   useClickOutside(modalRef, handleClickOutside);

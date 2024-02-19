@@ -29,7 +29,7 @@
   > img {
     cursor: pointer;
     transform: scale(1);
-    transition: transform var(--scale-transiton);
+    transition: transform var(--scale-transition);
     &:hover {
       transform: scale(1.1);
     }
