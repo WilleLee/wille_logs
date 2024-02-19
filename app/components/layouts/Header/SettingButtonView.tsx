@@ -49,32 +49,6 @@ const SettingButtonView = React.forwardRef(function SettingButtonView(
       {showModal ? (
         <div className={`${styles.modal} ${showDesign ? styles.design : ""}`}>
           <Box ref={ref}>
-            {/* <TransparentButton onClick={handleToggleScreenMode}>
-              <h4>
-                {languageMode === "ko" ? "라이트 / 다크" : "light / dark"}
-              </h4>
-            </TransparentButton> */}
-            {/* <TransparentButton onClick={handleShowDesign}>
-              <h4>{languageMode === "ko" ? "디자인" : "design"}</h4>
-            </TransparentButton>
-            <TransparentButton onClick={handleToggleLanguageMode}>
-              <h4>한 / En</h4>
-            </TransparentButton>
-            {isLoggedIn ? (
-              <TransparentButton
-                className={styles.modalButton}
-                onClick={handleClickLogout}
-              >
-                <h4>{languageMode === "ko" ? "로그아웃" : "logout"}</h4>
-              </TransparentButton>
-            ) : (
-              <TransparentButton
-                className={styles.modalButton}
-                onClick={handleClickLogin}
-              >
-                <h4>{languageMode === "ko" ? "로그인" : "login"}</h4>
-              </TransparentButton>
-            )} */}
             {!showDesign ? (
               <>
                 <TransparentButton

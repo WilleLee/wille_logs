@@ -25,8 +25,8 @@ const Box = React.forwardRef(function Box(
   return (
     <div
       //style={boxStyles}
-      className={className}
       {...props}
+      className={className}
       ref={ref}
     >
       {children}
