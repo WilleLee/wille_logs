@@ -21,6 +21,7 @@ root
 ├── app
 │   ├── __tests__
 │   ├── api // api entry points (route.ts)
+│   ├── atoms
 │   ├── components
 │   │   ├── pages
 │   │   ├── boxes
