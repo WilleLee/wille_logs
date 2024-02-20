@@ -21,15 +21,8 @@ root
 ├── app
 │   ├── __tests__
 │   ├── api // api entry points (route.ts)
+│   ├── atoms
 │   ├── components
-│   │   ├── pages
-│   │   ├── boxes
-│   │   ├── buttons
-│   │   ├── Form
-│   │   ├── layouts
-│   │   ├── modals
-│   │   ├── svgs
-│   │   └── loading
 │   ├── hooks
 │   ├── libs
 │   ├── mocks
@@ -52,7 +45,7 @@ root
   - [x] `/login`
   - [x] `/threads`
   - [x] `/tags`
-- [x] build UIs
+- [x] build UIs & controllers
   - [x] layouts
     - [x] header
       - [x] navigations (home and `/wille`)

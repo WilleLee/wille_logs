@@ -8,12 +8,12 @@ const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
 
 const ogBaseUrl =
-  process.env.mode === "production"
+  process.env.NEXT_PUBLIC_MODE === "production"
     ? "https://wille-logs.vercel.app"
     : "https://wille-logs-git-dev-willelee.vercel.app";
 
 export const metadata: Metadata = {
-  title: "Wille logs",
+  title: "Wille logs...",
   description: "check what Wille logs today",
   authors: [
     {
@@ -38,11 +38,10 @@ export const metadata: Metadata = {
     images: [ogBaseUrl + "/images/avatar128.png"],
   },
   openGraph: {
-    title: "Wille logs...",
+    title: "Wille logs... - daily insights from books",
     description: "check what Wille logs today",
     type: "website",
     images: ogBaseUrl + "/images/avatar128.png",
-
     url: ogBaseUrl,
   },
 };

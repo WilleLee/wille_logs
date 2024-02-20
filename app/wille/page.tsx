@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Resumé - Wille logs",
+  title: "Resumé - Wille logs...",
   description: "browse Wille's resumé (careers, projects and skills)",
 };
 
