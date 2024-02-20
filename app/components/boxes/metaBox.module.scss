@@ -1,0 +1,19 @@
+.box {
+  width: 100%;
+  border-radius: 30px;
+  height: 25px;
+  border: none;
+  background-color: rgba(var(--text-box), 1);
+  color: rgb(var(--text-faded));
+  font-size: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  opacity: 0.8;
+  transition: opacity var(--bg-transition);
+  &:hover {
+    opacity: 1;
+  }
+}
