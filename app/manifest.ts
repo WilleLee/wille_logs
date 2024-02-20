@@ -3,7 +3,10 @@ import { MetadataRoute } from "next";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Wille logs...",
-    short_name: process.env.MODE === "production" ? "Wille logs" : "Wille(dev)",
+    short_name:
+      process.env.NEXT_PUBLIC_MODE === "production"
+        ? "Wille logs"
+        : "Wille(dev)",
     description: "see what Wille read today",
     start_url: "/",
     display: "standalone",
