@@ -3,86 +3,54 @@
   overflow: hidden;
 }
 
-.threadContent {
+.contentWrapper {
   display: flex;
   flex-direction: column;
-
-  > div:first-child {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-
-    > h4 a {
-      color: rgb(var(--text-faded)) !important;
-      transition: color var(--bg-transition);
-
-      &:hover {
-        color: rgb(var(--text)) !important;
-      }
-    }
-
-    > div:last-child {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      p {
-        color: rgb(var(--text-faded));
-      }
-      a {
-        svg {
-          fill: rgb(var(--icon-faded)) !important;
-          transition: fill var(--bg-transition);
-        }
-        &:hover svg {
-          fill: rgb(var(--icon)) !important;
-        }
-      }
-    }
-  }
-  > ul {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-
-    > li {
-      padding: 0 6px;
-      text-indent: 6px;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.4;
-      word-break: normal;
-    }
-  }
 }
 
-.projectWrapper {
+.header {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
 
-  > h3 a {
-    span {
-      color: rgb(var(--text-faded)) !important;
-      transition: color var(--bg-transition);
-    }
-    &:hover span {
+  > h4 a {
+    color: rgb(var(--text-faded)) !important;
+    transition: color var(--bg-transition);
+
+    &:hover {
       color: rgb(var(--text)) !important;
     }
   }
 
-  > ul {
+  > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    p {
+      color: rgb(var(--text-faded));
+    }
+    a {
+      svg {
+        fill: rgb(var(--icon-faded)) !important;
+        transition: fill var(--bg-transition);
+      }
+      &:hover svg {
+        fill: rgb(var(--icon)) !important;
+      }
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  > li {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-
-    > li {
-      padding: 0 6px;
-      text-indent: 6px;
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 1.4;
-      word-break: normal;
-    }
+    gap: 10px;
   }
 }

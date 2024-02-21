@@ -1,4 +1,6 @@
 import newlinkLogo from "@images/newlink_logo.png";
+import { stacks } from "./stacks";
+import { StaticImageData } from "next/image";
 
 export interface ICareerProject {
   _id: string;
@@ -30,13 +32,13 @@ export interface ICareer {
     en: string[];
     ko: string[];
   };
-  imageSrc: string;
+  imageSrc: StaticImageData;
   startDate: string;
   endDate: string;
   projects: ICareerProject[];
 }
 
-export const careers = [
+export const careers: ICareer[] = [
   {
     _id: "0",
     company: "newlink",
@@ -56,65 +58,65 @@ export const careers = [
         languages: [
           {
             name: "javascript",
-            backgroundColor: "#f7df1e",
-            color: "#000000",
+            backgroundColor: stacks.javascript.backgroundColor,
+            color: stacks.javascript.color,
           },
           {
             name: "scss",
-            backgroundColor: "#c6538c",
-            color: "#ffffff",
+            backgroundColor: stacks.scss.backgroundColor,
+            color: stacks.scss.color,
           },
         ],
         stacks: [
           {
             name: "next(pages)",
-            backgroundColor: "#000000",
-            color: "#ffffff",
+            backgroundColor: stacks.next.backgroundColor,
+            color: stacks.next.color,
           },
           {
             name: "react",
-            backgroundColor: "#61dafb",
-            color: "#000000",
+            backgroundColor: stacks.react.backgroundColor,
+            color: stacks.react.color,
           },
           {
             name: "redux",
-            backgroundColor: "#764abc",
-            color: "#ffffff",
+            backgroundColor: stacks.redux.backgroundColor,
+            color: stacks.redux.color,
           },
           {
             name: "axios",
-            backgroundColor: "#671cde",
-            color: "#000000",
+            backgroundColor: stacks.axios.backgroundColor,
+            color: stacks.axios.color,
           },
           {
             name: "react-query",
-            backgroundColor: "#ef4444",
-            color: "#000000",
+            backgroundColor: stacks.reactQuery.backgroundColor,
+            color: stacks.reactQuery.color,
           },
           {
             name: "highcharts",
-            backgroundColor: "#614051",
-            color: "#ffffff",
+            backgroundColor: stacks.highcharts.backgroundColor,
+            color: stacks.highcharts.color,
           },
           {
             name: "tradingview",
-            backgroundColor: "#61dafb",
-            color: "#000000",
+            backgroundColor: stacks.tradingview.backgroundColor,
+            color: stacks.tradingview.color,
           },
           {
             name: "websocket",
-            backgroundColor: "#61dafb",
-            color: "#000000",
+            backgroundColor: stacks.websocket.backgroundColor,
+            color: stacks.websocket.color,
           },
           {
             name: "styled-components",
-            backgroundColor: "#db7093",
-            color: "#ffffff",
+            backgroundColor: stacks.styledComponents.backgroundColor,
+            color: stacks.styledComponents.color,
           },
           {
             name: "jenkins",
-            backgroundColor: "#000000",
-            color: "#ffffff",
+            backgroundColor: stacks.jenkins.backgroundColor,
+            color: stacks.jenkins.color,
           },
         ],
         teams: ["pm", "be", "fe", "design", "devOps", "qa"],
@@ -140,50 +142,50 @@ export const careers = [
         languages: [
           {
             name: "javascript",
-            backgroundColor: "#f7df1e",
-            color: "#000000",
+            backgroundColor: stacks.javascript.backgroundColor,
+            color: stacks.javascript.color,
           },
           {
             name: "scss",
-            backgroundColor: "#c6538c",
-            color: "#ffffff",
+            backgroundColor: stacks.scss.backgroundColor,
+            color: stacks.scss.color,
           },
         ],
         stacks: [
           {
             name: "next(pages)",
-            backgroundColor: "#000000",
-            color: "#ffffff",
+            backgroundColor: stacks.next.backgroundColor,
+            color: stacks.next.color,
           },
           {
             name: "react",
-            backgroundColor: "#61dafb",
-            color: "#000000",
+            backgroundColor: stacks.react.backgroundColor,
+            color: stacks.react.color,
           },
           {
             name: "axios",
-            backgroundColor: "#671cde",
-            color: "#000000",
+            backgroundColor: stacks.axios.backgroundColor,
+            color: stacks.axios.color,
           },
           {
             name: "react-query",
-            backgroundColor: "#ef4444",
-            color: "#000000",
+            backgroundColor: stacks.reactQuery.backgroundColor,
+            color: stacks.reactQuery.color,
           },
           {
             name: "highcharts",
-            backgroundColor: "#614051",
-            color: "#ffffff",
+            backgroundColor: stacks.highcharts.backgroundColor,
+            color: stacks.highcharts.color,
           },
           {
             name: "styled-components",
-            backgroundColor: "#db7093",
-            color: "#ffffff",
+            backgroundColor: stacks.styledComponents.backgroundColor,
+            color: stacks.styledComponents.color,
           },
           {
             name: "jenkins",
-            backgroundColor: "#000000",
-            color: "#ffffff",
+            backgroundColor: stacks.jenkins.backgroundColor,
+            color: stacks.jenkins.color,
           },
         ],
         teams: ["pm", "be", "fe", "design", "devops"],

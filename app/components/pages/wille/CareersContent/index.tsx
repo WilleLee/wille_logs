@@ -4,9 +4,10 @@ import React, { AllHTMLAttributes } from "react";
 import Image from "next/image";
 import styles from "./careersContent.module.scss";
 import { careers, ICareerProject } from "@libs/careers";
-import ThreadedBox from "@/components/boxes/ThreadedBox";
-import LinkedButton from "@/components/buttons/LinkedButton";
-import MetaBox from "@/components/boxes/MetaBox";
+import ThreadedBox from "@components/boxes/ThreadedBox";
+import MetaBox from "@components/boxes/MetaBox";
+import TextList from "@components/lists/TextList";
+import BoxList from "@/components/lists/BoxList";
 
 type Props = {
   languageMode: "en" | "ko";
@@ -73,86 +74,61 @@ const ProjectItem = React.memo(function ProjectItem({
         </a>
       </h3>
       {project.descriptions[languageMode || "en"].length > 0 && (
-        <ul
-          title="description of the project"
-          className={`${styles.list} ${styles.description}`}
-        >
-          {project.descriptions[languageMode || "en"].map(
-            (description, index) => (
-              <li key={`${project.title}_${index}`}>&bull; {description}</li>
-            ),
-          )}
-        </ul>
+        <TextList items={project.descriptions[languageMode || "en"]} />
       )}
-      <ul
-        title="brief spefication of the project"
-        className={`${styles.list} ${styles.specification}`}
-      >
+      <ul title="brief spefication of the project" className={styles.list}>
         <li>
           <h5>Roles</h5>
-          {/* <div>{project.roles.join(", ")}</div> */}
-          <div className={styles.collapsed}>
+          <BoxList collapsed>
             {project.roles.map((role) => (
               <MetaBox key={role}>{role.toUpperCase()}</MetaBox>
             ))}
-          </div>
+          </BoxList>
         </li>
         <li>
           <h5>Languages</h5>
-          {/* <div>{project.languages.join(", ")}</div> */}
-          <div>
+          <BoxList>
             {project.languages.map((language) => (
               <MetaBox
                 key={language.name}
                 backgroundColor={language.backgroundColor}
                 color={language.color}
-                // style={{
-                //   backgroundColor: `${language.backgroundColor} !important`,
-                //   color: `${language.color} !important`,
-                // }}
               >
-                {language.name.toUpperCase()}
+                {language.name}
               </MetaBox>
             ))}
-          </div>
+          </BoxList>
         </li>
         <li>
           <h5>Stacks</h5>
-          {/* <div>{project.stacks.join(", ")}</div> */}
-          <div className={styles.stacks}>
+          <BoxList collapsed>
             {project.stacks.map((stack) => (
               <MetaBox
                 key={stack.name}
                 backgroundColor={stack.backgroundColor}
                 color={stack.color}
-                // style={{
-                //   backgroundColor: `${stack.backgroundColor} !important`,
-                //   color: `${stack.color} !important`,
-                // }}
                 id={stack.color}
               >
-                {stack.name.toUpperCase()}
+                {stack.name}
               </MetaBox>
             ))}
-          </div>
+          </BoxList>
         </li>
         <li>
           <h5>Teams</h5>
-          {/* <div>{project.teams.join(", ")}</div> */}
-          <div className={styles.collapsed}>
+          <BoxList collapsed>
             {project.teams.map((team) => (
               <MetaBox key={team}>{team.toUpperCase()}</MetaBox>
             ))}
-          </div>
+          </BoxList>
         </li>
         <li>
           <h5>Teamworks</h5>
-          {/* <div>{project.teamworks.join(", ")}</div> */}
-          <div className={styles.collapsed}>
+          <BoxList collapsed>
             {project.teamworks.map((teamwork) => (
-              <MetaBox key={teamwork}>{teamwork.toUpperCase()}</MetaBox>
+              <MetaBox key={teamwork}>{teamwork}</MetaBox>
             ))}
-          </div>
+          </BoxList>
         </li>
       </ul>
     </div>
