@@ -106,6 +106,10 @@ root
   - [x] extra contents
 - [x] add button height changes (media query) to showAllButton in the tag component
 
+#### v1.1.4
+
+- [x] fixed the issue that screen-x is overflowed in the mobile view because of margin in loading box (tags)
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
