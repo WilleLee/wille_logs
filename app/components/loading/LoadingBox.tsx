@@ -10,8 +10,10 @@ interface Props extends AllHTMLAttributes<HTMLDivElement> {
 
 export default function LoadingBox({ ...props }: Props) {
   return (
-    <Box className={styles.box} {...props}>
-      loading....
-    </Box>
+    <div className={styles.wrapper}>
+      <Box className={styles.box} {...props}>
+        loading....
+      </Box>
+    </div>
   );
 }

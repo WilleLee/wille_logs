@@ -2,7 +2,7 @@
 @import "./variables.scss";
 
 * {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
   transition: background-color var(--bg-transition);
 }
 
@@ -12,10 +12,10 @@ html {
 }
 
 body {
+  width: 100%;
   color: rgb(var(--text));
   background: rgb(var(--background));
   overflow-x: hidden;
-  box-sizing: border-box !important;
 }
 
 main {
