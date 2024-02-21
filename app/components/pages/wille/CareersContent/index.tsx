@@ -25,11 +25,7 @@ export default function CareersContent({ languageMode }: Props) {
               <h4>
                 {career.company.toUpperCase()}
                 <span>
-                  (
-                  {/* {languageMode === "ko"
-                    ? career.position.ko
-                    : career.position[0]} */}
-                  {career.position[languageMode || "en"].join(", ")})
+                  ({career.position[languageMode || "en"].join(", ")})
                 </span>
               </h4>
               <p>
@@ -108,10 +104,12 @@ const ProjectItem = React.memo(function ProjectItem({
             {project.languages.map((language) => (
               <MetaBox
                 key={language.name}
-                style={{
-                  backgroundColor: `${language.backgroundColor} !important`,
-                  color: `${language.color} !important`,
-                }}
+                backgroundColor={language.backgroundColor}
+                color={language.color}
+                // style={{
+                //   backgroundColor: `${language.backgroundColor} !important`,
+                //   color: `${language.color} !important`,
+                // }}
               >
                 {language.name.toUpperCase()}
               </MetaBox>
@@ -125,10 +123,12 @@ const ProjectItem = React.memo(function ProjectItem({
             {project.stacks.map((stack) => (
               <MetaBox
                 key={stack.name}
-                style={{
-                  backgroundColor: `${stack.backgroundColor} !important`,
-                  color: `${stack.color} !important`,
-                }}
+                backgroundColor={stack.backgroundColor}
+                color={stack.color}
+                // style={{
+                //   backgroundColor: `${stack.backgroundColor} !important`,
+                //   color: `${stack.color} !important`,
+                // }}
                 id={stack.color}
               >
                 {stack.name.toUpperCase()}

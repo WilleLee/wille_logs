@@ -77,19 +77,34 @@ export const careers = [
             color: "#000000",
           },
           {
+            name: "redux",
+            backgroundColor: "#764abc",
+            color: "#ffffff",
+          },
+          {
             name: "axios",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#671cde",
             color: "#000000",
           },
           {
             name: "react-query",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#ef4444",
             color: "#000000",
           },
           {
             name: "highcharts",
             backgroundColor: "#614051",
             color: "#ffffff",
+          },
+          {
+            name: "tradingview",
+            backgroundColor: "#61dafb",
+            color: "#000000",
+          },
+          {
+            name: "websocket",
+            backgroundColor: "#61dafb",
+            color: "#000000",
           },
           {
             name: "styled-components",
@@ -146,34 +161,19 @@ export const careers = [
             color: "#000000",
           },
           {
-            name: "redux",
-            backgroundColor: "#764abc",
-            color: "#ffffff",
-          },
-          {
             name: "axios",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#671cde",
             color: "#000000",
           },
           {
             name: "react-query",
-            backgroundColor: "#61dafb",
+            backgroundColor: "#ef4444",
             color: "#000000",
           },
           {
             name: "highcharts",
             backgroundColor: "#614051",
             color: "#ffffff",
-          },
-          {
-            name: "tradingview",
-            backgroundColor: "#61dafb",
-            color: "#000000",
-          },
-          {
-            name: "websocket",
-            backgroundColor: "#61dafb",
-            color: "#000000",
           },
           {
             name: "styled-components",
