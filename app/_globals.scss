@@ -15,6 +15,7 @@ body {
   color: rgb(var(--text));
   background: rgb(var(--background));
   overflow-x: hidden;
+  box-sizing: border-box !important;
 }
 
 main {
