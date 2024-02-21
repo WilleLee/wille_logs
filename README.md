@@ -109,6 +109,7 @@ root
 #### v1.1.4
 
 - [x] fixed the issue that screen-x is overflowed in the mobile view because of margin in loading box (tags)
+- [x] fixed the issue that the language mode doesn't persist after navigating to another page
 
 ### Notable Issues
 
