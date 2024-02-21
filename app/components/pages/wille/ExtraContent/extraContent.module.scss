@@ -57,6 +57,10 @@
   }
 }
 
+.title {
+  margin-bottom: 16px;
+}
+
 @media screen and (min-width: 478px) {
   .tags {
     grid-template-columns: repeat(4, 1fr);

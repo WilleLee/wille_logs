@@ -7,8 +7,8 @@ import { projects } from "@libs/projects";
 import ThreadedBox from "@components/boxes/ThreadedBox";
 import GithubSvg from "@components/svgs/GithubSvg";
 import TextList from "@components/lists/TextList";
-import BoxList from "@/components/lists/BoxList";
-import MetaBox from "@/components/boxes/MetaBox";
+import BoxList from "@components/lists/BoxList";
+import MetaBox from "@components/boxes/MetaBox";
 
 type Props = {
   languageMode: "en" | "ko";
@@ -55,7 +55,7 @@ const ProjectsContent = React.memo(function ProjectsContent({
             <TextList items={project.descriptions[languageMode || "en"]} />
             <ul className={styles.list}>
               <li>
-                <h5>Roles</h5>
+                <h5>{languageMode === "en" ? "Roles" : "역할"}</h5>
                 <BoxList collapsed>
                   {project.roles.map((role) => (
                     <MetaBox key={role}>{role.toUpperCase()}</MetaBox>
@@ -63,7 +63,7 @@ const ProjectsContent = React.memo(function ProjectsContent({
                 </BoxList>
               </li>
               <li>
-                <h5>Languages</h5>
+                <h5>{languageMode === "en" ? "Languages" : "언어"}</h5>
                 <BoxList>
                   {project.languages.map((language) => (
                     <MetaBox
@@ -77,7 +77,7 @@ const ProjectsContent = React.memo(function ProjectsContent({
                 </BoxList>
               </li>
               <li>
-                <h5>Stacks</h5>
+                <h5>{languageMode === "en" ? "Skills" : "기술"}</h5>
                 <BoxList collapsed>
                   {project.stacks.map((stack) => (
                     <MetaBox

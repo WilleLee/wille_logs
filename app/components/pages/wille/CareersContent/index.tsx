@@ -7,7 +7,7 @@ import { careers, ICareerProject } from "@libs/careers";
 import ThreadedBox from "@components/boxes/ThreadedBox";
 import MetaBox from "@components/boxes/MetaBox";
 import TextList from "@components/lists/TextList";
-import BoxList from "@/components/lists/BoxList";
+import BoxList from "@components/lists/BoxList";
 
 type Props = {
   languageMode: "en" | "ko";
@@ -78,7 +78,7 @@ const ProjectItem = React.memo(function ProjectItem({
       )}
       <ul title="brief spefication of the project" className={styles.list}>
         <li>
-          <h5>Roles</h5>
+          <h5>{languageMode === "en" ? "Roles" : "역할"}</h5>
           <BoxList collapsed>
             {project.roles.map((role) => (
               <MetaBox key={role}>{role.toUpperCase()}</MetaBox>
@@ -86,7 +86,7 @@ const ProjectItem = React.memo(function ProjectItem({
           </BoxList>
         </li>
         <li>
-          <h5>Languages</h5>
+          <h5>{languageMode === "en" ? "Languages" : "언어"}</h5>
           <BoxList>
             {project.languages.map((language) => (
               <MetaBox
@@ -100,7 +100,7 @@ const ProjectItem = React.memo(function ProjectItem({
           </BoxList>
         </li>
         <li>
-          <h5>Stacks</h5>
+          <h5>{languageMode === "en" ? "Skills" : "기술"}</h5>
           <BoxList collapsed>
             {project.stacks.map((stack) => (
               <MetaBox
@@ -115,7 +115,7 @@ const ProjectItem = React.memo(function ProjectItem({
           </BoxList>
         </li>
         <li>
-          <h5>Teams</h5>
+          <h5>{languageMode === "en" ? "Team" : "팀"}</h5>
           <BoxList collapsed>
             {project.teams.map((team) => (
               <MetaBox key={team}>{team.toUpperCase()}</MetaBox>
@@ -123,7 +123,7 @@ const ProjectItem = React.memo(function ProjectItem({
           </BoxList>
         </li>
         <li>
-          <h5>Teamworks</h5>
+          <h5>{languageMode === "en" ? "Teamwork" : "협업"}</h5>
           <BoxList collapsed>
             {project.teamworks.map((teamwork) => (
               <MetaBox key={teamwork}>{teamwork}</MetaBox>
