@@ -2,19 +2,21 @@
 
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-// import { useRecoilValue } from "recoil";
 import styles from "./projectsContent.module.scss";
-import { projects } from "./projects";
+import { projects } from "@libs/projects";
 import ThreadedBox from "@components/boxes/ThreadedBox";
 import GithubSvg from "@components/svgs/GithubSvg";
-// import { languageModeState } from "@/atoms/languageModeState";
+import TextList from "@components/lists/TextList";
+import BoxList from "@components/lists/BoxList";
+import MetaBox from "@components/boxes/MetaBox";
 
 type Props = {
   languageMode: "en" | "ko";
 };
 
-export default function ProjectsContent({ languageMode }: Props) {
-  // const languageMode = useRecoilValue(languageModeState);
+const ProjectsContent = React.memo(function ProjectsContent({
+  languageMode,
+}: Props) {
   return (
     <>
       {projects.map((project) => (
@@ -27,8 +29,8 @@ export default function ProjectsContent({ languageMode }: Props) {
               alt={project.title}
             />
           </div>
-          <div className={styles.threadContent}>
-            <div>
+          <div className={styles.contentWrapper}>
+            <div className={styles.header}>
               <h4>
                 <a
                   href={project.link}
@@ -50,19 +52,51 @@ export default function ProjectsContent({ languageMode }: Props) {
                 </a>
               </div>
             </div>
-            <ul>
-              <li>&bull; {project.techStack.join(", ")}</li>
-              {project.descriptions[languageMode || "en"].map(
-                (description, index) => (
-                  <li key={`${project.title}_${index}`}>
-                    &bull; {description}
-                  </li>
-                ),
-              )}
+            <TextList items={project.descriptions[languageMode || "en"]} />
+            <ul className={styles.list}>
+              <li>
+                <h5>{languageMode === "en" ? "Roles" : "역할"}</h5>
+                <BoxList collapsed>
+                  {project.roles.map((role) => (
+                    <MetaBox key={role}>{role.toUpperCase()}</MetaBox>
+                  ))}
+                </BoxList>
+              </li>
+              <li>
+                <h5>{languageMode === "en" ? "Languages" : "언어"}</h5>
+                <BoxList>
+                  {project.languages.map((language) => (
+                    <MetaBox
+                      key={language.name}
+                      backgroundColor={language.backgroundColor}
+                      color={language.color}
+                    >
+                      {language.name}
+                    </MetaBox>
+                  ))}
+                </BoxList>
+              </li>
+              <li>
+                <h5>{languageMode === "en" ? "Skills" : "기술"}</h5>
+                <BoxList collapsed>
+                  {project.stacks.map((stack) => (
+                    <MetaBox
+                      key={stack.name}
+                      backgroundColor={stack.backgroundColor}
+                      color={stack.color}
+                      id={stack.color}
+                    >
+                      {stack.name}
+                    </MetaBox>
+                  ))}
+                </BoxList>
+              </li>
             </ul>
           </div>
         </ThreadedBox>
       ))}
     </>
   );
-}
+});
+
+export default ProjectsContent;

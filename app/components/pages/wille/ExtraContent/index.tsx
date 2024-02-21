@@ -4,32 +4,33 @@ import React from "react";
 import Image from "next/image";
 import yonseiLogo from "@images/yonsei_logo.png";
 import styles from "./extraContent.module.scss";
-import { interests, languages, skills } from "./data";
+import { interests, languages, skills } from "@libs/extraInfos";
 import ThreadedBox from "@components/boxes/ThreadedBox";
-import LinkedButton from "@components/buttons/LinkedButton";
+import BoxList from "@components/lists/BoxList";
+import MetaBox from "@components/boxes/MetaBox";
 
 type Props = {
   languageMode: "en" | "ko";
 };
 
-export default function ExtraContent({ languageMode }: Props) {
+const ExtraContent = React.memo(function ExtraContent({ languageMode }: Props) {
   return (
     <>
       <ThreadedBox withImage={false}>
-        <h4>{languageMode === "ko" ? "기술" : "Skills"}</h4>
-        <ul className={`${styles.tags} ${styles.skills}`}>
+        <h4 className={styles.title}>
+          {languageMode === "ko" ? "기술" : "Skills"}
+        </h4>
+        <BoxList>
           {skills.map((skill, index) => (
-            <li
+            <MetaBox
               key={`skill_${index}`}
-              style={{
-                backgroundColor: skill.backgroundColor,
-                color: skill.color,
-              }}
+              backgroundColor={skill.backgroundColor}
+              color={skill.color}
             >
               {skill.name}
-            </li>
+            </MetaBox>
           ))}
-        </ul>
+        </BoxList>
       </ThreadedBox>
       <ThreadedBox>
         <div>
@@ -70,31 +71,27 @@ export default function ExtraContent({ languageMode }: Props) {
         </div>
       </ThreadedBox>
       <ThreadedBox withImage={false}>
-        <h4>{languageMode === "ko" ? "언어" : "Languages"}</h4>
-        <ul className={styles.tags}>
+        <h4 className={styles.title}>
+          {languageMode === "ko" ? "언어" : "Languages"}
+        </h4>
+        <BoxList>
           {languages[languageMode || "en"].map((language, index) => (
-            <li key={`language_${index}`}>
-              <LinkedButton aria-hidden disabled>
-                {language}
-              </LinkedButton>
-            </li>
+            <MetaBox key={`language_${index}`}>{language}</MetaBox>
           ))}
-        </ul>
+        </BoxList>
       </ThreadedBox>
       <ThreadedBox withImage={false}>
-        <h4>{languageMode === "ko" ? "관심사" : "Personal Interests"}</h4>
-        <div>
-          <ul className={styles.tags}>
-            {interests[languageMode || "en"].map((interest, index) => (
-              <li key={`interest_${index}`}>
-                <LinkedButton aria-hidden disabled>
-                  #{interest}
-                </LinkedButton>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <h4 className={styles.title}>
+          {languageMode === "ko" ? "관심사" : "Personal Interests"}
+        </h4>
+        <BoxList>
+          {interests[languageMode || "en"].map((interest, index) => (
+            <MetaBox key={`interest_${index}`}>#{interest}</MetaBox>
+          ))}
+        </BoxList>
       </ThreadedBox>
     </>
   );
-}
+});
+
+export default ExtraContent;

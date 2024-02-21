@@ -1,0 +1,21 @@
+.list {
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item {
+  padding: 0 6px;
+  text-indent: 6px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.4;
+  word-break: normal;
+}
+
+@media screen and (min-width: 478px) {
+  .item {
+    font-size: 14px;
+  }
+}
