@@ -125,11 +125,13 @@ export const careers: ICareer[] = [
           en: [
             "web frontend development for cryptocurrency exchangement platform",
             "state management with redux",
+            "server states caching by react-query",
             "charts drawn with tradingview and highcharts",
           ],
           ko: [
             "암호화폐 거래소 플랫폼의 웹 프론트엔드 개발",
             "리덕스를 이용한 상태 관리",
+            "react-query를 이용한 서버 상태 캐싱",
             "tradingview와 highcharts를 이용한 차트 생성",
           ],
         },

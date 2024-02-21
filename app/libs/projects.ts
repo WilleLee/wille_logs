@@ -84,10 +84,14 @@ export const projects: IProject[] = [
       en: [
         "a blog web app to save daily book notes",
         "full stack application with next.js and mongodb",
+        "supports PWA, responsive design, and web accessibility",
+        "supports Ko/En and light/dark mode by recoil states",
       ],
       ko: [
         "감명 받은 책 내용을 저장하는 블로그 웹앱",
         "넥스트와 몽고DB를 사용한 풀스택 어플리케이션",
+        "PWA, 반응형 디자인, 웹 접근성 지원",
+        "recoil 상태에 의한 한/영 및 라이트/다크 모드 전환 지원",
       ],
     },
   },
@@ -137,15 +141,16 @@ export const projects: IProject[] = [
         color: stacks.styledComponents.color,
       },
     ],
-    //techStack: ["javascript", "react", "zustand", "styled-components"],
     descriptions: {
       en: [
         "a wep page to provide useful information and tools for the game rise of kingdoms",
         "participated in the front-end development using react",
+        "global state management by zustand and styles with styled-components",
       ],
       ko: [
         "모바일게임 라이즈 오브 킹덤즈를 위한 유용한 정보 및 도구를 제공하는 웹페이지",
         "리액트를 사용한 프론트엔드 개발 참여",
+        "zustand에 의한 전역 상태 관리와 styled-components에 의한 스타일 작성 및 핸들링",
       ],
     },
   },
