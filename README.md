@@ -100,9 +100,11 @@ root
 
 #### v1.1.3
 
-- [ ] update `/wille` content design/data
-  - [ ] careers
-  - [ ] personal projects
+- [x] update `/wille` content design/data
+  - [x] careers
+  - [x] personal projects
+  - [x] extra contents
+- [x] add button height changes (media query) to showAllButton in the tag component
 
 ### Notable Issues
 
