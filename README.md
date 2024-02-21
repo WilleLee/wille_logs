@@ -106,6 +106,10 @@ root
   - [x] extra contents
 - [x] add button height changes (media query) to showAllButton in the tag component
 
+#### v1.1.4
+
+- [x] fixed the issue that screen-x is overflowed in the mobile view because of margin in loading box (tags)
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
@@ -113,3 +117,4 @@ root
 3. server preservation in dev mode sucks.
 4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
 5. event target and current target do not match if state changes that trigger content of a component to be switched happen by click event.
+6. box-sizing is not inherited in production mode.

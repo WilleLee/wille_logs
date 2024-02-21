@@ -1,3 +1,8 @@
+.wrapper {
+  width: 100%;
+  padding: 3px;
+}
+
 .box {
   background-color: rgb(var(--background));
   animation: loadingBackground 1.5s infinite ease-in-out;
