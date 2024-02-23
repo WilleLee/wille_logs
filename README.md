@@ -111,6 +111,10 @@ root
 - [x] fixed the issue that screen-x is overflowed in the mobile view because of margin in loading box (tags)
 - [x] fixed the issue that the language mode doesn't persist after navigating to another page
 
+#### v1.1.5
+
+- [ ] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
