@@ -8,10 +8,20 @@ export default function manifest(): MetadataRoute.Manifest {
         ? "Wille logs"
         : "Wille(dev)",
     description: "see what Wille read today",
+    categories: [
+      "books",
+      "blog",
+      "resumé",
+      "frontend",
+      "development",
+      "philosophy",
+    ],
     start_url: "/",
     display: "standalone",
     background_color: "#fff",
     theme_color: "#101010",
+    dir: "ltr",
+    lang: "ko",
     screenshots: [
       {
         src: "/logos/screenshot_iphone12.PNG",
@@ -51,6 +61,11 @@ export default function manifest(): MetadataRoute.Manifest {
       {
         src: "/logos/avatar192.png",
         sizes: "192x192",
+        type: "image/png",
+      },
+      {
+        src: "/logos/avatar512.png",
+        sizes: "512x512",
         type: "image/png",
       },
     ],
