@@ -4,8 +4,10 @@
 }
 
 .box {
+  height: 100%;
   background-color: rgb(var(--background));
   animation: loadingBackground 1.5s infinite ease-in-out;
+  font-weight: 600;
 }
 
 @keyframes loadingBackground {

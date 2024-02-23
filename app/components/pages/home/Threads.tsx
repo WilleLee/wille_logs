@@ -1,19 +1,20 @@
 "use client";
 
-import LoadingBox from "@/components/loading/LoadingBox";
+import { IThread } from "@models/ThreadModel";
 import { useHome } from "./HomeContextProvider";
 import ThreadsListView, { IThreadsListProps } from "./ThreadsListView";
-import useThreads from "@hooks/useThreads";
 
-export default function Threads() {
+type Props = {
+  threads: IThread[];
+};
+
+export default function Threads({ threads = [] }: Props) {
   const { selectedTagId } = useHome();
-  const { threads, status } = useThreads();
   const filteredThreads = !threads
     ? []
     : !selectedTagId
       ? threads
       : threads.filter((thread) => {
-          console.log(thread._id);
           return thread.tags.some((tag) => tag._id === selectedTagId);
         });
   const threadsListProps: IThreadsListProps = {
@@ -21,16 +22,10 @@ export default function Threads() {
   };
   return (
     <>
-      {status === "success" ? (
-        threads.length > 0 ? (
-          <ThreadsListView {...threadsListProps} />
-        ) : (
-          <p>
-            You haven&rsquo;t selected any tag OR there&rsquo;s no thread yet.
-          </p>
-        )
+      {threads.length > 0 ? (
+        <ThreadsListView {...threadsListProps} />
       ) : (
-        <LoadingBox height="120px" />
+        <p>No threads found.</p>
       )}
     </>
   );

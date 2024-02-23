@@ -8,11 +8,16 @@ interface Props extends AllHTMLAttributes<HTMLDivElement> {
   height?: string;
 }
 
-export default function LoadingBox({ ...props }: Props) {
+export default function LoadingBox({ height = "64px", ...props }: Props) {
   return (
-    <div className={styles.wrapper}>
+    <div
+      style={{
+        height,
+      }}
+      className={styles.wrapper}
+    >
       <Box className={styles.box} {...props}>
-        loading....
+        <div />
       </Box>
     </div>
   );

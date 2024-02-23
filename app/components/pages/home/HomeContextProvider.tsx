@@ -7,10 +7,12 @@ interface Props {
 
 export interface IHome {
   selectedTagId: string | null;
+  isHomeReady: boolean;
 }
 
 const initialState: IHome = {
   selectedTagId: null,
+  isHomeReady: false,
 };
 
 const HomeContext = createContext<IHome>(initialState);
@@ -34,6 +36,11 @@ function homeReducer(state: IHome, action: any) {
         ...state,
         selectedTagId: action.payload,
       };
+    case "SET_IS_HOME_READY":
+      return {
+        ...state,
+        isHomeReady: action.payload,
+      };
     default:
       return state;
   }
@@ -42,6 +49,10 @@ function homeReducer(state: IHome, action: any) {
 export const homeActions = {
   setSelectedTagId: (payload: string) => ({
     type: "SET_SELECTED_TAG_ID",
+    payload,
+  }),
+  setIsHomeReady: (payload: boolean) => ({
+    type: "SET_IS_HOME_READY",
     payload,
   }),
 };

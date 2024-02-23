@@ -5,6 +5,10 @@
   border: 1px solid rgb(var(--icon));
   background-color: rgba(var(--background), 1) !important;
   color: rgb(var(--text));
+  &.selected {
+    background-color: rgba(var(--text), 1) !important;
+    color: rgb(var(--background));
+  }
   &:disabled {
     background-color: rgba(var(--background-modal)) !important;
   }

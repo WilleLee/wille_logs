@@ -1,15 +1,11 @@
-"use client";
-
 import HomeContextProvider from "@components/pages/home/HomeContextProvider";
-import Tags from "@components/pages/home/Tags";
-import Threads from "@components/pages/home/Threads";
+import Home from "@components/pages/home/Home";
 
 export default function Page() {
   return (
     <>
       <HomeContextProvider>
-        <Tags />
-        <Threads />
+        <Home />
       </HomeContextProvider>
     </>
   );

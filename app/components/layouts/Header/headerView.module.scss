@@ -53,8 +53,11 @@
   border-radius: 10px;
   background-color: transparent;
   transition: background-color var(--bg-transition);
-  &:hover,
-  &:focus {
+  // &:hover,
+  // &:focus {
+  //   background-color: rgba(var(--background-hover));
+  // }
+  &:hover {
     background-color: rgba(var(--background-hover));
   }
   &:active {
@@ -73,8 +76,8 @@
     fill: rgb(var(--icon-faded));
     transition: fill var(--bg-transition);
   }
+  // &:focus .settingSvg,
   &:hover .settingSvg,
-  &:focus .settingSvg,
   &:active .settingSvg {
     fill: rgb(var(--icon));
   }

@@ -115,6 +115,15 @@ root
 
 - [x] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
 
+#### v1.1.6
+
+- [x] deleted unnecessary styles for focused buttons
+- [x] added a default loading component that renders before tags and threads are all loaded
+- [x] added styles for selected tags
+- [x] refactored components for home page
+- [x] added global SWR config wrapper to handle intervals
+- [x] added default loading timeout for home page
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)

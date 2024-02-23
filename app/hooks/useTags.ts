@@ -12,9 +12,7 @@ export interface TagResponse {
 
 export default function useTags() {
   let status: Status = "idle";
-  const { data, isLoading } = useSWR<TagResponse>("/api/tags", fetcher.get, {
-    revalidateOnFocus: false,
-  });
+  const { data, isLoading } = useSWR<TagResponse>("/api/tags", fetcher.get);
 
   if (isLoading) {
     status = "loading";
