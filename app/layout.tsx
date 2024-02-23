@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import InitWrapper from "./components/layouts/InitWrapper";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
@@ -57,7 +58,7 @@ export default function RootLayout({
         suppressHydrationWarning={true}
         className={`${notoSansKR.className} dark`}
       >
-        {children}
+        <InitWrapper>{children}</InitWrapper>
       </body>
       {gaId.length > 0 && process.env.NODE_ENV === "production" ? (
         <GoogleAnalytics gaId={gaId} />

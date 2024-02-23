@@ -3,15 +3,16 @@
 import React from "react";
 import { RecoilRoot } from "recoil";
 import { SWRConfig } from "swr";
-import Header from "@components/layouts/Header";
-import InitScreenMode from "@components/layouts/InitScreenMode";
-import InitLanguageMode from "@components/layouts/InitLanguageMode";
+import Header from "./Header";
+import InitScreenMode from "./InitScreenMode";
+import InitLanguageMode from "./InitLanguageMode";
+import InitDefaultLoading from "./InitDefaultLoading";
 
 type Props = {
   children: React.ReactNode;
 };
 
-export default function Template({ children }: Props) {
+export default function InitWrapper({ children }: Props) {
   return (
     <>
       <RecoilRoot>
@@ -26,6 +27,7 @@ export default function Template({ children }: Props) {
           <main>{children}</main>
           <InitScreenMode />
           <InitLanguageMode />
+          <InitDefaultLoading />
         </SWRConfig>
       </RecoilRoot>
     </>
