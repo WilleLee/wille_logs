@@ -113,7 +113,7 @@ root
 
 #### v1.1.5
 
-- [ ] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
+- [x] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
 
 ### Notable Issues
 
