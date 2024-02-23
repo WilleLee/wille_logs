@@ -1,10 +1,10 @@
 "use client";
 
-import { IThread } from "@models/ThreadModel";
 import React, { AllHTMLAttributes } from "react";
+import { IThread } from "@models/ThreadModel";
 import styles from "./threadsListView.module.scss";
-import TransparentButton from "@/components/buttons/TransparentButton";
-import CopySvg from "@/components/svgs/CopySvg";
+import TransparentButton from "@components/buttons/TransparentButton";
+import CopySvg from "@components/svgs/CopySvg";
 
 export interface IThreadsListProps
   extends React.AllHTMLAttributes<HTMLUListElement> {

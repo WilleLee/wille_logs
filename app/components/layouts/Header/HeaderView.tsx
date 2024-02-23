@@ -37,6 +37,7 @@ HeaderView.Logo = React.memo(function Logo({
         src={avatar128}
         alt="home"
         onClick={handleClick}
+        priority
       />
     </div>
   );

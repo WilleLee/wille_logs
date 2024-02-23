@@ -38,8 +38,8 @@
           fill: rgb(var(--icon-faded));
           transition: fill var(--bg-transition);
         }
+        // &:focus .copySvg,
         &:hover .copySvg,
-        &:focus .copySvg,
         &:active .copySvg {
           fill: rgb(var(--icon));
         }

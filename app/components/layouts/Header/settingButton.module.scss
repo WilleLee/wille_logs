@@ -9,8 +9,8 @@
     fill: rgb(var(--icon-faded));
     transition: fill var(--bg-transition);
   }
+  //&:focus .settingSvg,
   &:hover .settingSvg,
-  &:focus .settingSvg,
   &:active .settingSvg {
     fill: rgb(var(--icon));
   }

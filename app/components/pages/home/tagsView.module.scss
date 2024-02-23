@@ -4,7 +4,7 @@
   margin-bottom: 16px;
 }
 
-.ul {
+.list {
   margin-top: 8px;
   width: 100%;
   height: auto;
@@ -18,8 +18,14 @@
   grid-template-rows: auto;
   transition: max-height var(--slow-transition);
 
-  &.isActive {
+  &.active {
     max-height: 100vh;
+  }
+}
+
+.item {
+  > button {
+    font-size: 12px !important;
   }
 }
 
@@ -35,19 +41,14 @@
   transition: background-color var(--bg-transition);
   font-size: 8px !important;
 
-  &:focus,
-  &:active,
-  &:hover {
+  &:hover,
+  &:active {
     background-color: rgba(var(--background-active));
   }
 
   &.hidden {
     display: none;
   }
-}
-
-.li > button {
-  font-size: 12px !important;
 }
 
 @media screen and (min-width: 700px) {
@@ -60,7 +61,7 @@
 }
 
 @media screen and (min-width: 512px) {
-  .li > button {
+  .item > button {
     font-size: 15px !important;
   }
 }

@@ -1,15 +1,18 @@
 "use client";
 
-import useTags from "@hooks/useTags";
-import React from "react";
-import { homeActions, useHomeDispatch } from "./HomeContextProvider";
+import React, { useState } from "react";
+import { ITag } from "@/models/TagModel";
+import { homeActions, useHome, useHomeDispatch } from "./HomeContextProvider";
+import TagsView from "./TagsView";
 
-import TagsList from "./TagsList";
-import LoadingBox from "@/components/loading/LoadingBox";
+type Props = {
+  tags: ITag[];
+};
 
-const Tags = () => {
-  const { tags, status } = useTags();
+const Tags = ({ tags = [] }: Props) => {
+  const [showAll, setShowAll] = useState(false);
   const homeDispatch = useHomeDispatch();
+  const { selectedTagId } = useHome();
   function handleClickTag(tagId: string) {
     if (homeDispatch) {
       homeDispatch(homeActions.setSelectedTagId(tagId));
@@ -17,15 +20,24 @@ const Tags = () => {
   }
   return (
     <>
-      {status === "success" ? (
-        tags.length > 0 ? (
-          <TagsList tags={tags} handleClickTag={handleClickTag} />
-        ) : (
-          <p>no tag</p>
-        )
-      ) : (
-        <LoadingBox height="80px" />
-      )}
+      {tags.length > 0 ? (
+        <TagsView>
+          <TagsView.List isActive={tags.length <= 3 || showAll}>
+            {tags.map((tag) => (
+              <TagsView.Item
+                key={tag._id}
+                tag={tag}
+                isSelected={tag._id === selectedTagId}
+                handleClickTag={handleClickTag}
+              />
+            ))}
+          </TagsView.List>
+          <TagsView.ShowAllButton
+            isHidden={tags.length <= 3}
+            onClick={() => setShowAll((prev) => !prev)}
+          />
+        </TagsView>
+      ) : null}
     </>
   );
 };

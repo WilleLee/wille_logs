@@ -115,6 +115,16 @@ root
 
 - [x] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
 
+#### v1.1.6
+
+- [x] deleted unnecessary styles for focused buttons
+- [x] added a default loading component that renders before tags and threads are all loaded
+- [x] added styles for selected tags
+- [x] refactored components for home page
+- [x] added global SWR config wrapper to handle intervals
+- [x] added default loading timeout for home page
+- [x] fixed the issue of unnecessary initializations of recoil root by creating `InitWrapper` and removing `template.ts`
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
@@ -123,3 +133,4 @@ root
 4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
 5. event target and current target do not match if state changes that trigger content of a component to be switched happen by click event.
 6. box-sizing is not inherited in production mode.
+7. recoil root on template.ts is initialized every time users navigate to another page, which causes the loss of the latest state.
