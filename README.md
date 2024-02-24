@@ -125,6 +125,10 @@ root
 - [x] added default loading timeout for home page
 - [x] fixed the issue of unnecessary initializations of recoil root by creating `InitWrapper` and removing `template.ts`
 
+#### v1.1.7
+
+- [ ] fix the issue that the html background does not match the theme mode
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
