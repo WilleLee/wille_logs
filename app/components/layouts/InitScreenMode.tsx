@@ -23,11 +23,17 @@ export default function InitScreenMode() {
   }, [setScreenMode]);
 
   useEffect(() => {
-    // console.log("screen mode", screenMode);
+    const html = document.querySelector("html");
     if (screenMode === "dark") {
       document.body.classList.add("dark");
+      if (html instanceof HTMLElement) {
+        html.style.backgroundColor = "rgb(16, 16, 16)";
+      }
     } else {
       document.body.classList.remove("dark");
+      if (html instanceof HTMLElement) {
+        html.style.backgroundColor = "rgb(255, 255, 255)";
+      }
     }
   }, [screenMode]);
   return null;
