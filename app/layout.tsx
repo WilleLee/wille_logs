@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -45,6 +45,14 @@ export const metadata: Metadata = {
     images: ogBaseUrl + "/images/avatar128.png",
     url: ogBaseUrl,
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#101010" },
+  ],
+  viewportFit: "cover",
 };
 
 export default function RootLayout({
