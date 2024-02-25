@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import InitWrapper from "./components/layouts/InitWrapper";
+import cookies from "./libs/cookies";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
@@ -45,11 +46,17 @@ export const metadata: Metadata = {
     images: ogBaseUrl + "/images/avatar128.png",
     url: ogBaseUrl,
   },
+  appleWebApp: {
+    capable: true,
+  },
+  applicationName: "Wille logs...",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#101010",
   viewportFit: "cover",
+  maximumScale: 1.0,
+  minimumScale: 1.0,
+  userScalable: false,
 };
 
 export default function RootLayout({

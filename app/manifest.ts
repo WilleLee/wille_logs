@@ -69,5 +69,91 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
       },
     ],
+    shortcuts: [
+      {
+        name: "Wille logs...",
+        short_name: "Home",
+        url: "/",
+        icons: [
+          {
+            src: "/logos/avatar48.png",
+            sizes: "48x48",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar72.png",
+            sizes: "72x72",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar144.png",
+            sizes: "144x144",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar168.png",
+            sizes: "168x168",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+      {
+        name: "Wille's resumé",
+        short_name: "Wille",
+        url: "/wille",
+        icons: [
+          {
+            src: "/logos/avatar48.png",
+            sizes: "48x48",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar72.png",
+            sizes: "72x72",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar144.png",
+            sizes: "144x144",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar168.png",
+            sizes: "168x168",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar192.png",
+            sizes: "192x192",
+            type: "image/png",
+          },
+          {
+            src: "/logos/avatar512.png",
+            sizes: "512x512",
+            type: "image/png",
+          },
+        ],
+      },
+    ],
   };
 }

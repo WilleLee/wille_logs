@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   try {
     await connectDB();
     const tags = await Tag.find({});
-    console.log(tags);
+    // console.log(tags);
     return NextResponse.json({
       data: tags,
       message: "",

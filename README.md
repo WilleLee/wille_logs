@@ -127,7 +127,7 @@ root
 
 #### v1.1.7
 
-- [ ] fix the issue that the html background does not match the theme mode
+- [x] fix the issue that the theme-color appears when the content(main) is overscrolling (fixed header -> sticky header)
 
 ### Notable Issues
 

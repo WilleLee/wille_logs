@@ -25,16 +25,8 @@ export default function InitScreenMode() {
   useEffect(() => {
     if (screenMode === "dark") {
       document.body.classList.add("dark");
-      const meta = document.querySelector("meta[name=theme-color]");
-      if (meta instanceof HTMLMetaElement) {
-        meta.content = "#101010";
-      }
     } else {
       document.body.classList.remove("dark");
-      const meta = document.querySelector("meta[name=theme-color]");
-      if (meta instanceof HTMLMetaElement) {
-        meta.content = "#ffffff";
-      }
     }
   }, [screenMode]);
   return null;

@@ -12,6 +12,7 @@ html {
 }
 
 body {
+  position: relative;
   width: 100%;
   color: rgb(var(--text));
   background-color: rgb(var(--background));
@@ -19,7 +20,7 @@ body {
 }
 
 main {
-  padding-top: 74px;
+  // padding-top: 74px;
   width: 100%;
   margin: 0 auto;
 }
