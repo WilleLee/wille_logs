@@ -16,6 +16,7 @@ body {
   color: rgb(var(--text));
   background: rgb(var(--background));
   overflow-x: hidden;
+  overscroll-behavior-y: none;
 }
 
 main {
