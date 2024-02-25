@@ -9,12 +9,13 @@
 html {
   -webkit-font-smoothing: antialiased;
   touch-action: manipulation;
+  background-color: orange;
 }
 
 body {
   width: 100%;
   color: rgb(var(--text));
-  background: rgb(var(--background));
+  background-color: rgb(var(--background));
   overflow-x: hidden;
   overscroll-behavior-y: none;
 }
