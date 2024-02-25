@@ -9,7 +9,6 @@
 html {
   -webkit-font-smoothing: antialiased;
   touch-action: manipulation;
-  background-color: orange;
 }
 
 body {
@@ -17,7 +16,6 @@ body {
   color: rgb(var(--text));
   background-color: rgb(var(--background));
   overflow-x: hidden;
-  overscroll-behavior-y: none;
 }
 
 main {
