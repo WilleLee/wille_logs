@@ -136,6 +136,10 @@ root
 - [x] dbs for development and production have been separated to improve dev test environment
 - [x] added sorting functionality for tags (name: 1)
 
+#### v1.1.9
+
+- [x] added touchstart event handler for `useClickOutside` hook
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)

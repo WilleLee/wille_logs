@@ -43,7 +43,7 @@ const SettingButton = React.memo(function SettingButton({
   }
 
   const handleClickOutside = useCallback(
-    (e: MouseEvent) => {
+    (e: MouseEvent | TouchEvent) => {
       if (e.target instanceof HTMLElement) {
         if (
           e.target.dataset.id === "setting-design" ||

@@ -1,6 +1,6 @@
 {
   "name": "wille_logs",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "private": true,
   "scripts": {
     "dev:refresh": "rm -rf .next && rm -rf node_modules && npm install && next dev",
