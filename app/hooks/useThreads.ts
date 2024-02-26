@@ -4,6 +4,8 @@ import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+export const threadsApiUrl = "/api/threads";
+
 export interface ThreadResponse {
   message: string;
   status: number;
@@ -13,7 +15,7 @@ export interface ThreadResponse {
 const useThreads = () => {
   let status: Status = "idle";
   const { data, isLoading } = useSWR<ThreadResponse>(
-    "/api/threads",
+    threadsApiUrl,
     fetcher.get,
   );
 

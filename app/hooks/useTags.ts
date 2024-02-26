@@ -4,6 +4,8 @@ import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
 
+export const tagsApiUrl = "/api/tags";
+
 export interface TagResponse {
   message: string;
   status: number;
@@ -12,7 +14,7 @@ export interface TagResponse {
 
 export default function useTags() {
   let status: Status = "idle";
-  const { data, isLoading } = useSWR<TagResponse>("/api/tags", fetcher.get);
+  const { data, isLoading } = useSWR<TagResponse>(tagsApiUrl, fetcher.get);
 
   if (isLoading) {
     status = "loading";
