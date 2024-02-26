@@ -3,6 +3,7 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import InitWrapper from "./components/layouts/InitWrapper";
+import Script from "next/script";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
@@ -75,6 +76,11 @@ export default function RootLayout({
       {gaId.length > 0 && process.env.NODE_ENV === "production" ? (
         <GoogleAnalytics gaId={gaId} />
       ) : null}
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9395473287553594"
+        crossOrigin="anonymous"
+      />
     </html>
   );
 }
