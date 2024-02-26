@@ -1,6 +1,6 @@
+import useSWR from "swr";
 import fetcher from "@libs/fetcher";
 import { ITag } from "@models/TagModel";
-import useSWR from "swr";
 
 type Status = "idle" | "loading" | "success" | "error";
 
