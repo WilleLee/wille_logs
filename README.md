@@ -128,6 +128,7 @@ root
 #### v1.1.7
 
 - [x] fix the issue that the theme-color appears when the content(main) is overscrolling (fixed header -> sticky header)
+- [x] added shortcuts for PWA configuration
 
 ### Notable Issues
 

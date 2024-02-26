@@ -3,7 +3,6 @@ import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import InitWrapper from "./components/layouts/InitWrapper";
-import cookies from "./libs/cookies";
 
 const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
 
