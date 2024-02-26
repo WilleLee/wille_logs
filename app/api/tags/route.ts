@@ -5,7 +5,9 @@ import { NextRequest, NextResponse } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     await connectDB();
-    const tags = await Tag.find({});
+    const tags = await Tag.find({}).sort({
+      name: 1,
+    });
     // console.log(tags);
     return NextResponse.json({
       data: tags,

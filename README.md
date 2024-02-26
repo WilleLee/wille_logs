@@ -133,7 +133,8 @@ root
 #### v1.1.8
 
 - [x] added mutation for tags and threads when a new thread is created
-- [ ] dbs for development and production have been separated to improve dev test environment
+- [x] dbs for development and production have been separated to improve dev test environment
+- [x] added sorting functionality for tags (name: 1)
 
 ### Notable Issues
 
