@@ -130,6 +130,12 @@ root
 - [x] fix the issue that the theme-color appears when the content(main) is overscrolling (fixed header -> sticky header)
 - [x] added shortcuts for PWA configuration
 
+#### v1.1.8
+
+- [x] added mutation for tags and threads when a new thread is created
+- [x] dbs for development and production have been separated to improve dev test environment
+- [x] added sorting functionality for tags (name: 1)
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)

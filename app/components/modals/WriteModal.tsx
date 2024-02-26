@@ -7,15 +7,19 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useSWRConfig } from "swr";
+import fetcher from "@libs/fetcher";
+import { IBook } from "@models/ThreadModel";
+import { threadsApiUrl } from "@hooks/useThreads";
+import { tagsApiUrl } from "@hooks/useTags";
 import Modal, { DefaultModalProps } from "./Modal";
 import Form from "@components/Form";
 import ContainedButton from "@components/buttons/ContainedButton";
-import { IBook } from "@/models/ThreadModel";
-import fetcher from "@/libs/fetcher";
 
 interface Props extends DefaultModalProps {}
 
 export default function WriteModal({ handleClose }: Props) {
+  const { mutate } = useSWRConfig();
   const titleRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
@@ -38,7 +42,7 @@ export default function WriteModal({ handleClose }: Props) {
     setLoading(true);
     const replacedTags = tags.replace(/,$/g, "");
     const tagsToArr = replacedTags.split(",").filter((tag) => tag.length > 0);
-    const { data, message } = await fetcher.post("/api/threads", {
+    const { data, message } = await fetcher.post(threadsApiUrl, {
       text,
       tags: tagsToArr,
       book,
@@ -49,6 +53,10 @@ export default function WriteModal({ handleClose }: Props) {
       return;
     }
     alert(message);
+    await mutate(threadsApiUrl);
+    if (tagsToArr.length > 0) {
+      await mutate(tagsApiUrl);
+    }
     handleClose();
   }
 
