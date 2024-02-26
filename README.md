@@ -133,6 +133,7 @@ root
 #### v1.1.8
 
 - [x] added mutation for tags and threads when a new thread is created
+- [ ] dbs for development and production have been separated to improve dev test environment
 
 ### Notable Issues
 
