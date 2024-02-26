@@ -76,11 +76,13 @@ export default function RootLayout({
       {gaId.length > 0 && process.env.NODE_ENV === "production" ? (
         <GoogleAnalytics gaId={gaId} />
       ) : null}
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9395473287553594"
-        crossOrigin="anonymous"
-      />
+      {process.env.NEXT_PUBLIC_MODE === "production" && (
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9395473287553594"
+          crossOrigin="anonymous"
+        />
+      )}
     </html>
   );
 }
