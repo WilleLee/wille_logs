@@ -15,7 +15,7 @@ export interface TagResponse {
 export default function useTags() {
   let status: Status = "idle";
   const { data, isLoading } = useSWR<TagResponse>(tagsApiUrl, fetcher.get);
-
+  console.log("tags data", data);
   if (isLoading) {
     status = "loading";
   } else if (data && data.status === 200) {
