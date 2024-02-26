@@ -14,7 +14,7 @@ export async function GET(request: NextRequest) {
     const threads = await Thread.find(tag ? { tags: { $in: [tag] } } : {})
       .populate("tags")
       .sort({ createdAt: -1 });
-    threads.map((t) => console.log(t.tags));
+    // threads.map((t) => console.log(t.tags));
     return NextResponse.json({
       data: threads,
       message: "",

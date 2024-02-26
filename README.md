@@ -125,6 +125,11 @@ root
 - [x] added default loading timeout for home page
 - [x] fixed the issue of unnecessary initializations of recoil root by creating `InitWrapper` and removing `template.ts`
 
+#### v1.1.7
+
+- [x] fix the issue that the theme-color appears when the content(main) is overscrolling (fixed header -> sticky header)
+- [x] added shortcuts for PWA configuration
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)

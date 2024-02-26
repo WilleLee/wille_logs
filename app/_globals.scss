@@ -12,14 +12,15 @@ html {
 }
 
 body {
+  position: relative;
   width: 100%;
   color: rgb(var(--text));
-  background: rgb(var(--background));
+  background-color: rgb(var(--background));
   overflow-x: hidden;
 }
 
 main {
-  padding-top: 74px;
+  // padding-top: 74px;
   width: 100%;
   margin: 0 auto;
 }

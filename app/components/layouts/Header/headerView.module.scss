@@ -6,7 +6,8 @@
   // grid-template-columns: 1fr 480px 1fr;
   grid-template-columns: 1fr 240px 1fr;
   transition: grid-template-columns var(--slow-transition);
-  position: fixed;
+  position: sticky;
+  position: -webkit-sticky;
   top: 0;
   left: 0;
   background-color: rgb(var(--background));

@@ -23,7 +23,6 @@ export default function InitScreenMode() {
   }, [setScreenMode]);
 
   useEffect(() => {
-    // console.log("screen mode", screenMode);
     if (screenMode === "dark") {
       document.body.classList.add("dark");
     } else {

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR } from "next/font/google";
 import "./_globals.scss";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -45,6 +45,17 @@ export const metadata: Metadata = {
     images: ogBaseUrl + "/images/avatar128.png",
     url: ogBaseUrl,
   },
+  appleWebApp: {
+    capable: true,
+  },
+  applicationName: "Wille logs...",
+};
+
+export const viewport: Viewport = {
+  viewportFit: "cover",
+  maximumScale: 1.0,
+  minimumScale: 1.0,
+  userScalable: false,
 };
 
 export default function RootLayout({
