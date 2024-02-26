@@ -12,10 +12,12 @@ import Form from "@components/Form";
 import ContainedButton from "@components/buttons/ContainedButton";
 import { IBook } from "@/models/ThreadModel";
 import fetcher from "@/libs/fetcher";
+import { useSWRConfig } from "swr";
 
 interface Props extends DefaultModalProps {}
 
 export default function WriteModal({ handleClose }: Props) {
+  const { mutate } = useSWRConfig();
   const titleRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(false);
   const [text, setText] = useState("");
@@ -49,6 +51,10 @@ export default function WriteModal({ handleClose }: Props) {
       return;
     }
     alert(message);
+    await mutate("/api/threads");
+    if (tagsToArr.length > 0) {
+      await mutate("/api/tags");
+    }
     handleClose();
   }
 
