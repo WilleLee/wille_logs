@@ -3,7 +3,8 @@
 import React from "react";
 import Image from "next/image";
 import { useRecoilValue } from "recoil";
-import profile262 from "@images/profile262.png";
+// import profile262 from "@images/profile262.png";
+import avatar from "@images/avatar128.png";
 import styles from "./profile.module.scss";
 import ProfileLinks from "./ProfileLinks";
 import { languageModeState } from "@/atoms/languageModeState";
@@ -41,7 +42,7 @@ export default function Profile({}: Props) {
           </p>
         </div>
         <div>
-          <Image src={profile262} fill sizes="64px" alt="profile" />
+          <Image src={avatar} fill sizes="64px" alt="profile" />
         </div>
       </div>
       <div className={styles.description}>
