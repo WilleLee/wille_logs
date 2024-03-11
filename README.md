@@ -150,6 +150,7 @@ root
 - [x] added a link to the github docs repository in the profile
 - [x] changed the order of projects in the career section
 - [x] added teams and teamworks tags to the personal projects section
+- [x] edited the scrollbar style
 
 ### Notable Issues
 

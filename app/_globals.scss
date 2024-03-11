@@ -4,6 +4,8 @@
 * {
   box-sizing: border-box;
   transition: background-color var(--bg-transition);
+  scrollbar-color: #b0b0b0 transparent;
+  scrollbar-width: thin;
 }
 
 html {
