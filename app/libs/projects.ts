@@ -9,6 +9,8 @@ export interface IProject {
   imageSrc?: StaticImageData;
   link: string;
   githubLink?: string;
+  startedAt: string;
+  endedAt?: string;
   roles: string[];
   languages: {
     name: string;
@@ -32,6 +34,7 @@ export const projects: IProject[] = [
     imageSrc: avatar128,
     link: "https://wille-logs.vercel.app/",
     githubLink: "https://github.com/WilleLee/wille_logs",
+    startedAt: "2023.12",
     roles: ["fe", "be", "devOps"],
     languages: [
       {
@@ -97,80 +100,76 @@ export const projects: IProject[] = [
       ],
     },
   },
-  // {
-  //   _id: "1",
-  //   title: "LOA IN",
-  //   //imageSrc: avatar128,
-  //   link: "https://github.com/KwanjungKim/Loa-project",
-  //   githubLink: "https://github.com/KwanjungKim/Loa-project",
-  //   roles: ["fe"],
-  //   languages: [
-  //     {
-  //       name: "typescript",
-  //       backgroundColor: stacks.typescript.backgroundColor,
-  //       color: stacks.typescript.color,
-  //     },
-  //     {
-  //       name: "scss",
-  //       backgroundColor: stacks.scss.backgroundColor,
-  //       color: stacks.scss.color,
-  //     },
-  //   ],
-  //   stacks: [
-  //     {
-  //       name: "react",
-  //       backgroundColor: stacks.react.backgroundColor,
-  //       color: stacks.react.color,
-  //     },
-  //     {
-  //       name: "recoil",
-  //       backgroundColor: stacks.recoil.backgroundColor,
-  //       color: stacks.recoil.color,
-  //     },
-  //     {
-  //       name: "axios",
-  //       backgroundColor: stacks.axios.backgroundColor,
-  //       color: stacks.axios.color,
-  //     },
-  //     {
-  //       name: "SWR",
-  //       backgroundColor: stacks.swr.backgroundColor,
-  //       color: stacks.swr.color,
-  //     },
-  //     {
-  //       name: "vite",
-  //       backgroundColor: stacks.vite.backgroundColor,
-  //       color: stacks.vite.color,
-  //     },
-  //     {
-  //       name: "vitest",
-  //       backgroundColor: stacks.vitest.backgroundColor,
-  //       color: stacks.vitest.color,
-  //     },
-  //   ],
-  //   descriptions: {
-  //     en: [
-  //       "a blog web app to save daily book notes",
-  //       "full stack application with next.js and mongodb",
-  //       "supports PWA, responsive design, and web accessibility",
-  //       "supports Ko/En and light/dark mode by recoil states",
-  //     ],
-  //     ko: [
-  //       "감명 받은 책 내용을 저장하는 블로그 웹앱",
-  //       "넥스트와 몽고DB를 사용한 풀스택 어플리케이션",
-  //       "PWA, 반응형 디자인, 웹 접근성 지원",
-  //       "recoil 상태에 의한 한/영 및 라이트/다크 모드 전환 지원",
-  //     ],
-  //   },
-  //   teams: ["fe", "be", "devOps"],
-  //   teamworks: ["gitHub"],
-  // },
+  {
+    _id: "1",
+    title: "LOA IN",
+    link: "https://github.com/KwanjungKim/Loa-project",
+    githubLink: "https://github.com/KwanjungKim/Loa-project",
+    startedAt: "2023.10",
+    roles: ["fe"],
+    languages: [
+      {
+        name: "typescript",
+        backgroundColor: stacks.typescript.backgroundColor,
+        color: stacks.typescript.color,
+      },
+      {
+        name: "scss",
+        backgroundColor: stacks.scss.backgroundColor,
+        color: stacks.scss.color,
+      },
+    ],
+    stacks: [
+      {
+        name: "react",
+        backgroundColor: stacks.react.backgroundColor,
+        color: stacks.react.color,
+      },
+      {
+        name: "recoil",
+        backgroundColor: stacks.recoil.backgroundColor,
+        color: stacks.recoil.color,
+      },
+      {
+        name: "axios",
+        backgroundColor: stacks.axios.backgroundColor,
+        color: stacks.axios.color,
+      },
+      {
+        name: "SWR",
+        backgroundColor: stacks.swr.backgroundColor,
+        color: stacks.swr.color,
+      },
+      {
+        name: "vite",
+        backgroundColor: stacks.vite.backgroundColor,
+        color: stacks.vite.color,
+      },
+      {
+        name: "vitest",
+        backgroundColor: stacks.vitest.backgroundColor,
+        color: stacks.vitest.color,
+      },
+    ],
+    descriptions: {
+      en: [
+        "a web application to let people promote and apply for raids' plans for the game Lost Ark",
+      ],
+      ko: [
+        "로스트 아크 레이드 계획을 홍보하고 상호 신청할 수 있도록 하는 웹 어플리케이션",
+      ],
+    },
+    teams: ["fe", "be", "devOps"],
+    teamworks: ["gitHub"],
+  },
   {
     _id: "2",
     title: "rok supporter",
     imageSrc: rokSupporterLogo,
     link: "https://github.com/WilleLee/rok-supporter",
     githubLink: "https://github.com/WilleLee/rok-supporter",
+    startedAt: "2022.11",
+    endedAt: "2023.01",
     roles: ["fe"],
     languages: [
       {

@@ -151,6 +151,10 @@ root
 - [x] changed the order of projects in the career section
 - [x] added teams and teamworks tags to the personal projects section
 - [x] edited the scrollbar style
+  
+#### v1.1.12
+
+- [x] added more data t the personal projects section
 
 ### Notable Issues
 
