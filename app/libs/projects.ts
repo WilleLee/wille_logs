@@ -97,74 +97,74 @@ export const projects: IProject[] = [
       ],
     },
   },
-  {
-    _id: "1",
-    title: "LOA IN",
-    //imageSrc: avatar128,
-    link: "https://github.com/KwanjungKim/Loa-project",
-    githubLink: "https://github.com/KwanjungKim/Loa-project",
-    roles: ["fe"],
-    languages: [
-      {
-        name: "typescript",
-        backgroundColor: stacks.typescript.backgroundColor,
-        color: stacks.typescript.color,
-      },
-      {
-        name: "scss",
-        backgroundColor: stacks.scss.backgroundColor,
-        color: stacks.scss.color,
-      },
-    ],
-    stacks: [
-      {
-        name: "react",
-        backgroundColor: stacks.react.backgroundColor,
-        color: stacks.react.color,
-      },
-      {
-        name: "recoil",
-        backgroundColor: stacks.recoil.backgroundColor,
-        color: stacks.recoil.color,
-      },
-      {
-        name: "axios",
-        backgroundColor: stacks.axios.backgroundColor,
-        color: stacks.axios.color,
-      },
-      {
-        name: "SWR",
-        backgroundColor: stacks.swr.backgroundColor,
-        color: stacks.swr.color,
-      },
-      {
-        name: "vite",
-        backgroundColor: stacks.vite.backgroundColor,
-        color: stacks.vite.color,
-      },
-      {
-        name: "vitest",
-        backgroundColor: stacks.vitest.backgroundColor,
-        color: stacks.vitest.color,
-      },
-    ],
-    descriptions: {
-      en: [
-        "a blog web app to save daily book notes",
-        "full stack application with next.js and mongodb",
-        "supports PWA, responsive design, and web accessibility",
-        "supports Ko/En and light/dark mode by recoil states",
-      ],
-      ko: [
-        "감명 받은 책 내용을 저장하는 블로그 웹앱",
-        "넥스트와 몽고DB를 사용한 풀스택 어플리케이션",
-        "PWA, 반응형 디자인, 웹 접근성 지원",
-        "recoil 상태에 의한 한/영 및 라이트/다크 모드 전환 지원",
-      ],
-    },
-    teams: ["fe", "be", "devOps"],
-    teamworks: ["gitHub"],
-  },
+  // {
+  //   _id: "1",
+  //   title: "LOA IN",
+  //   //imageSrc: avatar128,
+  //   link: "https://github.com/KwanjungKim/Loa-project",
+  //   githubLink: "https://github.com/KwanjungKim/Loa-project",
+  //   roles: ["fe"],
+  //   languages: [
+  //     {
+  //       name: "typescript",
+  //       backgroundColor: stacks.typescript.backgroundColor,
+  //       color: stacks.typescript.color,
+  //     },
+  //     {
+  //       name: "scss",
+  //       backgroundColor: stacks.scss.backgroundColor,
+  //       color: stacks.scss.color,
+  //     },
+  //   ],
+  //   stacks: [
+  //     {
+  //       name: "react",
+  //       backgroundColor: stacks.react.backgroundColor,
+  //       color: stacks.react.color,
+  //     },
+  //     {
+  //       name: "recoil",
+  //       backgroundColor: stacks.recoil.backgroundColor,
+  //       color: stacks.recoil.color,
+  //     },
+  //     {
+  //       name: "axios",
+  //       backgroundColor: stacks.axios.backgroundColor,
+  //       color: stacks.axios.color,
+  //     },
+  //     {
+  //       name: "SWR",
+  //       backgroundColor: stacks.swr.backgroundColor,
+  //       color: stacks.swr.color,
+  //     },
+  //     {
+  //       name: "vite",
+  //       backgroundColor: stacks.vite.backgroundColor,
+  //       color: stacks.vite.color,
+  //     },
+  //     {
+  //       name: "vitest",
+  //       backgroundColor: stacks.vitest.backgroundColor,
+  //       color: stacks.vitest.color,
+  //     },
+  //   ],
+  //   descriptions: {
+  //     en: [
+  //       "a blog web app to save daily book notes",
+  //       "full stack application with next.js and mongodb",
+  //       "supports PWA, responsive design, and web accessibility",
+  //       "supports Ko/En and light/dark mode by recoil states",
+  //     ],
+  //     ko: [
+  //       "감명 받은 책 내용을 저장하는 블로그 웹앱",
+  //       "넥스트와 몽고DB를 사용한 풀스택 어플리케이션",
+  //       "PWA, 반응형 디자인, 웹 접근성 지원",
+  //       "recoil 상태에 의한 한/영 및 라이트/다크 모드 전환 지원",
+  //     ],
+  //   },
+  //   teams: ["fe", "be", "devOps"],
+  //   teamworks: ["gitHub"],
+  // },
   {
     _id: "2",
     title: "rok supporter",
