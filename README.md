@@ -145,6 +145,12 @@ root
 - [x] edited font size by media query for the tag buttons
 - [x] changed the picture for the profile (profile to avatar)
 
+#### v1.1.11
+
+- [x] added a link to the github docs repository in the profile
+- [x] changed the order of projects in the career section
+- [x] added teams and teamworks tags to the personal projects section
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
