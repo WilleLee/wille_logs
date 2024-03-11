@@ -22,9 +22,9 @@ const ProfileLinks = React.memo(function ProfileLinks() {
         <a href="https://www.instagram.com/wille_lee_reactive/" target="_blank">
           <InstagramSvg width="28" />
         </a>
-        <a href="https://www.threads.net/@wille_lee_reactive" target="_blank">
+        {/* <a href="https://www.threads.net/@wille_lee_reactive" target="_blank">
           <ThreadsSvg width="28" />
-        </a>
+        </a> */}
       </div>
     </div>
   );
