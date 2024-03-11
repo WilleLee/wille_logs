@@ -142,8 +142,8 @@ root
 
 #### v1.1.10
 
-- [ ] edited font size by media query for the tag buttons
-- [ ] changed the picture for the profile (profile to avatar)
+- [x] edited font size by media query for the tag buttons
+- [x] changed the picture for the profile (profile to avatar)
 
 ### Notable Issues
 
