@@ -15,7 +15,7 @@
   row-gap: 8px;
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
+  // grid-template-rows: auto;
   transition: max-height var(--slow-transition);
 
   &.active {
@@ -25,7 +25,8 @@
 
 .item {
   > button {
-    font-size: 12px !important;
+    font-size: 8px !important;
+    font-weight: 800;
   }
 }
 
@@ -58,10 +59,13 @@
   .showAllButton {
     height: 14px;
   }
+  .item > button {
+    font-size: 15px !important;
+  }
 }
 
 @media screen and (min-width: 512px) {
   .item > button {
-    font-size: 15px !important;
+    font-size: 12px !important;
   }
 }
