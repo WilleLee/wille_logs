@@ -25,7 +25,7 @@ export const stacks = {
   },
   axios: {
     backgroundColor: "#671cde",
-    color: "#000000",
+    color: "#ffffff",
   },
   reactQuery: {
     backgroundColor: "#ef4444",
@@ -77,6 +77,10 @@ export const stacks = {
   },
   zustand: {
     backgroundColor: "#000000",
+    color: "#ffffff",
+  },
+  vite: {
+    backgroundColor: "#646cff",
     color: "#ffffff",
   },
 };
