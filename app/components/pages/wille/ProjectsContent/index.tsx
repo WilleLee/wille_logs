@@ -22,12 +22,14 @@ const ProjectsContent = React.memo(function ProjectsContent({
       {projects.map((project) => (
         <ThreadedBox key={project._id}>
           <div>
-            <Image
-              className={styles.image}
-              src={project.imageSrc as StaticImageData}
-              width={36}
-              alt={project.title}
-            />
+            {project.imageSrc && (
+              <Image
+                className={styles.image}
+                src={project.imageSrc as StaticImageData}
+                width={36}
+                alt={project.title}
+              />
+            )}
           </div>
           <div className={styles.contentWrapper}>
             <div className={styles.header}>
@@ -91,6 +93,26 @@ const ProjectsContent = React.memo(function ProjectsContent({
                   ))}
                 </BoxList>
               </li>
+              {project.teams && project.teams.length > 0 ? (
+                <li>
+                  <h5>{languageMode === "en" ? "Teams" : "팀"}</h5>
+                  <BoxList collapsed>
+                    {project.teams.map((team) => (
+                      <MetaBox key={team}>{team.toUpperCase()}</MetaBox>
+                    ))}
+                  </BoxList>
+                </li>
+              ) : null}
+              {project.teamworks && project.teamworks.length > 0 ? (
+                <li>
+                  <h5>{languageMode === "en" ? "Teamworks" : "협업"}</h5>
+                  <BoxList collapsed>
+                    {project.teamworks.map((teamwork) => (
+                      <MetaBox key={teamwork}>{teamwork}</MetaBox>
+                    ))}
+                  </BoxList>
+                </li>
+              ) : null}
             </ul>
           </div>
         </ThreadedBox>

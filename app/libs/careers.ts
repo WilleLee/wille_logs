@@ -50,6 +50,76 @@ export const careers: ICareer[] = [
     startDate: "2023.01",
     endDate: "2023.10",
     projects: [
+      
+      {
+        _id: "1",
+        title: "국제표준금거래소",
+        link: "https://goodgold.co.kr/",
+        roles: ["fe"],
+        languages: [
+          {
+            name: "javascript",
+            backgroundColor: stacks.javascript.backgroundColor,
+            color: stacks.javascript.color,
+          },
+          {
+            name: "scss",
+            backgroundColor: stacks.scss.backgroundColor,
+            color: stacks.scss.color,
+          },
+        ],
+        stacks: [
+          {
+            name: "next(pages)",
+            backgroundColor: stacks.next.backgroundColor,
+            color: stacks.next.color,
+          },
+          {
+            name: "react",
+            backgroundColor: stacks.react.backgroundColor,
+            color: stacks.react.color,
+          },
+          {
+            name: "axios",
+            backgroundColor: stacks.axios.backgroundColor,
+            color: stacks.axios.color,
+          },
+          {
+            name: "react-query",
+            backgroundColor: stacks.reactQuery.backgroundColor,
+            color: stacks.reactQuery.color,
+          },
+          {
+            name: "highcharts",
+            backgroundColor: stacks.highcharts.backgroundColor,
+            color: stacks.highcharts.color,
+          },
+          {
+            name: "styled-components",
+            backgroundColor: stacks.styledComponents.backgroundColor,
+            color: stacks.styledComponents.color,
+          },
+          {
+            name: "jenkins",
+            backgroundColor: stacks.jenkins.backgroundColor,
+            color: stacks.jenkins.color,
+          },
+        ],
+        teams: ["pm", "be", "fe", "design", "devops"],
+        teamworks: ["slack", "confluence", "gitLab", "notion", "figma"],
+        descriptions: {
+          en: [
+            "web frontend development for gold products shopping mall",
+            "server states caching by react-query",
+            "charts drawn with highcharts",
+          ],
+          ko: [
+            "금제품 쇼핑몰의 웹 프론트엔드 개발",
+            "react-query를 이용한 서버 상태 캐싱",
+            "highcharts를 이용한 차트 생성",
+          ],
+        },
+      },
       {
         _id: "0",
         title: "cashierest",
@@ -133,75 +203,6 @@ export const careers: ICareer[] = [
             "리덕스를 이용한 상태 관리",
             "react-query를 이용한 서버 상태 캐싱",
             "tradingview와 highcharts를 이용한 차트 생성",
-          ],
-        },
-      },
-      {
-        _id: "1",
-        title: "국제표준금거래소",
-        link: "https://goodgold.co.kr/",
-        roles: ["fe"],
-        languages: [
-          {
-            name: "javascript",
-            backgroundColor: stacks.javascript.backgroundColor,
-            color: stacks.javascript.color,
-          },
-          {
-            name: "scss",
-            backgroundColor: stacks.scss.backgroundColor,
-            color: stacks.scss.color,
-          },
-        ],
-        stacks: [
-          {
-            name: "next(pages)",
-            backgroundColor: stacks.next.backgroundColor,
-            color: stacks.next.color,
-          },
-          {
-            name: "react",
-            backgroundColor: stacks.react.backgroundColor,
-            color: stacks.react.color,
-          },
-          {
-            name: "axios",
-            backgroundColor: stacks.axios.backgroundColor,
-            color: stacks.axios.color,
-          },
-          {
-            name: "react-query",
-            backgroundColor: stacks.reactQuery.backgroundColor,
-            color: stacks.reactQuery.color,
-          },
-          {
-            name: "highcharts",
-            backgroundColor: stacks.highcharts.backgroundColor,
-            color: stacks.highcharts.color,
-          },
-          {
-            name: "styled-components",
-            backgroundColor: stacks.styledComponents.backgroundColor,
-            color: stacks.styledComponents.color,
-          },
-          {
-            name: "jenkins",
-            backgroundColor: stacks.jenkins.backgroundColor,
-            color: stacks.jenkins.color,
-          },
-        ],
-        teams: ["pm", "be", "fe", "design", "devops"],
-        teamworks: ["slack", "confluence", "gitLab", "notion", "figma"],
-        descriptions: {
-          en: [
-            "web frontend development for gold products shopping mall",
-            "server states caching by react-query",
-            "charts drawn with highcharts",
-          ],
-          ko: [
-            "금제품 쇼핑몰의 웹 프론트엔드 개발",
-            "react-query를 이용한 서버 상태 캐싱",
-            "highcharts를 이용한 차트 생성",
           ],
         },
       },
