@@ -9,6 +9,8 @@ export interface IProject {
   imageSrc?: StaticImageData;
   link: string;
   githubLink?: string;
+  startedAt: string;
+  endedAt?: string;
   roles: string[];
   languages: {
     name: string;
@@ -32,6 +34,7 @@ export const projects: IProject[] = [
     imageSrc: avatar128,
     link: "https://wille-logs.vercel.app/",
     githubLink: "https://github.com/WilleLee/wille_logs",
+    startedAt: "2023.12",
     roles: ["fe", "be", "devOps"],
     languages: [
       {
@@ -102,6 +105,7 @@ export const projects: IProject[] = [
     title: "LOA IN",
     link: "https://github.com/KwanjungKim/Loa-project",
     githubLink: "https://github.com/KwanjungKim/Loa-project",
+    startedAt: "2023.10",
     roles: ["fe"],
     languages: [
       {
@@ -164,6 +168,8 @@ export const projects: IProject[] = [
     imageSrc: rokSupporterLogo,
     link: "https://github.com/WilleLee/rok-supporter",
     githubLink: "https://github.com/WilleLee/rok-supporter",
+    startedAt: "2022.11",
+    endedAt: "2023.01",
     roles: ["fe"],
     languages: [
       {

@@ -43,7 +43,10 @@ const ProjectsContent = React.memo(function ProjectsContent({
                 </a>
               </h4>
               <div>
-                <p>2023.12 ~</p>
+                <p>
+                  {project.startedAt} ~
+                  {project.endedAt ? ` ${project.endedAt}` : ""}
+                </p>
 
                 <a
                   href={project.githubLink}
