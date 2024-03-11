@@ -140,6 +140,11 @@ root
 
 - [x] added touchstart event handler for `useClickOutside` hook
 
+#### v1.1.10
+
+- [ ] edited font size by media query for the tag buttons
+- [ ] changed the picture for the profile (profile to avatar)
+
 ### Notable Issues
 
 1. no route groups for the entry page (`/`)
