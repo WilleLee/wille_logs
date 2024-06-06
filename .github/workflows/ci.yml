@@ -22,8 +22,7 @@ jobs:
         run: yarn install
       - name: Typecheck
         run: yarn typecheck
-      - name: Check link
+      - name: Check lint
         run: yarn lint
       - name: Vitest
         run: yarn test
-
