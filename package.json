@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit -p ./tsconfig.json"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongoose": "^8.4.1",
     "next": "14.2.3",
     "nprogress": "^0.2.0",
     "react": "^18",

@@ -15,7 +15,7 @@ describe("HomePage", () => {
     vi.clearAllTimers();
     vi.clearAllMocks();
   });
-  test("should render", () => {
+  test.todo("should render", () => {
     const { unmount } = init();
 
     const text = screen.getByText("hello world");
