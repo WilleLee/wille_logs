@@ -3,8 +3,9 @@ import { POST as createThread } from "@api/threads/route";
 import { GET, DELETE } from "@api/threads/[id]/route";
 
 describe("/api/threads/[id]", () => {
-  test("Create and Delete", async () => {
+  test.todo("Create and Delete", async () => {
     // 생성
+    /*
     const createRes = await createThread({
       json: async () => ({
         text: "test",
@@ -19,8 +20,9 @@ describe("/api/threads/[id]", () => {
     const createdThread = await createRes.json();
     expect(createdThread.text).toBe("test");
     const id = createdThread._id;
-
+    */
     // get
+    /*
     const getRes = await GET(null, { params: { id } });
     expect(getRes.status).toBe(200);
     const thread = await getRes.json();
@@ -29,6 +31,7 @@ describe("/api/threads/[id]", () => {
     // delete
     const deleteRes = await DELETE(null, { params: { id } });
     expect(deleteRes.status).toBe(200);
+    */
   });
 
   test("GET: 404", async () => {

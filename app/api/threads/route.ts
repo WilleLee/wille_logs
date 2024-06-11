@@ -1,7 +1,7 @@
 import connectMongo from "@libs/connectMongo";
 import threadModel from "@libs/models/threadModel";
 import { IBook } from "@libs/types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -22,15 +22,15 @@ export async function GET() {
   }
 }
 
-export async function POST({
-  json,
-}: {
-  json: () => Promise<{
-    text: string;
-    tags?: string[];
-    book: IBook;
-  }>;
-}) {
+// interface PostRequest extends NextRequest {
+//   json: () => Promise<{
+//     text: string;
+//     tags?: string[];
+//     book: IBook;
+//   }>;
+// }
+
+export async function POST({ json }: NextRequest) {
   try {
     await connectMongo();
     const { text, tags, book } = await json();

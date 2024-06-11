@@ -26,3 +26,6 @@ jobs:
         run: yarn lint
       - name: Vitest
         run: yarn test
+        env:
+          MONGI_URI: ${{ secrets.MONGO_URI }}
+
