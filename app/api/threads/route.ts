@@ -1,54 +1,83 @@
+import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import threadModel from "@libs/models/threadModel";
-import { IBook } from "@libs/types";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
   try {
     await connectMongo();
 
-    // const threads = await threadModel.find({}).sort({ createdAt: -1 });
-    const threads = await threadModel.countDocuments();
+    const threads = await threadModel
+      .find({})
+      .sort({
+        createdAt: -1,
+      })
+      .then((data) => data)
+      .catch(() => null);
+    if (threads === null) {
+      return NextResponse.json(
+        {
+          error: errors.THREAD_NOT_FOUND.message,
+        },
+        {
+          status: errors.THREAD_NOT_FOUND.code,
+        },
+      );
+    }
 
-    console.log("threads at api", threads);
-
-    return NextResponse.json(threads);
-  } catch (err) {
-    return NextResponse.json(null, {
-      status: 500,
-      statusText:
-        "예상치 못한 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.",
+    return NextResponse.json(threads, {
+      status: 200,
     });
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: errors.UNDEFINED.message,
+      },
+      {
+        status: errors.UNDEFINED.code,
+      },
+    );
   }
 }
-
-// interface PostRequest extends NextRequest {
-//   json: () => Promise<{
-//     text: string;
-//     tags?: string[];
-//     book: IBook;
-//   }>;
-// }
 
 export async function POST({ json }: NextRequest) {
   try {
     await connectMongo();
-    const { text, tags, book } = await json();
-    console.log(tags);
-    const newThread = await threadModel.create({
+    const {
       text,
-      tags: [],
+      // tags,
       book,
-    });
+    } = await json();
+
+    const newThread = await threadModel
+      .create({
+        text,
+        tags: [],
+        book,
+      })
+      .then((data) => data)
+      .catch(() => null);
+
+    if (newThread === null) {
+      return NextResponse.json(
+        {
+          error: errors.THREAD_NOT_CREATED.message,
+        },
+        {
+          status: errors.THREAD_NOT_CREATED.code,
+        },
+      );
+    }
+
     return NextResponse.json(newThread, { status: 201 });
   } catch (err) {
     console.log(err);
     return NextResponse.json(
       {
-        error: "예상치 못한 오류가 발생했습니다.\n잠시 후 다시 시도해주세요.",
+        error: errors.UNDEFINED.message,
       },
       {
-        status: 500,
+        status: errors.UNDEFINED.code,
       },
     );
   }

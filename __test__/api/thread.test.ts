@@ -36,9 +36,7 @@ describe("/api/threads/[id]", () => {
 
   test("GET: 404", async () => {
     const getRes = await GET(
-      {
-        headers: new Headers(),
-      },
+      {},
       {
         params: { id: "60f4b3b3b3b3b3b3b3b3b3b3" },
       },

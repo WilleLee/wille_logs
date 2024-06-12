@@ -1,6 +1,7 @@
+import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import threadModel from "@libs/models/threadModel";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(_: any, { params }: { params: { id: string } }) {
   try {
@@ -11,11 +12,17 @@ export async function GET(_: any, { params }: { params: { id: string } }) {
       .then((data) => data)
       .catch(() => null);
     if (!thread) {
-      return NextResponse.json({ error: "Thread not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: errors.THREAD_NOT_FOUND.message },
+        { status: errors.THREAD_NOT_FOUND.code },
+      );
     }
     return NextResponse.json(thread, { status: 200 });
   } catch (err) {
-    return NextResponse.json({ error: "undefined error" }, { status: 500 });
+    return NextResponse.json(
+      { error: errors.UNDEFINED.message },
+      { status: errors.UNDEFINED.code },
+    );
   }
 }
 
@@ -30,11 +37,17 @@ export async function DELETE(_: any, { params }: { params: { id: string } }) {
       .catch(() => 0);
 
     if (deletedCount < 1) {
-      return NextResponse.json({ error: "Thread not found" }, { status: 404 });
+      return NextResponse.json(
+        { error: errors.THREAD_NOT_DELETED.message },
+        { status: errors.THREAD_NOT_DELETED.code },
+      );
     }
 
-    return NextResponse.json({ message: "Thread deleted" }, { status: 200 });
+    return NextResponse.json(null, { status: 200 });
   } catch (_) {
-    return NextResponse.json({ error: "" }, { status: 500 });
+    return NextResponse.json(
+      { error: errors.UNDEFINED.message },
+      { status: errors.UNDEFINED.code },
+    );
   }
 }
