@@ -1,6 +1,8 @@
 import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
+import tagModel from "@libs/models/tagModel";
 import threadModel from "@libs/models/threadModel";
+import { ITag } from "@libs/types";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET() {
@@ -43,16 +45,44 @@ export async function GET() {
 export async function POST({ json }: NextRequest) {
   try {
     await connectMongo();
-    const {
-      text,
-      // tags,
-      book,
-    } = await json();
+    const { text, tags, book } = await json();
+
+    let newTags = [];
+    const existingTags = await tagModel
+      .find({})
+      .then((data) => data as ITag[])
+      .catch(() => null);
+
+    if (existingTags === null) {
+      return NextResponse.json(
+        {
+          error: errors.TAG_NOT_FOUND.message,
+        },
+        {
+          status: errors.TAG_NOT_FOUND.code,
+        },
+      );
+    }
+
+    for (let i = 0; i < tags.length; i++) {
+      const tagName = tags[i] as string;
+      const existingTag = existingTags.find(
+        (t) => t.name === tagName.toUpperCase(),
+      );
+      if (!existingTag) {
+        const newTag = await tagModel.create({
+          name: tagName,
+        });
+        newTags.push(newTag._id);
+      } else {
+        newTags.push(existingTag._id);
+      }
+    }
 
     const newThread = await threadModel
       .create({
         text,
-        tags: [],
+        tags: newTags,
         book,
       })
       .then((data) => data)

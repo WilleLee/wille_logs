@@ -1,7 +1,7 @@
 import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import threadModel from "@libs/models/threadModel";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET(_: any, { params }: { params: { id: string } }) {
   try {

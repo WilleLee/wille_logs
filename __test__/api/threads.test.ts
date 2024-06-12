@@ -13,6 +13,7 @@ describe("/api/threads", () => {
     const reqObj = {
       json: async () => ({
         text: "test",
+        tags: ["tag1", "tag2"],
         book: {
           title: "testbook",
           author: "testauthor",
@@ -31,5 +32,34 @@ describe("/api/threads", () => {
     const thread = threads.find((t) => t._id === data._id);
     expect(thread).toBeDefined();
     expect(thread?._id).toStrictEqual(data._id);
+  });
+  test("POST: Bad Requests", async () => {
+    const reqObjEmptyText = {
+      json: async () => ({
+        text: "",
+        tags: [],
+        book: {
+          title: "test book (empty text)",
+          author: "testauthor",
+          page: 1,
+        },
+      }),
+    } as any;
+    const resEmptyText = await POST(reqObjEmptyText);
+    expect(resEmptyText.status).toBe(400);
+
+    const reqObjEmptyBookTitle = {
+      json: async () => ({
+        text: "test with empty book title",
+        tags: [],
+        book: {
+          title: "",
+          author: "testauthor",
+          page: 1,
+        },
+      }),
+    } as any;
+    const resEmptyBookTitle = await POST(reqObjEmptyBookTitle);
+    expect(resEmptyBookTitle.status).toBe(400);
   });
 });

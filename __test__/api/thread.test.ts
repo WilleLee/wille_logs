@@ -9,6 +9,7 @@ describe("/api/threads/[id]", () => {
     const reqObj = {
       json: async () => ({
         text: "test thread to delete",
+        tags: [],
         book: {
           title: "test book",
           author: "test author",
