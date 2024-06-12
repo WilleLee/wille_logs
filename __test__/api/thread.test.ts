@@ -1,37 +1,52 @@
 import { describe, expect, test } from "vitest";
-import { POST as createThread } from "@api/threads/route";
+import { POST as createThread, GET as getThreads } from "@api/threads/route";
 import { GET, DELETE } from "@api/threads/[id]/route";
+import { IThread } from "@libs/types";
 
 describe("/api/threads/[id]", () => {
-  test.todo("Create and Delete", async () => {
-    // 생성
-    /*
-    const createRes = await createThread({
+  test("Create, Get and Delete", async () => {
+    // Create a thread
+    const reqObj = {
       json: async () => ({
-        text: "test",
+        text: "test thread to delete",
         book: {
-          title: "testbook",
-          author: "testauthor",
-          page: 1,
+          title: "test book",
+          author: "test author",
+          page: 33,
         },
       }),
-    });
-    expect(createRes.status).toBe(201);
-    const createdThread = await createRes.json();
-    expect(createdThread.text).toBe("test");
-    const id = createdThread._id;
-    */
-    // get
-    /*
-    const getRes = await GET(null, { params: { id } });
-    expect(getRes.status).toBe(200);
-    const thread = await getRes.json();
-    expect(thread.text).toBe("test");
+    } as any;
 
-    // delete
-    const deleteRes = await DELETE(null, { params: { id } });
+    const postRes = await createThread(reqObj);
+    expect(postRes.status).toBe(201);
+    const createdThread = (await postRes.json()) as IThread;
+    expect(createdThread.text).toStrictEqual("test thread to delete");
+    const createdId = createdThread._id;
+
+    // Get the thread
+    const getRes = await GET(
+      {},
+      {
+        params: { id: createdId },
+      },
+    );
+    expect(getRes.status).toBe(200);
+    const thread = (await getRes.json()) as IThread;
+    expect(thread._id).toStrictEqual(createdId);
+
+    // Delete the thread
+    const deleteRes = await DELETE(
+      {},
+      {
+        params: { id: createdId },
+      },
+    );
     expect(deleteRes.status).toBe(200);
-    */
+
+    const threadsRes = await getThreads();
+    const threads = (await threadsRes.json()) as IThread[];
+    const foundT = threads.find((t) => t._id === createdId);
+    expect(foundT).not.toBeDefined();
   });
 
   test("GET: 404", async () => {
