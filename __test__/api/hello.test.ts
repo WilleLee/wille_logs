@@ -1,7 +1,29 @@
-import { GET } from "@api/route";
-import { expect, test } from "vitest";
+import { POST } from "@api/route";
+import { describe, expect, test } from "vitest";
 
-test("GET", async () => {
-  const data = await (await GET()).json();
-  expect(data?.hello).toStrictEqual("world");
+describe("/api", () => {
+  test("POST", async () => {
+    const reqObj = {
+      json: async () => {
+        return {
+          hello: "world",
+        };
+      },
+    } as any;
+    const response = await POST(reqObj);
+    expect(response.status).toBe(200);
+    const data = await response.json();
+    expect(data.hello).toStrictEqual("world");
+  });
+  test("POST: 400", async () => {
+    const reqObj = {
+      json: async () => {
+        return {
+          hello: "invalid",
+        };
+      },
+    } as any;
+    const response = await POST(reqObj);
+    expect(response.status).toBe(400);
+  });
 });
