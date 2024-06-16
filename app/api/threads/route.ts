@@ -2,6 +2,7 @@ import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import tagModel from "@libs/models/tagModel";
 import threadModel from "@libs/models/threadModel";
+import userModel from "@libs/models/userModel";
 import { ITag } from "@libs/types";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -45,13 +46,24 @@ export async function GET() {
 export async function POST({ json }: NextRequest) {
   try {
     await connectMongo();
-    const { text, tags, book } = await json();
+    const { text, tags, book, userId } = await json();
 
     let newTags = [];
     const existingTags = await tagModel
       .find({})
       .then((data) => data as ITag[])
       .catch(() => null);
+
+    if (!text || !tags || !book) {
+      return NextResponse.json(
+        {
+          error: errors.UNFULFILLED_INPUT.message,
+        },
+        {
+          status: errors.UNFULFILLED_INPUT.code,
+        },
+      );
+    }
 
     if (existingTags === null) {
       return NextResponse.json(
@@ -84,6 +96,7 @@ export async function POST({ json }: NextRequest) {
         text,
         tags: newTags,
         book,
+        creator: userId,
       })
       .then((data) => data)
       .catch(() => null);
@@ -98,6 +111,12 @@ export async function POST({ json }: NextRequest) {
         },
       );
     }
+
+    await userModel.findByIdAndUpdate(userId, {
+      $push: {
+        threads: newThread._id,
+      },
+    });
 
     return NextResponse.json(newThread, { status: 201 });
   } catch (err) {

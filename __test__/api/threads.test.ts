@@ -19,6 +19,7 @@ describe("/api/threads", () => {
           author: "testauthor",
           page: 1,
         },
+        userId: "666c132b483ffff921c13029",
       }),
     } as any;
 
@@ -43,6 +44,7 @@ describe("/api/threads", () => {
           author: "testauthor",
           page: 1,
         },
+        userId: "666c132b483ffff921c13029",
       }),
     } as any;
     const resEmptyText = await POST(reqObjEmptyText);
@@ -57,6 +59,7 @@ describe("/api/threads", () => {
           author: "testauthor",
           page: 1,
         },
+        userId: "666c132b483ffff921c13029",
       }),
     } as any;
     const resEmptyBookTitle = await POST(reqObjEmptyBookTitle);

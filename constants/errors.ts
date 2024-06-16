@@ -1,4 +1,12 @@
 export const errors = {
+  UNFULFILLED_INPUT: {
+    code: 400,
+    message: "필수 입력값이 비어있습니다.",
+  },
+  NO_SECRET: {
+    code: 401,
+    message: "올바른 시크릿을 발급받은 후 시도해주세요.",
+  },
   TAG_NOT_FOUND: {
     code: 404,
     message: "기존 태그 정보를 불러오는 데 실패했습니다.",
