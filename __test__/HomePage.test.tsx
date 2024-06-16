@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import HomePage from "@domain/page";
-import { PortalProvider } from "@/global-portal";
+import { PortalProvider } from "@app/global-portal";
 
 function init() {
   const { unmount } = render(<HomePage />, {

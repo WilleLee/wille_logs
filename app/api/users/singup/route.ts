@@ -3,6 +3,7 @@ import connectMongo from "@libs/connectMongo";
 import { isEmailFormat } from "@libs/formats";
 import userModel from "@libs/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
+import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest) {
   try {
@@ -49,10 +50,14 @@ export async function POST(req: NextRequest) {
         { status: 403 },
       );
     }
+
+    const hashRound = Math.floor(Math.random() * 10) + 1;
+    const hashedPassword = await bcrypt.hash(password, hashRound);
+
     const createdUser = await userModel
       .create({
         email,
-        password,
+        password: hashedPassword,
         nickname,
       })
       .then((data) => data)
