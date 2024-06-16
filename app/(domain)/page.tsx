@@ -1,4 +1,5 @@
 import { getTags, getThreads } from "@libs/data";
+import Link from "next/link";
 import { Suspense } from "react";
 
 export default function HomePage() {
@@ -43,7 +44,9 @@ async function Threads() {
     <>
       {data.map((thread) => (
         <div key={thread._id}>
-          <h2>{thread.text}</h2>
+          <Link href={`/threads/${thread._id}`}>
+            <h2>{thread.text}</h2>
+          </Link>
         </div>
       ))}
     </>

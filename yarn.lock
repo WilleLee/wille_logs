@@ -2112,6 +2112,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"dayjs@npm:^1.11.11":
+  version: 1.11.11
+  resolution: "dayjs@npm:1.11.11"
+  checksum: 84788275aad8a87fee4f1ce4be08861df29687aae6b7b43dd65350118a37dda56772a3902f802cb2dc651dfed447a5a8df62d88f0fb900dba8333e411190a5d5
+  languageName: node
+  linkType: hard
+
 "debug@npm:4, debug@npm:4.x, debug@npm:^4.1.0, debug@npm:^4.1.1, debug@npm:^4.3.1, debug@npm:^4.3.2, debug@npm:^4.3.4":
   version: 4.3.5
   resolution: "debug@npm:4.3.5"
@@ -6691,6 +6698,7 @@ __metadata:
     "@typescript-eslint/parser": ^7.12.0
     "@vitejs/plugin-react": ^4.3.0
     bcrypt: ^5.1.1
+    dayjs: ^1.11.11
     dotenv: ^16.4.5
     eslint: ^8
     eslint-config-next: 14.2.3

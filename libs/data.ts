@@ -47,3 +47,9 @@ export async function getThreads() {
   const result = await fetcher<IThread[]>("/threads");
   return result;
 }
+
+export async function getThreadById(id: string) {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const result = await fetcher<IThread>(`/threads/${id}`);
+  return result;
+}
