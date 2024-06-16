@@ -9,11 +9,13 @@ export const metadata: Metadata = {
 export async function generateStaticParams() {
   const threadsData = await getThreads();
 
-  if (threadsData.isSuccess && threadsData.data !== null) {
-    return threadsData.data.map((thread) => ({
-      id: thread._id,
-    }));
+  if (!threadsData.isSuccess || threadsData.data === null) {
+    return [];
   }
+
+  return threadsData.data.map((thread) => ({
+    id: thread._id,
+  }));
 }
 
 export default async function ThreadPage({
