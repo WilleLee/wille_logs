@@ -5239,6 +5239,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-hook-form@npm:^7.52.0":
+  version: 7.52.0
+  resolution: "react-hook-form@npm:7.52.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17 || ^18 || ^19
+  checksum: f6c710dbac4462bf0d5aa25dd7d494815395819fbdf594f9bd736c99f77d63e699b4a41663a32486f7b05a75526d6cceae5eeb502189ffd93d12081c84603a38
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -6714,6 +6723,7 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.6.1
     react: ^18
     react-dom: ^18
+    react-hook-form: ^7.52.0
     swr: ^2.2.5
     tailwindcss: ^3.4.1
     typescript: ^5

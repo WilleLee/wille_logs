@@ -9,7 +9,7 @@ type FetchResult<T> = {
   error?: string;
 };
 
-async function fetcher<T>(
+export async function fetcher<T>(
   input: `/${string}`,
   init?: RequestInit,
 ): Promise<FetchResult<T>> {

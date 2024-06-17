@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { POST } from "@api/users/singup/route";
+import { POST } from "@api/users/signup/route";
 
 describe("/api/users", () => {
   test("POST: no password", async () => {
@@ -31,7 +31,7 @@ describe("/api/users", () => {
     expect(res.status).toStrictEqual(401);
   });
   test("POST: invalid email format", async () => {
-    const s = process.env.SIGN_IN_SECRET;
+    const s = process.env.SIGNUP_SECRET;
     const reqObj = {
       json: async () => {
         return {
@@ -46,7 +46,7 @@ describe("/api/users", () => {
     expect(res.status).toStrictEqual(401);
   });
   test("POST", async () => {
-    const s = process.env.SIGN_IN_SECRET;
+    const s = process.env.SIGNUP_SECRET;
     const emailToTest = `aaa${Date.now()}${Math.floor(
       Math.random() * 1000,
     )}@aaa.com`;

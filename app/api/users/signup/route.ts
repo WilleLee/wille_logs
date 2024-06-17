@@ -7,8 +7,8 @@ import bcrypt from "bcrypt";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password, nickname } = await req.json();
-    const isValidSecret = await handleCheckSecret(req);
+    const { email, password, nickname, secret } = await req.json();
+    const isValidSecret = await handleCheckSecret(secret);
     // 회원가입 시크릿 확인
     if (!isValidSecret) {
       return NextResponse.json(
@@ -74,7 +74,12 @@ export async function POST(req: NextRequest) {
     }
 
     // 회원가입 성공
-    return NextResponse.json(createdUser, { status: 201 });
+    return NextResponse.json(
+      {
+        email: createdUser.email,
+      },
+      { status: 201 },
+    );
   } catch (err) {
     console.log(err);
     return NextResponse.json(
@@ -84,10 +89,9 @@ export async function POST(req: NextRequest) {
   }
 }
 
-async function handleCheckSecret(req: NextRequest) {
-  const signInSecret = process.env.SIGN_IN_SECRET;
-  const { secret } = await req.json();
-  if (secret !== signInSecret) {
+async function handleCheckSecret(secret: string) {
+  const signupSecret = process.env.SIGNUP_SECRET;
+  if (secret !== signupSecret) {
     return false;
   }
   return true;
