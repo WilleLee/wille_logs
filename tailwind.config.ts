@@ -9,6 +9,7 @@ const config: Config = {
   darkMode: "class",
   theme: {
     colors: {
+      transparent: "transparent",
       grey: {
         50: "#f9fafb",
         100: "#f2f4f6",

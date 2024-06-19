@@ -1,5 +1,6 @@
 "use client";
 
+import FormButton from "@components/form-button";
 import FormInput from "@components/form-input";
 import { signup } from "@libs/actions";
 import { isEmailFormat } from "@libs/formats";
@@ -121,6 +122,7 @@ const FormInputs = () => {
       <FormInput
         label="이메일"
         data-testid="email-input"
+        aria-label="이메일 입력란"
         type="text"
         placeholder="이메일을 입력해주세요."
         minLength={4}
@@ -161,6 +163,7 @@ const FormInputs = () => {
       <FormInput
         label="닉네임"
         data-testid="nickname-input"
+        aria-label="닉네임 입력란"
         type="text"
         placeholder="닉네임을 입력해주세요."
         minLength={2}
@@ -195,6 +198,7 @@ const FormInputs = () => {
         label="비밀번호"
         error={errors.password?.message}
         data-testid="password-input"
+        aria-label="비밀번호 입력란"
         type="password"
         placeholder="비밀번호를 입력해주세요."
         minLength={6}
@@ -230,6 +234,7 @@ const FormInputs = () => {
         label="비밀번호 재입력"
         error={errors.passwordConfirm?.message}
         data-testid="password-confirm-input"
+        aria-label="비밀번호 재입력 입력란"
         type="password"
         placeholder="동일한 비밀번호를 다시 입력해주세요."
         minLength={6}
@@ -271,6 +276,7 @@ const FormInputs = () => {
         label="회원가입 암호"
         error={errors.secret?.message}
         data-testid="secret-input"
+        aria-label="회원가입 암호 입력란"
         type="password"
         placeholder="회원가입 암호를 입력해주세요."
         maxLength={50}
@@ -311,13 +317,13 @@ function SignupButton() {
   const { isSubmitDisabled } = context;
 
   return (
-    <button
+    <FormButton
       data-testid="signup-button"
       type="submit"
       aria-disabled={isSubmitDisabled}
       disabled={isSubmitDisabled}
     >
       회원가입
-    </button>
+    </FormButton>
   );
 }
