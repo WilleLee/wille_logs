@@ -18,7 +18,7 @@ describe("/api/users", () => {
   test("FLOW: OK", async () => {
     // 회원가입 (SIGNUP)
     const signupSecret = process.env.SIGNUP_SECRET as string;
-    const testEmail = "aaa@bbb.com";
+    const testEmail = Date.now().toString().slice(-5) + "@test.com";
     const testPassword = "123456";
     const testNickname = "tester0";
     let testAccessToken = "";
