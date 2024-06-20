@@ -27,6 +27,8 @@ jobs:
       - name: Access To Secrets
         run: |
           echo "MONGO_URI=$MONGO_URI" >> .env.test
+          echo "SIGNUP_SECRET=$SIGNUP_SECRET" >> .env.test
+          echo "AUTH_SECRET=$AUTH_SECRET" >> .env.test
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
           SIGNUP_SECRET: ${{ secrets.SIGNUP_SECRET }}
