@@ -11,11 +11,11 @@ const connectMongo = async () => {
     //   return;
     // }
     if (connection.isConnected) {
-      console.log("✅ using existing connection");
+      console.log("👌🏻 USING EXISTING CONNECTION");
       return;
     }
     await mongoose.connect(MONGO_URI);
-    console.log("✅ conntected to mongo");
+    console.log("✅ CONNECTED TO MONGO");
 
     connection.isConnected = mongoose.connections[0].readyState;
   } catch (err) {

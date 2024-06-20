@@ -63,7 +63,8 @@ export async function GET() {
 
     return NextResponse.json(
       {
-        data: foundUser,
+        email: foundUser.email,
+        nickname: foundUser.nickname,
       },
       {
         status: 200,
@@ -170,6 +171,10 @@ export async function POST(req: NextRequest) {
         { status: 500 },
       );
     }
+
+    return NextResponse.json(null, {
+      status: 201,
+    });
   } catch (err) {
     return NextResponse.json(
       {
@@ -249,7 +254,8 @@ export async function PATCH(req: NextRequest) {
 
     return NextResponse.json(
       {
-        data: updatedUser,
+        email: updatedUser.email,
+        nickname: updatedUser.nickname,
       },
       {
         status: 200,
