@@ -10,6 +10,7 @@ import jwt from "jsonwebtoken";
 // get user info
 export async function GET() {
   try {
+    await new Promise((res) => setTimeout(res, 500));
     let decodedUserId = undefined;
     const AUTH_SECRET = process.env.AUTH_SECRET as string;
     const accessToken = cookies().get("access-token")?.value;
@@ -83,6 +84,7 @@ export async function GET() {
 // sign up
 export async function POST(req: NextRequest) {
   try {
+    await new Promise((res) => setTimeout(res, 500));
     const signupSecret = process.env.SIGNUP_SECRET as string;
     const hashRound = Math.floor(Math.random() * 10) + 1;
     const { email, password, passwordConfirm, nickname, secret } =
@@ -187,6 +189,7 @@ export async function POST(req: NextRequest) {
 
 export async function PATCH(req: NextRequest) {
   try {
+    await new Promise((res) => setTimeout(res, 500));
     let decodedUserId = undefined;
     const AUTH_SECRET = process.env.AUTH_SECRET as string;
     const accessToken = cookies().get("access-token")?.value;
@@ -273,6 +276,7 @@ export async function PATCH(req: NextRequest) {
 
 export async function DELETE() {
   try {
+    await new Promise((res) => setTimeout(res, 500));
     let decodedUserId = undefined;
     const AUTH_SECRET = process.env.AUTH_SECRET as string;
     const accessToken = cookies().get("access-token")?.value;

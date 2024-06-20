@@ -7,6 +7,7 @@ import jwt from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
   try {
+    await new Promise((res) => setTimeout(res, 500));
     const AUTH_SECRET = process.env.AUTH_SECRET as string;
     const { email, password } = (await req.json()) as {
       email: string;

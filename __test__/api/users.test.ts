@@ -1,6 +1,7 @@
 import { GET, POST as SIGNUP, PATCH, DELETE } from "@api/users/route";
 import { POST as LOGIN } from "@api/users/login/route";
 import { afterEach, describe, expect, test, vi } from "vitest";
+import { TestManager } from "..";
 
 const mockGetCookie = vi.fn();
 
@@ -15,16 +16,19 @@ describe("/api/users", () => {
     vi.clearAllMocks();
     vi.clearAllTimers();
   });
-  test("FLOW: OK", async () => {
-    // 회원가입 (SIGNUP)
-    const signupSecret = process.env.SIGNUP_SECRET as string;
+  test("NORMAL FLOW", async () => {
+    const testManager = new TestManager(
+      ["SIGNUP", "LOGIN", "GET", "PATCH", "DELETE"],
+      "USERS | NORMAL FLOW",
+    );
     const testEmail = Date.now().toString().slice(-5) + "@test.com";
     const testPassword = "123456";
     const testNickname = "tester0";
     let testAccessToken = "";
-    try {
-      console.log("🔥 SIGNUP: START");
+    const signupSecret = process.env.SIGNUP_SECRET as string;
 
+    // 회원가입 (SIGNUP)
+    try {
       const reqObj = {
         async json() {
           return {
@@ -40,16 +44,16 @@ describe("/api/users", () => {
       const res = await SIGNUP(reqObj);
       expect(res.status).toStrictEqual(201);
 
-      console.log("✅ SIGNUP: DONE");
+      testManager.success("SIGNUP");
     } catch (err) {
       console.error(err);
-      throw Error("❗️ SIGNUP: FAILED");
+      testManager.fail("SIGNUP");
+      testManager.logResults();
+      throw Error("❗️ SIGNUP FAILED");
     }
 
     // 로그인 (LOGIN)
     try {
-      console.log("🔥 LOGIN: START");
-
       const reqObj = {
         async json() {
           return {
@@ -67,10 +71,12 @@ describe("/api/users", () => {
       };
       testAccessToken = accessToken;
 
-      console.log("✅ LOGIN: DONE");
+      testManager.success("LOGIN");
     } catch (err) {
       console.error(err);
-      throw Error("❗️ LOGIN: FAILED");
+      testManager.fail("LOGIN");
+      testManager.logResults();
+      throw Error("❗️ LOGIN FAILED");
     }
 
     mockGetCookie.mockReturnValue({
@@ -79,8 +85,6 @@ describe("/api/users", () => {
 
     // 회원정보조회 (GET)
     try {
-      console.log("🔥 GET: START");
-
       const res = await GET();
       expect(res.status).toStrictEqual(200);
       const { email, nickname } = (await res.json()) as {
@@ -90,16 +94,17 @@ describe("/api/users", () => {
       expect(email).toStrictEqual(testEmail);
       expect(nickname).toStrictEqual(testNickname);
 
-      console.log("✅ GET: DONE");
+      // testResults.set("GET", "SUCCESS");
+      testManager.success("GET");
     } catch (err) {
       console.error(err);
-      throw Error("❗️ GET: FAILED");
+      testManager.fail("GET");
+      testManager.logResults();
+      throw Error("❗️ GET FAILED");
     }
 
     // 회원정보수정 (PATCH)
     try {
-      console.log("🔥 PATCH: START");
-
       const reqObj = {
         async json() {
           return {
@@ -119,23 +124,26 @@ describe("/api/users", () => {
       };
       expect(nickname).toStrictEqual("tester1");
 
-      console.log("✅ PATCH: DONE");
+      testManager.success("PATCH");
     } catch (err) {
       console.error(err);
-      throw Error("❗️ PATCH: FAILED");
+      testManager.fail("PATCH");
+      testManager.logResults();
+      throw Error("❗️ PATCH FAILED");
     }
 
     // 회원탈퇴 (DELETE)
     try {
-      console.log("🔥 DELETE: START");
-
       const res = await DELETE();
       expect(res.status).toStrictEqual(200);
 
-      console.log("✅ DELETE: DONE");
+      testManager.success("DELETE");
     } catch (err) {
       console.error(err);
-      throw Error("❗️ DELETE: FAILED");
+      testManager.fail("DELETE");
+      throw Error("❗️ DELETE FAILED");
     }
+
+    testManager.logResults();
   });
 });
