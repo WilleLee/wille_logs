@@ -65,9 +65,6 @@ export async function DELETE(
 
     const thread = await threadModel.findById(id);
 
-    console.log("thread", thread.creator);
-    console.log("user", user._id);
-
     if (thread.creator.toString() !== user._id.toString()) {
       return NextResponse.json(
         {
@@ -89,7 +86,6 @@ export async function DELETE(
       });
       updatedTags.push(updatedTag);
     }
-    console.log("updatedTags", updatedTags);
 
     await threadModel.findByIdAndDelete(id);
     return NextResponse.json(null, { status: 200 });
