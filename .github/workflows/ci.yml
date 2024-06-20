@@ -29,6 +29,7 @@ jobs:
           echo "MONGO_URI=$MONGO_URI" >> .env.test
         env:
           MONGO_URI: ${{ secrets.MONGO_URI }}
+          SIGNUP_SECRET: ${{ secrets.SIGNUP_SECRET }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
       - name: Vitest
         run: yarn test
-
