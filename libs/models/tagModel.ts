@@ -1,7 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
 interface TagSchema {
-  _id: string;
   name: string;
 }
 

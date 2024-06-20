@@ -7,62 +7,67 @@ import jwt from "jsonwebtoken";
 
 export async function POST(req: NextRequest) {
   try {
-    const { email, password } = await req.json();
-    console.log("email", email, "password", password);
-    if (!email || !password) {
+    const AUTH_SECRET = process.env.AUTH_SECRET as string;
+    const { email, password } = (await req.json()) as {
+      email: string;
+      password: string;
+    };
+
+    if (!email) {
       return NextResponse.json(
         {
-          error: "이메일과 비밀번호를 모두 입력해주세요.",
+          error: "이메일을 입력해주세요.",
         },
         { status: 401 },
       );
     }
+
+    if (!password) {
+      return NextResponse.json(
+        {
+          error: "비밀번호를 입력해주세요.",
+        },
+        { status: 401 },
+      );
+    }
+
     await connectMongo();
 
     const foundUser = await userModel
-      .findOne({
-        email,
-      })
+      .findOne({ email })
       .then((data) => data)
       .catch(() => null);
-
-    if (!foundUser) {
+    if (foundUser === null || foundUser === undefined) {
       return NextResponse.json(
         {
-          error: "회원정보를 확인해주세요. (1)",
+          error: "일치하는 회원 정보를 찾을 수 없습니다.",
         },
         { status: 401 },
       );
     }
 
-    const isCorrectPassword = await bcrypt.compare(
-      password,
-      foundUser.password,
-    );
-    if (!isCorrectPassword) {
+    const isPasswordMatch = await bcrypt.compare(password, foundUser.password);
+    if (!isPasswordMatch) {
       return NextResponse.json(
         {
-          error: "회원정보를 확인해주세요. (2)",
+          error: "일치하는 회원 정보를 찾을 수 없습니다.",
         },
         { status: 401 },
       );
     }
-
-    const AUTH_SECRET = process.env.AUTH_SECRET as string;
-
     const accessToken = jwt.sign(
       {
         email: foundUser.email,
+        id: foundUser._id,
       },
       AUTH_SECRET,
       {
         expiresIn: "7d",
       },
     );
-
     return NextResponse.json(
       {
-        email: foundUser.email,
+        nickname: foundUser.nickname,
         accessToken,
       },
       {
@@ -74,9 +79,7 @@ export async function POST(req: NextRequest) {
       {
         error: errors.UNDEFINED.message,
       },
-      {
-        status: errors.UNDEFINED.code,
-      },
+      { status: errors.UNDEFINED.code },
     );
   }
 }

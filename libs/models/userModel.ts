@@ -5,7 +5,7 @@ interface UserSchema {
   password: string;
   nickname: string;
   createdAt: Date;
-  threads: mongoose.Schema.Types.ObjectId[];
+  // threads: mongoose.Schema.Types.ObjectId[];
 }
 
 const userSchema = new Schema<UserSchema>({
@@ -13,7 +13,7 @@ const userSchema = new Schema<UserSchema>({
   password: { type: String, required: true },
   nickname: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
-  threads: [{ type: mongoose.Schema.Types.ObjectId, ref: "Thread" }],
+  // threads: [{ type: mongoose.Schema.Types.ObjectId, ref: "Thread" }],
 });
 
 const userModel = mongoose.models.User || mongoose.model("User", userSchema);
