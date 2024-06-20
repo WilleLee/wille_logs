@@ -1,44 +1,24 @@
-import { errors } from "@constants/errors";
 import { NextRequest, NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
-export async function POST(req: NextRequest) {
-  try {
-    const isValid = await middleware(req);
-    if (!isValid) {
-      return NextResponse.json(
-        {
-          error: "not hello world",
-        },
-        {
-          status: 400,
-        },
-      );
-    }
-    return NextResponse.json(
-      {
-        hello: "world",
-      },
-      {
-        status: 200,
-      },
-    );
-  } catch (err) {
-    console.log(err);
-    return NextResponse.json(
-      {
-        error: errors.UNDEFINED.message,
-      },
-      {
-        status: errors.UNDEFINED.code,
-      },
-    );
-  }
+export async function GET() {
+  return NextResponse.json(null, {
+    status: 204,
+  });
 }
 
-async function middleware(req: NextRequest) {
-  const { hello } = await req.json();
-  if (typeof hello !== "string" || hello !== "world") {
-    return false;
-  }
-  return true;
+export async function isAuthenticated(
+  accessToken: string,
+): Promise<string | undefined> {
+  let decodedUserId = undefined;
+  const AUTH_SECRET = process.env.AUTH_SECRET as string;
+
+  jwt.verify(accessToken, AUTH_SECRET, function (err, decoded) {
+    if (!err) {
+      const decodedObj = decoded as { id: string; email: string };
+      decodedUserId = decodedObj.id;
+    }
+  });
+
+  return decodedUserId;
 }

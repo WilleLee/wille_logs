@@ -22,6 +22,7 @@ export class TestManager {
   }
   logResults() {
     let successCount = 0;
+    console.log(`🧪 TEST RESULTS ON \< ${this.title} \> ...`);
     this.results.forEach((v, k) => {
       console.log(
         `${v === "SUCCESS" ? "✅" : v === "FAIL" ? "❌" : "🛠️"} ${k}`,
@@ -31,7 +32,12 @@ export class TestManager {
       }
     });
     if (successCount === this.size()) {
-      console.log(`🥳 ALL TESTS PASSED ON \<${this.title}\>`);
+      console.log(`🥳 ALL TESTS PASSED ON \< ${this.title} \>`);
     }
   }
 }
+
+export const testAccount = {
+  email: "test@willelogs.com",
+  password: "123456",
+};

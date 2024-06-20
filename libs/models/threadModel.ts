@@ -1,7 +1,7 @@
 import { IBook } from "@libs/types";
 import mongoose, { ObjectId, Schema } from "mongoose";
 
-interface ThreadSchema {
+export interface ThreadSchema {
   text: string;
   tags: mongoose.Schema.Types.ObjectId[];
   book: IBook;

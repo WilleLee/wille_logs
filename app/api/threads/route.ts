@@ -2,132 +2,132 @@ import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import tagModel from "@libs/models/tagModel";
 import threadModel from "@libs/models/threadModel";
-import userModel from "@libs/models/userModel";
-import { ITag } from "@libs/types";
+import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { isAuthenticated } from "@api/route";
+import mongoose from "mongoose";
 
-export async function GET() {
+// 스레드 작성
+export async function POST(req: NextRequest) {
   try {
+    const accessToken = cookies().get("access-token")?.value;
+
+    if (!accessToken) {
+      return NextResponse.json(
+        {
+          error: "로그인이 필요한 서비스입니다.",
+        },
+        { status: 401 },
+      );
+    }
+
+    const decodedId = await isAuthenticated(accessToken);
+
+    if (!decodedId) {
+      return NextResponse.json(
+        {
+          error: "회원 인증에 실패했습니다.",
+        },
+        { status: 401 },
+      );
+    }
+
+    const {
+      text,
+      tags = [],
+      book: { title, author, page },
+    } = (await req.json()) as {
+      text: string;
+      tags: string[];
+      book: {
+        title: string;
+        author: string;
+        page: number;
+      };
+    };
+
+    if (!text) {
+      return NextResponse.json(
+        {
+          error: "내용을 입력해주세요.",
+        },
+        { status: 400 },
+      );
+    }
+
+    if (!title || !author || !page) {
+      return NextResponse.json(
+        {
+          error: "책 정보를 모두 입력해주세요.",
+        },
+        { status: 400 },
+      );
+    }
+
     await connectMongo();
 
-    const threads = await threadModel
-      .find({})
-      .sort({
-        createdAt: -1,
-      })
-      .then((data) => data)
-      .catch(() => null);
-    if (threads === null) {
-      return NextResponse.json(
-        {
-          error: errors.THREAD_NOT_FOUND.message,
-        },
-        {
-          status: errors.THREAD_NOT_FOUND.code,
-        },
-      );
-    }
-
-    return NextResponse.json(threads, {
-      status: 200,
-    });
-  } catch (err) {
-    return NextResponse.json(
-      {
-        error: errors.UNDEFINED.message,
-      },
-      {
-        status: errors.UNDEFINED.code,
-      },
-    );
-  }
-}
-
-export async function POST({ json }: NextRequest) {
-  try {
-    await connectMongo();
-    const { text, tags, book, userId } = await json();
-
-    let newTags = [];
-    const existingTags = await tagModel
-      .find({})
-      .then((data) => data as ITag[])
-      .catch(() => null);
-
-    if (!text || !tags || !book) {
-      return NextResponse.json(
-        {
-          error: errors.UNFULFILLED_INPUT.message,
-        },
-        {
-          status: errors.UNFULFILLED_INPUT.code,
-        },
-      );
-    }
-
-    if (existingTags === null) {
-      return NextResponse.json(
-        {
-          error: errors.TAG_NOT_FOUND.message,
-        },
-        {
-          status: errors.TAG_NOT_FOUND.code,
-        },
-      );
-    }
+    const tagIds: mongoose.Schema.Types.ObjectId[] = [];
 
     for (let i = 0; i < tags.length; i++) {
-      const tagName = tags[i] as string;
-      const existingTag = existingTags.find(
-        (t) => t.name === tagName.toUpperCase(),
-      );
-      if (!existingTag) {
-        const newTag = await tagModel.create({
-          name: tagName,
-        });
-        newTags.push(newTag._id);
+      const tagName = tags[i];
+      const foundTag = await tagModel.findOne({ name: tagName });
+
+      if (!foundTag) {
+        const createdTag = await tagModel.create({ name: tagName });
+        tagIds.push(createdTag._id);
       } else {
-        newTags.push(existingTag._id);
+        tagIds.push(foundTag._id);
+        await tagModel.findByIdAndUpdate(foundTag._id, {
+          $inc: {
+            usedCount: 1,
+          },
+        });
       }
     }
 
-    const newThread = await threadModel
+    const createdThread = await threadModel
       .create({
         text,
-        tags: newTags,
-        book,
-        creator: userId,
+        tags: tagIds,
+        creator: decodedId,
+        book: {
+          title,
+          author,
+          page,
+        },
       })
       .then((data) => data)
       .catch(() => null);
 
-    if (newThread === null) {
+    if (!createdThread) {
       return NextResponse.json(
         {
-          error: errors.THREAD_NOT_CREATED.message,
+          error: "스레드 작성에 실패했습니다.\n잠시 후 다시 시도해주세요.",
         },
         {
-          status: errors.THREAD_NOT_CREATED.code,
+          status: errors.UNDEFINED.code,
         },
       );
     }
 
-    await userModel.findByIdAndUpdate(userId, {
-      $push: {
-        threads: newThread._id,
-      },
-    });
+    for (let i = 0; i < tagIds.length; i++) {
+      const tagId = tagIds[i];
+      await tagModel.findByIdAndUpdate(tagId, {
+        $push: {
+          threads: createdThread._id,
+        },
+      });
+    }
 
-    return NextResponse.json(newThread, { status: 201 });
+    return NextResponse.json(createdThread, {
+      status: 201,
+    });
   } catch (err) {
-    console.log(err);
     return NextResponse.json(
       {
         error: errors.UNDEFINED.message,
       },
-      {
-        status: errors.UNDEFINED.code,
-      },
+      { status: errors.UNDEFINED.code },
     );
   }
 }

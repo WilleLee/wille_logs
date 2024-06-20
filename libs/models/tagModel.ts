@@ -1,7 +1,9 @@
 import mongoose, { Schema } from "mongoose";
 
-interface TagSchema {
+export interface TagSchema {
   name: string;
+  threads: mongoose.Schema.Types.ObjectId[];
+  usedCount: number;
 }
 
 const tagSchema = new Schema<TagSchema>({
@@ -11,6 +13,16 @@ const tagSchema = new Schema<TagSchema>({
     unique: true,
     uppercase: true,
     maxLength: 20,
+  },
+  threads: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Thread",
+    },
+  ],
+  usedCount: {
+    type: Number,
+    default: 1,
   },
 });
 
