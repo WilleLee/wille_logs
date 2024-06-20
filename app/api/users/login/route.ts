@@ -4,10 +4,11 @@ import userModel from "@libs/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { delay } from "@libs/delay";
 
 export async function POST(req: NextRequest) {
   try {
-    await new Promise((res) => setTimeout(res, 500));
+    await delay(50);
     const AUTH_SECRET = process.env.AUTH_SECRET as string;
     const { email, password } = (await req.json()) as {
       email: string;
