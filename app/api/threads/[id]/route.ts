@@ -1,4 +1,4 @@
-import { isAuthenticated } from "@api/route";
+import { isAuthenticated } from "@api/index";
 import { errors } from "@constants/errors";
 import connectMongo from "@libs/connectMongo";
 import tagModel, { TagSchema } from "@libs/models/tagModel";

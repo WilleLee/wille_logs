@@ -25,7 +25,7 @@ describe(
       let testAccessToken = "";
       const testManager = new TestManager(
         ["LOGIN", "POST", "GET_ALL", "GET_ONE", "DELETE"],
-        "THREADS | NORMAL FLOW",
+        "API | THREADS | NORMAL FLOW",
       );
 
       // 로그인

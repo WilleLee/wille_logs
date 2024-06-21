@@ -21,7 +21,7 @@ describe(
     test("NORMAL FLOW", async () => {
       const testManager = new TestManager(
         ["SIGNUP", "LOGIN", "GET", "PATCH", "DELETE"],
-        "USERS | NORMAL FLOW",
+        "API | USERS | NORMAL FLOW",
       );
       const testEmail = Date.now().toString().slice(-5) + "@test.com";
       const testPassword = "123456";

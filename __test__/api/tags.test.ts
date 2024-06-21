@@ -13,7 +13,7 @@ describe(
     test("NORMAL FLOW", async () => {
       const testManager = new TestManager(
         ["GET_TAGS", "GET_ONE_TAG"],
-        "TAGS | NORMAL FLOW",
+        "API | TAGS | NORMAL FLOW",
       );
 
       try {

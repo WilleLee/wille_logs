@@ -4,7 +4,7 @@ import tagModel from "@libs/models/tagModel";
 import threadModel from "@libs/models/threadModel";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { isAuthenticated } from "@api/route";
+import { isAuthenticated } from "@api/index";
 import mongoose from "mongoose";
 
 // 스레드 불러오기
