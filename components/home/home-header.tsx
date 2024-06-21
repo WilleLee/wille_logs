@@ -8,16 +8,22 @@ export default async function HomeHeader() {
     <>
       {isLoggedin ? (
         <div>
+          <Link
+            href="/my"
+            title="마이 페이지로"
+            aria-label="마이 페이지로 이동"
+          >
+            <button aria-hidden>마이 페이지</button>
+          </Link>
           {
-            // 작성 폼
+            // TODO: 스레드 작성 폼
           }
-          작성 폼
         </div>
       ) : (
         <Link
           test-id="login-button"
           href="/login"
-          aria-label="로그인 페이지로"
+          aria-label="로그인 페이지로 이동"
           title="로그인 페이지로"
         >
           <button aria-hidden>로그인</button>

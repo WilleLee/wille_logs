@@ -4,22 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 export function middleware({ nextUrl }: NextRequest) {
   const cookieStore = cookies();
   const accessToken = cookieStore.get("access-token");
-  console.log("accessToken", accessToken);
   const isLoggedin = !!accessToken;
+
+  console.log("isLoggedin", isLoggedin);
 
   const protectedRoutes = process.env.PROTECTED_ROUTES?.split(",") || [];
   const publicOnlyRoutes = process.env.PUBLIC_ONLY_ROUTES?.split(",") || [];
-
-  // edge runtime에서는 jwt.verify를 사용할 수 없음
-  // access token이 존재하는 경우, 유효한지 검증
-  // if (isLoggedin) {
-  //   jwt.verify(accessToken.value, process.env.AUTH_SECRET as string, (err) => {
-  //     if (err) {
-  //       cookies().delete("access-token");
-  //       return NextResponse.redirect(new URL("/", nextUrl));
-  //     }
-  //   });
-  // }
 
   let isProtectedRoute = false;
   for (let i = 0; i < protectedRoutes.length; i++) {
@@ -40,8 +30,6 @@ export function middleware({ nextUrl }: NextRequest) {
       break;
     }
   }
-
-  console.log("isLoggedin", isLoggedin);
 
   if (isPublicOnlyRoute && isLoggedin) {
     return NextResponse.redirect(new URL("/", nextUrl));

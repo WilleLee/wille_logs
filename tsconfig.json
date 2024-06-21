@@ -19,6 +19,7 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@hooks/*": ["hooks/*"],
       "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
       "@api/*": ["app/api/*"],
