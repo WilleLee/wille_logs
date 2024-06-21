@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { ITag, IThread } from "./types";
 
 const API_BASE_URL =
@@ -37,19 +38,22 @@ export async function fetcher<T>(
 }
 
 export async function getTags() {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  noStore();
+  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<ITag[]>("/tags");
   return result;
 }
 
 export async function getThreads() {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  noStore();
+  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<IThread[]>("/threads");
   return result;
 }
 
 export async function getThreadById(id: string) {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  noStore();
+  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<IThread>(`/threads/${id}`);
   return result;
 }

@@ -21,7 +21,7 @@ export const errors = {
   },
   THREAD_NOT_FOUND: {
     code: 404,
-    message: "스레드를 불러오는 데 실패했습니다.",
+    message: "스레드를 찾을 수 없습니다.",
   },
   UNDEFINED: {
     code: 500,

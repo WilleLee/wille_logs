@@ -7,6 +7,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@api/route";
 import mongoose from "mongoose";
 
+// 스레드 불러오기
+export async function GET() {
+  try {
+    await connectMongo();
+    const threads = await threadModel.find().sort({ createdAt: -1 });
+    return NextResponse.json(threads, {
+      status: 200,
+    });
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: errors.UNDEFINED.message,
+      },
+      { status: errors.UNDEFINED.code },
+    );
+  }
+}
+
 // 스레드 작성
 export async function POST(req: NextRequest) {
   try {
