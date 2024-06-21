@@ -1,24 +1,28 @@
-import connectDB from "@libs/connectDB";
-import Tag from "@models/TagModel";
-import { NextRequest, NextResponse } from "next/server";
+import { errors } from "@constants/errors";
+import connectMongo from "@libs/connectMongo";
+import tagModel from "@libs/models/tagModel";
+import { NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   try {
-    await connectDB();
-    const tags = await Tag.find({}).sort({
-      name: 1,
-    });
-    // console.log(tags);
-    return NextResponse.json({
-      data: tags,
-      message: "",
+    await connectMongo();
+
+    // sort by usedCount
+    const tags = (await tagModel.find()).sort(
+      (a, b) => b.usedCount - a.usedCount,
+    );
+
+    return NextResponse.json(tags, {
       status: 200,
     });
   } catch (err) {
-    console.log(err);
-    return NextResponse.json({
-      message: "Something went wrong",
-      status: 500,
-    });
+    return NextResponse.json(
+      {
+        error: errors.UNDEFINED.message,
+      },
+      {
+        status: errors.UNDEFINED.code,
+      },
+    );
   }
 }

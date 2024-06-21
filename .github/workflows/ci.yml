@@ -1,0 +1,37 @@
+name: CI
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feature
+  pull_request:
+    branches:
+      - main
+      - dev
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: ".nvmrc"
+      - name: Install dependencies
+        run: yarn install
+      - name: Typecheck
+        run: yarn typecheck
+      - name: Check lint
+        run: yarn lint
+      - name: Access To Secrets
+        run: |
+          echo "MONGO_URI=$MONGO_URI" >> .env.test
+          echo "SIGNUP_SECRET=$SIGNUP_SECRET" >> .env.test
+          echo "AUTH_SECRET=$AUTH_SECRET" >> .env.test
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI }}
+          SIGNUP_SECRET: ${{ secrets.SIGNUP_SECRET }}
+          AUTH_SECRET: ${{ secrets.AUTH_SECRET }}
+      - name: Vitest
+        run: yarn test

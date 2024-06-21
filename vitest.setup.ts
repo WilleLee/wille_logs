@@ -1,6 +1,3 @@
-import { beforeAll, afterEach, afterAll } from "vitest";
-import { server } from "@mocks/server";
+import * as dotenv from "dotenv";
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+dotenv.config({ path: ".env.test" });
