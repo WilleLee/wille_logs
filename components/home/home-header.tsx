@@ -1,7 +1,10 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
+import WriteThreadForm from "./write-thread-form";
+import { unstable_noStore } from "next/cache";
 
 export default async function HomeHeader() {
+  unstable_noStore();
   const accessToken = cookies().get("access-token");
   const isLoggedin = !!accessToken;
   return (
@@ -18,6 +21,7 @@ export default async function HomeHeader() {
           {
             // TODO: 스레드 작성 폼
           }
+          <WriteThreadForm />
         </div>
       ) : (
         <Link

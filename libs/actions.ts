@@ -2,13 +2,15 @@
 
 import { cookies } from "next/headers";
 import { fetcher } from "./data";
-import { revalidatePath, unstable_noStore } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { delay } from "./delay";
+import { IThread } from "./types";
 
-interface ActionState {
-  isError: boolean;
-  error?: string;
-}
+// interface ActionState {
+//   isError: boolean;
+//   error?: string;
+// }
 
 export async function logout() {
   cookies().delete("access-token");
@@ -22,6 +24,7 @@ export async function login(formData: FormData) {
   const password = formData.get("password") as string;
   const { data, error, isSuccess } = await fetcher<{
     nickname: string;
+    loggedinId: string;
     accessToken: string;
   }>("/users/login", {
     method: "POST",
@@ -37,9 +40,12 @@ export async function login(formData: FormData) {
     console.log(error);
     return;
   }
-  const { nickname, accessToken } = data;
+  const { nickname, loggedinId, accessToken } = data;
   const sevenDaysLater = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7);
   cookies().set("access-token", accessToken, {
+    expires: sevenDaysLater,
+  });
+  cookies().set("loggedin-id", loggedinId, {
     expires: sevenDaysLater,
   });
   cookies().set("user-nickname", nickname, {
@@ -50,53 +56,38 @@ export async function login(formData: FormData) {
   redirect("/");
 }
 
-export async function signup(formData: FormData): Promise<ActionState> {
-  const email = formData.get("email");
-  const nickname = formData.get("nickname");
-  const password = formData.get("password");
-  const passwordConfirm = formData.get("passwordConfirm");
-  const secret = formData.get("secret");
-  if (
-    email === null ||
-    nickname === null ||
-    password === null ||
-    passwordConfirm === null ||
-    secret === null
-  ) {
-    return {
-      isError: true,
-      error: "모든 항목을 입력해주세요.",
-    };
+export async function writeThread(formData: FormData) {
+  await delay(500);
+  const text = formData.get("text") as string;
+  const tags = (formData.get("tags") as string).split(" ");
+  const book = {
+    title: formData.get("book_title") as string,
+    author: formData.get("book_author") as string,
+    page: Number(formData.get("book_page")),
+  };
+  const accessToken = cookies().get("access-token")?.value;
+  if (tags.length > 0) {
+    tags.pop();
   }
-  try {
-    const result = await fetcher<{ email: string }>("/users/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        nickname,
-        password,
-        secret,
-      }),
-    });
 
-    if (!result.isSuccess) {
-      return {
-        isError: true,
-        error: result.error,
-      };
-    } else {
-      return {
-        isError: false,
-      };
-    }
-  } catch (err) {
-    console.log(err);
-    return {
-      isError: true,
-      error: "회원가입에 실패했습니다.",
-    };
+  const reqBody = {
+    text,
+    tags,
+    book,
+  } as any;
+
+  const { error, isSuccess } = await fetcher<IThread>("/threads", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `access-token=${accessToken};`,
+    },
+    body: JSON.stringify(reqBody),
+  });
+  if (!isSuccess) {
+    console.log(error);
+    return false;
   }
+  revalidatePath("/");
+  return true;
 }

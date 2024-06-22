@@ -28,6 +28,7 @@ export async function GET() {
 // 스레드 작성
 export async function POST(req: NextRequest) {
   try {
+    console.log(cookies().get("access-token"));
     const accessToken = cookies().get("access-token")?.value;
 
     if (!accessToken) {
@@ -87,7 +88,7 @@ export async function POST(req: NextRequest) {
     const tagIds: mongoose.Schema.Types.ObjectId[] = [];
 
     for (let i = 0; i < tags.length; i++) {
-      const tagName = tags[i];
+      const tagName = tags[i].toUpperCase();
       const foundTag = await tagModel.findOne({ name: tagName });
 
       if (!foundTag) {

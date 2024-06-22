@@ -68,6 +68,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json(
       {
         nickname: foundUser.nickname,
+        loggedinId: foundUser._id,
         accessToken,
       },
       {

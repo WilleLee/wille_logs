@@ -11,28 +11,7 @@ import { FormProvider, useForm, useFormContext } from "react-hook-form";
 export default function LoginForm() {
   return (
     <div>
-      <form
-        action={login}
-        /*
-        onSubmit={(e) => {
-          e.preventDefault();
-          if (process.env.NODE_ENV !== "test") {
-            return;
-          }
-          let formData = new FormData();
-          const emailV = (
-            document.querySelector("input[name=email]") as HTMLInputElement
-          ).value;
-          const passwordV = (
-            document.querySelector("input[name=password]") as HTMLInputElement
-          ).value;
-          formData.append("email", emailV);
-          formData.append("password", passwordV);
-
-          login(formData);
-        }}
-          */
-      >
+      <form action={login}>
         <FormWrapper>
           <EmailInput />
           <PasswordInput />

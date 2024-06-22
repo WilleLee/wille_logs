@@ -1,5 +1,5 @@
 import { getTags } from "@libs/data";
-import Tag from "./tag";
+import Tag, { ResetTag } from "./tag";
 import { ReactNode } from "react";
 
 export default async function Tags() {
@@ -15,6 +15,7 @@ export default async function Tags() {
 
   return (
     <Wrapper>
+      <ResetTag />
       {data.map((tag) => (
         <Tag key={tag._id} tag={tag} />
       ))}
