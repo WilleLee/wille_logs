@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import WriteThreadForm from "./write-thread-form";
 import { unstable_noStore } from "next/cache";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 
 export default async function HomeHeader() {
   unstable_noStore();
@@ -24,14 +25,14 @@ export default async function HomeHeader() {
           <WriteThreadForm />
         </div>
       ) : (
-        <>
+        <div className="grid w-full grid-cols-[80px_80px] items-center justify-center gap-[32px] py-[16px]">
           <Link
             data-testid="login_button"
             href="/login"
             aria-label="로그인 페이지로 이동"
             title="로그인 페이지로"
           >
-            <button aria-hidden>로그인</button>
+            <Button aria-hidden>로그인</Button>
           </Link>
           <Link
             data-testid="signup_button"
@@ -39,10 +40,25 @@ export default async function HomeHeader() {
             aria-label="회원가입 페이지로 이동"
             title="회원가입 페이지로"
           >
-            <button aria-hidden>회원가입</button>
+            <Button aria-hidden>회원가입</Button>
           </Link>
-        </>
+        </div>
       )}
     </>
+  );
+}
+
+interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
+  children: ReactNode;
+}
+
+function Button({ children, ...rest }: Props) {
+  return (
+    <button
+      className="flex h-[38px] w-full items-center justify-center rounded-[5px] bg-blue-300 text-grey-100 transition-colors hover:bg-blue-400 dark:text-grey-800"
+      {...rest}
+    >
+      {children}
+    </button>
   );
 }

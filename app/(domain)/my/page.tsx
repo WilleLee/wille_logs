@@ -1,3 +1,4 @@
+import Header from "@components/header";
 import { logout } from "@libs/actions";
 import { Metadata } from "next";
 
@@ -7,8 +8,11 @@ export const metadata: Metadata = {
 
 export default function MyPage() {
   return (
-    <form action={logout}>
-      <button type="submit">로그아웃</button>
-    </form>
+    <>
+      <Header />
+      <form action={logout}>
+        <button type="submit">로그아웃</button>
+      </form>
+    </>
   );
 }
