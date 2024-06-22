@@ -1,88 +1,40 @@
-import type { Metadata, Viewport } from "next";
-import { Noto_Sans_KR } from "next/font/google";
-import "./_globals.scss";
-import { GoogleAnalytics } from "@next/third-parties/google";
-import InitWrapper from "./components/layouts/InitWrapper";
-import Script from "next/script";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { PortalProvider } from "./global-portal";
+import { ReactNode } from "react";
 
-const notoSansKR = Noto_Sans_KR({ subsets: ["latin"], display: "swap" });
-
-const gaId = process.env.NEXT_PUBLIC_GA_ID || "";
-
-const ogBaseUrl =
-  process.env.NEXT_PUBLIC_MODE === "production"
-    ? "https://wille-logs.vercel.app"
-    : "https://wille-logs-git-dev-willelee.vercel.app";
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Wille logs...",
-  description: "check what Wille logs today",
-  authors: [
-    {
-      name: "Inpyo Lee (Wille)",
-      url: "https://github.com/WilleLee",
-    },
-  ],
-  creator: "Inpyo Lee",
-  publisher: "Inpyo Lee",
-  keywords: [
-    "wille",
-    "book",
-    "blog",
-    "resumé",
-    "typescript",
-    "next",
-    "react",
-    "vercel",
-  ],
-  twitter: {
-    card: "summary_large_image",
-    images: [ogBaseUrl + "/images/avatar128.png"],
+  title: {
+    default: `${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
+    template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
   },
-  openGraph: {
-    title: "Wille logs... - daily insights from books",
-    description: "check what Wille logs today",
-    type: "website",
-    images: ogBaseUrl + "/images/avatar128.png",
-    url: ogBaseUrl,
-  },
-  appleWebApp: {
-    capable: true,
-  },
-  applicationName: "Wille logs...",
-};
-
-export const viewport: Viewport = {
-  viewportFit: "cover",
-  maximumScale: 1.0,
-  minimumScale: 1.0,
-  userScalable: false,
-  themeColor: "#e4d9e2",
 };
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <html lang="ko">
-      <body
-        suppressHydrationWarning={true}
-        className={`${notoSansKR.className} dark`}
-      >
-        <InitWrapper>{children}</InitWrapper>
+    <html lang="ko" suppressHydrationWarning>
+      <body className={inter.className}>
+        <Layout>
+          <PortalProvider>{children}</PortalProvider>
+        </Layout>
       </body>
-      {gaId.length > 0 && process.env.NODE_ENV === "production" ? (
-        <GoogleAnalytics gaId={gaId} />
-      ) : null}
-      {process.env.NEXT_PUBLIC_MODE === "production" && (
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9395473287553594"
-          crossOrigin="anonymous"
-        />
-      )}
     </html>
+  );
+}
+
+function Layout({ children }: { children: ReactNode }) {
+  return (
+    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden bg-background text-grey-800 dark:bg-darkBackground dark:text-grey-100">
+      <div className="mx-auto my-0 w-full max-w-[520px] px-[8px] py-[16px]">
+        {children}
+      </div>
+    </div>
   );
 }

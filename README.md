@@ -1,167 +1,26 @@
-## Wille logs&hellip; 🍊
+# Wille logs v2.0.0
 
-### Purpose of the project
+## 개발 명세
 
-1. to craeate a thread to save my daily book notes and thoughts
-2. to enable customizing my own resumé
-3. to build a modern web application with the latest technologies and design trends
+<a  href="https://docs.google.com/presentation/d/1PcN8LeZvUc7AFdF8_p4HjTP1PfoJVcXAMg9kTAUOaOQ/edit#slide=id.p" target="_blank">
 
-### Dev Environment
+![development plans](https://img.shields.io/badge/기획%20슬라이드-FBBC04?style=flat-square&logo=googleslides&logoColor=000000)
 
-- Next.js 14.1.0 (React ^18)
-- MongoDB Atlas with Mongoose ^8.1.0
-- Typescript ^5
-- Recoil ^0.7.7
-- CI/CD & deplyment with Vercel
+</a>
 
-### Project Structure
+### 개발 환경
 
-```
-root
-├── app
-│   ├── __tests__
-│   ├── api // api entry points (route.ts)
-│   ├── atoms
-│   ├── components
-│   ├── hooks
-│   ├── libs
-│   ├── mocks
-│   ├── models
-│   └── layouts and pages
-├── public // static assets
-└── config and env files
-```
+| 분류        |                                                                                                                                                                                                                                   |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 언어/런타임 | ![javascript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=000000) ![typescript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=TypeScript&logoColor=FFFFFF) |
+| 프레임워크  | ![next](https://img.shields.io/badge/Next-000000?style=flat-square&logo=Next.js&logoColor=FFFFFF)                                                                                                                                 |
+| 스타일      | ![css](https://img.shields.io/badge/CSS-1572B6?style=flat-square&logo=CSS3&logoColor=FFFFFF) ![tailwind css](https://img.shields.io/badge/Tailwind%20CSS-06B6D4?style=flat-square&logo=TailwindCSS&logoColor=FFFFFF)              |
+| DB          | ![mongo database](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=MongoDB&logoColor=FFFFFF)                                                                                                                    |
+| 테스트      | ![vitest](https://img.shields.io/badge/Vitest-6E9F18?style=flat-square&logo=Vitest&logoColor=FFFFFF)                                                                                                                              |
+| CI/CD       | ![github actions](https://img.shields.io/badge/Actions-2088FF?style=flat-square&logo=githubactions&logoColor=FFFFFF) ![vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=Vercel&logoColor=FFFFFF)         |
+| 기획/디자인 | ![google slides](https://img.shields.io/badge/Google%20Slides-FBBC04?style=flat-square&logo=googleslides&logoColor=000000)                                                                                                        |
 
-### TODOs
+### 브랜치 전략
 
-#### v1.0.0
-
-- [x] connect to mongodb
-- [x] deploy to vercel
-- [x] build models
-  - [x] thread
-  - [x] tag
-- [x] build APIs
-  - [x] `/login`
-  - [x] `/threads`
-  - [x] `/tags`
-- [x] build UIs & controllers
-  - [x] layouts
-    - [x] header
-      - [x] navigations (home and `/wille`)
-      - [x] write button
-        - [x] login modal & functionalities
-        - [x] write modal & functionalities
-      - [x] setting (UI, login, logout)
-  - [x] `/`
-    - [x] tags
-      - [x] basic UIs and functionalities
-      - [x] loading
-    - [x] threads
-      - [x] basic UIs and functionalities
-      - [x] loading
-    - [x] context controllers between tags and threads
-  - [x] `/wille` : resumé
-    - [x] tabs and functionalities
-      - [x] added a tab initializer using cookie
-    - [x] content
-      - [x] layout
-      - [x] career
-      - [x] personal projects
-      - [x] etc. : education, skills, languages...
-- [x] connect to google analytics - _has issues about the third-party cookies warning_
-
-#### v1.0.1
-
-- [x] fixed an issue about tags expanding button
-
-#### v1.1.0
-
-- [x] refactor header component
-- [x] add Kr/En language switcher
-  - [x] language switcher in the setting modal
-  - [x] add recoil state for the default or selected language
-  - [x] add initializer function
-- [x] light/dark mode switcher
-  - [x] switcher in the setting modal
-  - [x] add recoil state for the default or selected mode
-  - [x] add initializer function
-- [x] improve SEO
-  - [x] optimize meta tags for each page
-  - [x] separate open graph tags for each page and production/development environment
-
-#### v1.1.1 (HOTFIX)
-
-- [x] fix the issue that the screen mode doesn't persist after navigating to another page
-
-#### v1.1.2
-
-- [x] the issuse of incorrect opengraph base url generated by environment variables has been fixed (added NEXT_PUBLIC_MODE)
-
-#### v1.1.3
-
-- [x] update `/wille` content design/data
-  - [x] careers
-  - [x] personal projects
-  - [x] extra contents
-- [x] add button height changes (media query) to showAllButton in the tag component
-
-#### v1.1.4
-
-- [x] fixed the issue that screen-x is overflowed in the mobile view because of margin in loading box (tags)
-- [x] fixed the issue that the language mode doesn't persist after navigating to another page
-
-#### v1.1.5
-
-- [x] added required and recommended manifest tags for PWA (512 icon, categories, dir, lang,)
-
-#### v1.1.6
-
-- [x] deleted unnecessary styles for focused buttons
-- [x] added a default loading component that renders before tags and threads are all loaded
-- [x] added styles for selected tags
-- [x] refactored components for home page
-- [x] added global SWR config wrapper to handle intervals
-- [x] added default loading timeout for home page
-- [x] fixed the issue of unnecessary initializations of recoil root by creating `InitWrapper` and removing `template.ts`
-
-#### v1.1.7
-
-- [x] fix the issue that the theme-color appears when the content(main) is overscrolling (fixed header -> sticky header)
-- [x] added shortcuts for PWA configuration
-
-#### v1.1.8
-
-- [x] added mutation for tags and threads when a new thread is created
-- [x] dbs for development and production have been separated to improve dev test environment
-- [x] added sorting functionality for tags (name: 1)
-
-#### v1.1.9
-
-- [x] added touchstart event handler for `useClickOutside` hook
-
-#### v1.1.10
-
-- [x] edited font size by media query for the tag buttons
-- [x] changed the picture for the profile (profile to avatar)
-
-#### v1.1.11
-
-- [x] added a link to the github docs repository in the profile
-- [x] changed the order of projects in the career section
-- [x] added teams and teamworks tags to the personal projects section
-- [x] edited the scrollbar style
-  
-#### v1.1.12
-
-- [x] added more data t the personal projects section
-
-### Notable Issues
-
-1. no route groups for the entry page (`/`)
-2. next.js doc says all the components called inside a client compoennt are also client components, but it does not exactly mean that I don't need to declare those components as client components explicitly, even in the case of common components like buttons or svgs.
-3. server preservation in dev mode sucks.
-4. `WriteModal` is overlapped by the keyboard on mobile devices(iPad), which needs to be fixed by adjusting the position of the modal.
-5. event target and current target do not match if state changes that trigger content of a component to be switched happen by click event.
-6. box-sizing is not inherited in production mode.
-7. recoil root on template.ts is initialized every time users navigate to another page, which causes the loss of the latest state.
+- `main`: 서비스 배포
+- `dev`: 프리뷰 배포 및 개발/테스트
