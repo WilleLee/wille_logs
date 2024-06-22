@@ -29,6 +29,10 @@ export async function generateStaticParams() {
     return [];
   }
 
+  if (threads.length === 0) {
+    return [];
+  }
+
   return threads.map((thread) => ({
     id: thread._id,
   }));
