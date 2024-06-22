@@ -28,7 +28,6 @@ export async function GET() {
 // 스레드 작성
 export async function POST(req: NextRequest) {
   try {
-    console.log(cookies().get("access-token"));
     const accessToken = cookies().get("access-token")?.value;
 
     if (!accessToken) {

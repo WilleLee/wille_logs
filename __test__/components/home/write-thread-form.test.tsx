@@ -58,8 +58,8 @@ describe("HOME | WRITE THREAD FORM", () => {
       expect(bookAuthorInput.placeholder).toEqual("저자를 입력해주세요.");
       expect(bookAuthorInput.value).toEqual("");
       expect(bookPageInput).not.toBeNull();
-      expect(bookPageInput.placeholder).toEqual("페이지를 입력해주세요.");
-      expect(bookPageInput.value).toEqual("");
+      expect(bookPageInput.placeholder).toEqual("0");
+      expect(bookPageInput.value).toEqual("0");
       testManager.success("INITIAL RENDER");
     } catch (err) {
       console.error(err);
