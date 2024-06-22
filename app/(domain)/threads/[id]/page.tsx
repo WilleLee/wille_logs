@@ -5,7 +5,6 @@ import dayjs from "dayjs";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
 
-/*
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { data: thread, isSuccess } = await fetcher<IThread>(
     `/threads/${params.id}`,
@@ -38,7 +37,6 @@ export async function generateStaticParams() {
     id: thread._id,
   }));
 }
-*/
 
 export default async function ThreadPage({
   params,
