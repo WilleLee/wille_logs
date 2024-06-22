@@ -83,7 +83,7 @@ const PasswordInput = memo(function PasswordInput() {
   );
 });
 
-const LoginButton = memo(function LoginButton() {
+function LoginButton() {
   const { pending } = useFormStatus();
   const {
     getValues,
@@ -118,4 +118,4 @@ const LoginButton = memo(function LoginButton() {
       {pending ? "로그인 중..." : "로그인"}
     </FormButton>
   );
-});
+}

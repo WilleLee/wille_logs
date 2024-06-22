@@ -7,16 +7,39 @@ import { redirect } from "next/navigation";
 import { delay } from "./delay";
 import { IThread } from "./types";
 
-// interface ActionState {
-//   isError: boolean;
-//   error?: string;
-// }
-
 export async function logout() {
   cookies().delete("access-token");
   cookies().delete("user-nickname");
   revalidatePath("/");
   redirect("/");
+}
+
+export async function signup(formData: FormData) {
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const passwordConfirm = formData.get("passwordConfirm") as string;
+  const nickname = formData.get("nickname") as string;
+  const secret = formData.get("secret") as string;
+  const reqBody = {
+    email,
+    password,
+    passwordConfirm,
+    nickname,
+    secret,
+  };
+  const { error, isSuccess } = await fetcher<null>("/users", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(reqBody),
+  });
+  if (!isSuccess) {
+    console.error(error);
+    return;
+  }
+
+  redirect("/login");
 }
 
 export async function login(formData: FormData) {

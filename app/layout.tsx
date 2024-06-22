@@ -7,7 +7,10 @@ import { ReactNode } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: `${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
+  title: {
+    default: `${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
+    template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
+  },
 };
 
 export default function RootLayout({

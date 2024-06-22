@@ -24,14 +24,24 @@ export default async function HomeHeader() {
           <WriteThreadForm />
         </div>
       ) : (
-        <Link
-          test-id="login-button"
-          href="/login"
-          aria-label="로그인 페이지로 이동"
-          title="로그인 페이지로"
-        >
-          <button aria-hidden>로그인</button>
-        </Link>
+        <>
+          <Link
+            data-testid="login_button"
+            href="/login"
+            aria-label="로그인 페이지로 이동"
+            title="로그인 페이지로"
+          >
+            <button aria-hidden>로그인</button>
+          </Link>
+          <Link
+            data-testid="signup_button"
+            href="/signup"
+            aria-label="회원가입 페이지로 이동"
+            title="회원가입 페이지로"
+          >
+            <button aria-hidden>회원가입</button>
+          </Link>
+        </>
       )}
     </>
   );
