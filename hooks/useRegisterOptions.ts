@@ -1,4 +1,4 @@
-import { isEmailFormat } from "@libs/formats";
+import { isEmailFormat, isPasswordFormat, specials } from "@libs/formats";
 import { ChangeEvent, useMemo } from "react";
 import { RegisterOptions, useFormContext } from "react-hook-form";
 
@@ -75,6 +75,14 @@ export default function useRegisterOptions(): Record<
             setError("password", {
               type: "pattern",
               message: "비밀번호는 6자 이상 20자 이하로 입력해주세요.",
+            });
+            return;
+          }
+
+          if (!isPasswordFormat(e.target.value)) {
+            setError("password", {
+              type: "pattern",
+              message: `비밀번호는 영문 대소문자, 숫자, 특수문자(${specials.join("")})를 포함해야합니다.`,
             });
             return;
           }

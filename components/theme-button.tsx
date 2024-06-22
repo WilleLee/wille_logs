@@ -15,6 +15,7 @@ export default function ThemeButton() {
         toggleTheme();
       }}
       aria-label="테마 변경 버튼"
+      title="테마 변경"
     >
       <div className="h-[48px] w-[80px] rounded-[24px] bg-grey-100 p-[5px] dark:bg-grey-800">
         <div className="relative h-full w-full rounded-[24px] bg-grey-200 dark:bg-blue-300">

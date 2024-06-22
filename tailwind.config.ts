@@ -8,6 +8,9 @@ const config: Config = {
   ],
   darkMode: "selector",
   theme: {
+    screens: {
+      xs: "420px",
+    },
     animation: {
       "skeleton-pulse": "skeleton-pulse 1.5s ease-in-out infinite",
     },

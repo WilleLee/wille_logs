@@ -1,5 +1,6 @@
 "use client";
 
+import BottomButton from "@components/bottom-button";
 import FormButton from "@components/form-button";
 import FormInput from "@components/form-input";
 import useRegisterOptions from "@hooks/useRegisterOptions";
@@ -197,9 +198,18 @@ function SecretInput() {
 
 function SignupButton() {
   return (
-    <FormButton data-testid="signup_button" type="submit">
-      회원가입
-    </FormButton>
+    <>
+      <FormButton
+        className="xs:block hidden"
+        data-testid="signup_button"
+        type="submit"
+      >
+        회원가입
+      </FormButton>
+      <BottomButton className="xs:hidden block" type="submit">
+        회원가입
+      </BottomButton>
+    </>
   );
 }
 
