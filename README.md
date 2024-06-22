@@ -24,3 +24,83 @@
 
 - `main`: 서비스 배포
 - `dev`: 프리뷰 배포 및 개발/테스트
+
+### 모델
+
+#### User
+
+| 필드      | 타입       |
+| --------- | ---------- |
+| \_id      | `ObjectId` |
+| email     | `string`   |
+| password  | `string`   |
+| nickname  | `string`   |
+| createdAt | `Date`     |
+
+#### Thread
+
+| 필드        | 타입         |
+| ----------- | ------------ |
+| \_id        | `ObjectId`   |
+| title       | `string`     |
+| tags        | `ObjectId[]` |
+| book        | `object`     |
+| book.title  | `string`     |
+| book.author | `string`     |
+| book.page   | `number`     |
+| createdAt   | `Date`       |
+| creator     | `ObjectId`   |
+
+#### Tag
+
+| 필드      | 타입         |
+| --------- | ------------ |
+| \_id      | `ObjectId`   |
+| name      | `string`     |
+| threads   | `ObjectId[]` |
+| usedCount | `number`     |
+
+### API
+
+#### `/users`
+
+- `GET /users`: 유저 정보 조회
+- `POST /users`: 회원가입
+- `DELETE /users`: 회원탈퇴
+- `POST /users/login`: 로그인
+
+#### `/threads`
+
+- `GET /threads`: 스레드 목록 조회
+- `POST /threads`: 스레드 생성
+- `GET /threads/:id`: 스레드 조회
+- `DELETE /threads/:id`: 스레드 삭제
+
+#### `/tags`
+
+- `GET /tags`: 태그 목록 조회
+- `GET /tags/:id`: 태그 조회
+
+### 페이지
+
+- `GET /`: 메인 페이지
+- `GET /login`: 로그인 페이지
+- `GET /signup`: 회원가입 페이지
+- `GET /thread/:id`: 스레드 상세 페이지
+- `GET /my`: 마이 페이지
+
+### 페이지 별 유즈케이스
+
+- 메인 페이지
+  - 스레드 목록 조회
+  - 태그 목록 조회
+- 로그인 페이지
+  - 로그인
+- 회원가입 페이지
+  - 회원가입
+- 스레드 상세 페이지
+  - 스레드 조회
+  - 스레드 삭제
+- 마이 페이지
+  - 로그아웃
+  - (추후) 회원탈퇴

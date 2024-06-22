@@ -75,6 +75,7 @@ describe("HOME | THREADS", () => {
       expect(threadTexts).toHaveLength(2);
       const foundThread = threadTexts.find((t) => t.innerHTML === "thread 1");
       expect(foundThread).toBeDefined();
+      testManager.success("RENDER");
     } catch (err) {
       console.error(err);
       testManager.fail("RENDER");
