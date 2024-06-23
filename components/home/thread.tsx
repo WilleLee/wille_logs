@@ -40,7 +40,6 @@ const ThreadView = memo(function ThreadView({
   thread,
 }: {
   thread: IThread;
-
   onRoute: (id: string) => void;
 }) {
   return (

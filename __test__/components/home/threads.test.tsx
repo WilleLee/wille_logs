@@ -1,11 +1,20 @@
 import TagProvider from "@components/home/tag-provider";
 import Threads from "@components/home/threads";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import { ReactNode } from "react";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import wrapper from "../renderUI";
 import { TestManager } from "@/__test__";
 import * as data from "@libs/data";
+import userEvent from "@testing-library/user-event";
+
+const mockPush = vi.fn();
+
+vi.mock("@hooks/useInternalRouter", () => ({
+  default: () => ({
+    push: mockPush,
+  }),
+}));
 
 const provider = ({ children }: { children: ReactNode }) => {
   return <TagProvider>{children}</TagProvider>;
@@ -73,8 +82,16 @@ describe("HOME | THREADS", () => {
     try {
       const threadTexts = screen.getAllByTestId("thread_text");
       expect(threadTexts).toHaveLength(2);
-      const foundThread = threadTexts.find((t) => t.innerHTML === "thread 1");
+      const foundThread = threadTexts.find(
+        (t) => t.innerHTML === "thread 1",
+      ) as HTMLElement;
       expect(foundThread).toBeDefined();
+
+      await userEvent.click(foundThread);
+      await waitFor(async () => {
+        expect(mockPush.mock.calls[0][0]).toStrictEqual("/threads/1");
+      });
+
       testManager.success("RENDER");
     } catch (err) {
       console.error(err);
