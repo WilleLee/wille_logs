@@ -64,7 +64,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={notoSansKR.className} suppressHydrationWarning={true}>
+      <body
+        className={`${notoSansKR.className} bg-background dark:bg-darkBackground`}
+        suppressHydrationWarning={true}
+      >
         <Layout>
           <PortalProvider>{children}</PortalProvider>
         </Layout>
@@ -76,7 +79,7 @@ export default function RootLayout({
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden bg-background text-grey-800 dark:bg-darkBackground dark:text-grey-100">
+    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden text-grey-800 dark:text-grey-100">
       <div className="mx-auto my-0 w-full max-w-[520px] px-[8px] py-[64px]">
         {children}
       </div>

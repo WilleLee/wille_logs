@@ -78,13 +78,14 @@ export default function useRegisterOptions(): Record<
             });
             return;
           }
-
-          if (!isPasswordFormat(e.target.value)) {
-            setError("password", {
-              type: "pattern",
-              message: `비밀번호는 영문 대소문자, 숫자, 특수문자(${specials.join("")})를 포함해야합니다.`,
-            });
-            return;
+          if (passwordConfirm !== undefined) {
+            if (!isPasswordFormat(e.target.value)) {
+              setError("password", {
+                type: "pattern",
+                message: `비밀번호는 영문 대소문자, 숫자, 특수문자(${specials.join("")})를 포함해야합니다.`,
+              });
+              return;
+            }
           }
 
           clearErrors("password");

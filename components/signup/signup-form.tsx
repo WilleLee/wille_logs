@@ -13,7 +13,9 @@ import {
   memo,
   useCallback,
   useContext,
+  useMemo,
 } from "react";
+import { useFormStatus } from "react-dom";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 
 export default function SignupForm() {
@@ -197,17 +199,46 @@ function SecretInput() {
 }
 
 function SignupButton() {
+  const { pending } = useFormStatus();
+  const {
+    getValues,
+    formState: { errors },
+  } = useFormContext<IFormState>();
+  const values = getValues();
+
+  const isDisabled = useMemo(() => {
+    if (pending) {
+      return true;
+    }
+
+    if (Object.values(values).some((v) => v === "")) {
+      return true;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      return true;
+    }
+
+    return false;
+  }, [errors, values, pending]);
   return (
     <>
       <FormButton
-        className="xs:block hidden"
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
+        desktopOnly
         data-testid="signup_button"
         type="submit"
       >
-        회원가입
+        {pending ? "회원가입 중..." : "회원가입"}
       </FormButton>
-      <BottomButton className="xs:hidden block" type="submit">
-        회원가입
+      <BottomButton
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
+        mobileOnly
+        type="submit"
+      >
+        {pending ? "회원가입 중..." : "회원가입"}
       </BottomButton>
     </>
   );

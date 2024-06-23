@@ -1,14 +1,11 @@
 import Header from "@components/header";
-import { fetcher } from "@libs/data";
-import { IThread } from "@libs/types";
+import { getThreadById, getThreads } from "@libs/data";
 import dayjs from "dayjs";
 import { cookies } from "next/headers";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const { data: thread, isSuccess } = await fetcher<IThread>(
-    `/threads/${params.id}`,
-  );
+  const { data: thread, isSuccess } = await getThreadById(params.id);
 
   if (!isSuccess || !thread) {
     return {
@@ -23,7 +20,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 export async function generateStaticParams() {
-  const { data: threads, isSuccess } = await fetcher<IThread[]>("/threads");
+  const { data: threads, isSuccess } = await getThreads();
 
   if (!isSuccess || !threads) {
     return [];
@@ -54,11 +51,7 @@ export default async function ThreadPage({
 }
 
 async function Thread({ id }: { id: string }) {
-  const {
-    data: thread,
-    isSuccess,
-    error,
-  } = await fetcher<IThread>(`/threads/${id}`);
+  const { data: thread, isSuccess, error } = await getThreadById(id);
 
   let isCreator = false;
   const loggedinId = cookies().get("loggedin-id")?.value;
