@@ -15,7 +15,7 @@ const FormTextarea = forwardRef(function FormTextarea(
       <textarea
         ref={ref}
         className={clsx(
-          "shadow-light dark:shadow-dark h-[80px] w-full resize-none rounded-[10px] border-2 border-solid bg-transparent px-[8px] py-[4px] font-normal leading-normal transition-colors focus:outline-none",
+          "shadow-light dark:shadow-dark h-[80px] w-full resize-none rounded-[10px] border-2 border-solid bg-transparent px-[8px] py-[4px] text-[14px] font-normal leading-normal transition-colors focus:outline-none",
           error
             ? "border-red-400 caret-red-400 focus:border-red-400"
             : "border-transparent caret-blue-300 focus:border-blue-300",

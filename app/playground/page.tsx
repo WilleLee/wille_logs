@@ -85,7 +85,7 @@ function PWriteThreadForm() {
       <FormTextarea />
       <div></div>
       <FormInput label="제목" />
-      <div className="mb-[16px] grid grid-cols-[1fr_1fr] gap-[16px]">
+      <div className="grid grid-cols-[1fr_1fr] gap-[16px]">
         <FormInput label="저자" />
         <FormInput label="페이지" />
       </div>

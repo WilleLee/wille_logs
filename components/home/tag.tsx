@@ -27,7 +27,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 const TagView = memo(function TagView({ children, ...rest }: Props) {
   return (
     <button
-      className="h-full w-auto min-w-[100px] max-w-[120px] overflow-hidden text-ellipsis rounded-[10px] bg-grey-300 px-[8px] text-grey-800 transition-colors hover:bg-grey-400 active:bg-grey-500 dark:bg-grey-900 dark:text-grey-400 dark:hover:bg-grey-800 dark:active:bg-grey-700"
+      className="h-full w-auto min-w-[100px] max-w-[120px] overflow-hidden text-ellipsis rounded-[10px] bg-grey-300 px-[8px] text-grey-800 hover:bg-grey-400 active:bg-grey-500 dark:bg-grey-900 dark:text-grey-400 dark:hover:bg-grey-800 dark:active:bg-grey-700"
       {...rest}
     >
       {children}
