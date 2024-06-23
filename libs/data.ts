@@ -39,21 +39,18 @@ export async function fetcher<T>(
 
 export async function getTags() {
   noStore();
-  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<ITag[]>("/tags");
   return result;
 }
 
 export async function getThreads() {
   noStore();
-  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<IThread[]>("/threads");
   return result;
 }
 
 export async function getThreadById(id: string) {
   noStore();
-  await new Promise((resolve) => setTimeout(resolve, 500));
   const result = await fetcher<IThread>(`/threads/${id}`);
   return result;
 }

@@ -12,29 +12,27 @@ const FormInput = forwardRef(function FormInput(
   ref: Ref<HTMLInputElement>,
 ) {
   const id = useId();
-  const { label, error = null, ...rest } = props;
+  const { label, error, ...rest } = props;
 
   return (
-    <div className="w-full">
+    <div className="my-[8px] flex w-full flex-col">
       <label
         htmlFor={id}
-        className="border-transparent inline-block w-full rounded-[10px] border-0 border-solid px-[12px] py-[6px] text-[15px] font-medium text-grey-700"
+        className="mb-[6px] inline-flex items-center text-[12px] font-medium text-grey-700 dark:text-grey-400"
       >
-        <div className="grid grid-cols-[120px_1fr]">
-          <span className="flex items-center">{label}</span>
-          <input
-            id={id}
-            ref={ref}
-            className="flex items-center px-[8px] py-[4px] font-medium text-grey-800 outline-none"
-            {...rest}
-          />
-        </div>
-        {error && (
-          <div>
-            <span style={{ color: "red" }}>{error}</span>
-          </div>
-        )}
+        {label}
       </label>
+      <input
+        ref={ref}
+        id={id}
+        className={`shadow-light dark:shadow-dark inline-flex h-[32px] items-center rounded-[5px] border-2 border-solid bg-transparent px-[6px] text-[15px] font-normal text-grey-900 transition-colors focus:outline-none dark:text-grey-200 ${error ? "border-red-400 caret-red-400 focus:border-red-400" : "border-transparent caret-blue-300 focus:border-blue-300"}`}
+        {...rest}
+      />
+      {error && (
+        <span className="mt-[4px] inline-flex items-center text-[14px] font-medium leading-normal text-red-400">
+          {error}
+        </span>
+      )}
     </div>
   );
 });

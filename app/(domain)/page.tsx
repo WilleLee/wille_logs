@@ -1,5 +1,6 @@
 import Header from "@components/header";
 import HomeHeader from "@components/home/home-header";
+import { TagsSkeleton, ThreadsSkeleton } from "@components/home/skeletons";
 import TagProvider from "@components/home/tag-provider";
 import Tags from "@components/home/tags";
 import Threads from "@components/home/threads";
@@ -11,10 +12,10 @@ export default function HomePage() {
       <Header />
       <HomeHeader />
       <TagProvider>
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense fallback={<TagsSkeleton />}>
           <Tags />
         </Suspense>
-        <Suspense fallback={<p>loading...</p>}>
+        <Suspense fallback={<ThreadsSkeleton />}>
           <Threads />
         </Suspense>
       </TagProvider>

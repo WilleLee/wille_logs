@@ -1,15 +1,59 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import { PortalProvider } from "./global-portal";
 import { ReactNode } from "react";
+import ThemeInitializer from "./theme-initializer";
 
-const inter = Inter({ subsets: ["latin"] });
+const notoSansKR = Noto_Sans_KR({
+  subsets: ["latin"],
+});
+
+import type { Viewport } from "next";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#17171c" },
+  ],
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
 
 export const metadata: Metadata = {
   title: {
     default: `${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
     template: `%s | ${process.env.NEXT_PUBLIC_APP_NAME?.replace("_", " ")}`,
+  },
+  description: "빌레는 오늘 어떤 책을 읽었을까?",
+  keywords: [
+    "책",
+    "독서",
+    "독후감",
+    "넥스트",
+    "Next.js",
+    "리액트",
+    "React",
+    "프론트엔드",
+    "Frontend",
+  ],
+  appleWebApp: {
+    capable: true,
+    title: "Wille logs",
+  },
+  authors: [
+    {
+      name: "Inpyo Lee",
+      url: "https://github.com/WilleLee",
+    },
+  ],
+  openGraph: {
+    type: "website",
+    title: "Wille logs...",
+    description: "빌레는 오늘 어떤 책을 읽었을까?",
+    url: "https://wille-logs.vercel.app",
+    siteName: "Wille logs",
   },
 };
 
@@ -19,11 +63,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="ko">
+      <body
+        className={`${notoSansKR.className} bg-background dark:bg-darkBackground`}
+        suppressHydrationWarning={true}
+      >
         <Layout>
           <PortalProvider>{children}</PortalProvider>
         </Layout>
+        <ThemeInitializer />
       </body>
     </html>
   );
@@ -31,8 +79,8 @@ export default function RootLayout({
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden bg-background text-grey-800 dark:bg-darkBackground dark:text-grey-100">
-      <div className="mx-auto my-0 w-full max-w-[520px] px-[8px] py-[16px]">
+    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden text-grey-800 dark:text-grey-100">
+      <div className="mx-auto my-0 w-full max-w-[520px] px-[8px] py-[64px]">
         {children}
       </div>
     </div>

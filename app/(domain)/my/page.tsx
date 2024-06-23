@@ -1,3 +1,5 @@
+import FormButton from "@components/form-button";
+import Header from "@components/header";
 import { logout } from "@libs/actions";
 import { Metadata } from "next";
 
@@ -7,8 +9,13 @@ export const metadata: Metadata = {
 
 export default function MyPage() {
   return (
-    <form action={logout}>
-      <button type="submit">로그아웃</button>
-    </form>
+    <>
+      <Header />
+      <form action={logout}>
+        <FormButton isError type="submit" aria-label="로그아웃 버튼">
+          로그아웃
+        </FormButton>
+      </form>
+    </>
   );
 }

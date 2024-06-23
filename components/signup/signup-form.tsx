@@ -1,5 +1,6 @@
 "use client";
 
+import BottomButton from "@components/bottom-button";
 import FormButton from "@components/form-button";
 import FormInput from "@components/form-input";
 import useRegisterOptions from "@hooks/useRegisterOptions";
@@ -12,7 +13,9 @@ import {
   memo,
   useCallback,
   useContext,
+  useMemo,
 } from "react";
+import { useFormStatus } from "react-dom";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
 
 export default function SignupForm() {
@@ -52,7 +55,10 @@ function FormController({ children }: { children: ReactNode }) {
   });
 
   const handleAction = useCallback(async (formData: FormData) => {
-    await signup(formData);
+    const error = await signup(formData);
+    if (error) {
+      alert(error);
+    }
   }, []);
   return (
     <FormContext.Provider
@@ -196,10 +202,48 @@ function SecretInput() {
 }
 
 function SignupButton() {
+  const { pending } = useFormStatus();
+  const {
+    getValues,
+    formState: { errors },
+  } = useFormContext<IFormState>();
+  const values = getValues();
+
+  const isDisabled = useMemo(() => {
+    if (pending) {
+      return true;
+    }
+
+    if (Object.values(values).some((v) => v === "")) {
+      return true;
+    }
+
+    if (Object.keys(errors).length > 0) {
+      return true;
+    }
+
+    return false;
+  }, [errors, values, pending]);
   return (
-    <FormButton data-testid="signup_button" type="submit">
-      회원가입
-    </FormButton>
+    <>
+      <FormButton
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
+        desktopOnly
+        data-testid="signup_button"
+        type="submit"
+      >
+        {pending ? "회원가입 중..." : "회원가입"}
+      </FormButton>
+      <BottomButton
+        disabled={isDisabled}
+        aria-disabled={isDisabled}
+        mobileOnly
+        type="submit"
+      >
+        {pending ? "회원가입 중..." : "회원가입"}
+      </BottomButton>
+    </>
   );
 }
 

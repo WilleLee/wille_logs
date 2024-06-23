@@ -6,8 +6,6 @@ export function middleware({ nextUrl }: NextRequest) {
   const accessToken = cookieStore.get("access-token");
   const isLoggedin = !!accessToken;
 
-  console.log("isLoggedin", isLoggedin);
-
   const protectedRoutes = process.env.PROTECTED_ROUTES?.split(",") || [];
   const publicOnlyRoutes = process.env.PUBLIC_ONLY_ROUTES?.split(",") || [];
 

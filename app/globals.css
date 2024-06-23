@@ -35,3 +35,11 @@ h6 {
   font-size: 1em;
   font-weight: normal;
 }
+
+.scrollbar-disabled {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.scrollbar-disabled::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera*/
+}

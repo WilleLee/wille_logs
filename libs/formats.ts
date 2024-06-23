@@ -10,3 +10,41 @@ export function isEmailFormat(email: string) {
   if (mailName.length < 2 || mailDomain.length < 2) return false;
   return true;
 }
+
+export const specials = [
+  "!",
+  "@",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "_",
+  "+",
+  "~",
+  "-",
+  "=",
+  ":",
+  ";",
+  "?",
+  ",",
+];
+
+// 특수문자: !@#$%^&*_+~-=:;?,.
+// 숫자: 0~9
+// 영문: a~z, A~Z
+export function isPasswordFormat(password: string) {
+  let hasSpecial = false;
+  let hasNumber = false;
+  let hasLower = false;
+  let hasUpper = false;
+  for (const char of password) {
+    if ("!@#$%^&*_+~-=:;?,.".includes(char)) hasSpecial = true;
+    if ("0123456789".includes(char)) hasNumber = true;
+    if ("abcdefghijklmnopqrstuvwxyz".includes(char)) hasLower = true;
+    if ("ABCDEFGHIJKLMNOPQRSTUVWXYZ".includes(char)) hasUpper = true;
+    if (hasSpecial && hasNumber && hasLower && hasUpper) return true;
+  }
+  return false;
+}

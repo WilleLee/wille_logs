@@ -3,41 +3,82 @@
 import FormButton from "@components/form-button";
 import FormInput from "@components/form-input";
 import useRegisterOptions from "@hooks/useRegisterOptions";
-import { ReactNode, memo, useMemo } from "react";
+import {
+  FormHTMLAttributes,
+  ReactNode,
+  createContext,
+  memo,
+  useCallback,
+  useContext,
+  useMemo,
+} from "react";
 import { useFormStatus } from "react-dom";
 import { login } from "@libs/actions";
 import { FormProvider, useForm, useFormContext } from "react-hook-form";
+import BottomButton from "@components/bottom-button";
 
 export default function LoginForm() {
   return (
-    <div>
-      <form action={login}>
-        <FormWrapper>
+    <Layout>
+      <FormController>
+        <Form>
           <EmailInput />
           <PasswordInput />
           <LoginButton />
-        </FormWrapper>
-      </form>
-    </div>
+        </Form>
+      </FormController>
+    </Layout>
   );
 }
 
-type FormState = {
-  email: string;
-  password: string;
+const initialContext: IFormContext = {
+  action: () => {},
 };
+
+const FormContext = createContext<IFormContext>(initialContext);
 
 const initialFormState: FormState = {
   email: "",
   password: "",
 };
 
-function FormWrapper({ children }: { children: ReactNode }) {
+function FormController({ children }: { children: ReactNode }) {
   const methods = useForm<FormState>({
     defaultValues: initialFormState,
   });
-  return <FormProvider {...methods}>{children}</FormProvider>;
+  const handleAction = useCallback(async (formData: FormData) => {
+    const error = await login(formData);
+    if (error) {
+      alert(error);
+    }
+  }, []);
+  return (
+    <FormContext.Provider
+      value={{
+        action: handleAction,
+      }}
+    >
+      <FormProvider {...methods}>{children}</FormProvider>
+    </FormContext.Provider>
+  );
 }
+
+interface FormProps extends FormHTMLAttributes<HTMLFormElement> {
+  children: ReactNode;
+}
+
+function Form({ children, ...rest }: FormProps) {
+  const { action } = useContext(FormContext);
+  return (
+    <FormView action={action} {...rest}>
+      {children}
+    </FormView>
+  );
+}
+
+const FormView = memo(function FormView({ children, ...rest }: FormProps) {
+  return <form {...rest}>{children}</form>;
+});
 
 const EmailInput = memo(function EmailInput() {
   const {
@@ -108,14 +149,39 @@ function LoginButton() {
   }, [errors, values, pending]);
 
   return (
-    <FormButton
-      data-testid="login_button"
-      aria-label="로그인 버튼"
-      aria-disabled={isDisabled}
-      disabled={isDisabled}
-      type="submit"
-    >
-      {pending ? "로그인 중..." : "로그인"}
-    </FormButton>
+    <>
+      <FormButton
+        desktopOnly
+        data-testid="login_button"
+        aria-label="로그인 버튼"
+        aria-disabled={isDisabled}
+        disabled={isDisabled}
+        type="submit"
+      >
+        {pending ? "로그인 중..." : "로그인"}
+      </FormButton>
+      <BottomButton
+        aria-label="로그인 버튼"
+        aria-disabled={isDisabled}
+        disabled={isDisabled}
+        type="submit"
+        mobileOnly
+      >
+        {pending ? "로그인 중..." : "로그인"}
+      </BottomButton>
+    </>
   );
 }
+
+function Layout({ children }: { children: ReactNode }) {
+  return <div>{children}</div>;
+}
+
+type IFormContext = {
+  action: (formData: FormData) => void;
+};
+
+type FormState = {
+  email: string;
+  password: string;
+};

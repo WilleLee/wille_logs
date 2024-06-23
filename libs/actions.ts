@@ -36,7 +36,7 @@ export async function signup(formData: FormData) {
   });
   if (!isSuccess) {
     console.error(error);
-    return;
+    return error || "회원가입에 실패했습니다.\n다시 시도해주세요.";
   }
 
   redirect("/login");
@@ -61,7 +61,7 @@ export async function login(formData: FormData) {
   });
   if (!isSuccess || !data) {
     console.log(error);
-    return;
+    return error || "로그인에 실패했습니다.\n다시 시도해주세요.";
   }
   const { nickname, loggedinId, accessToken } = data;
   const sevenDaysLater = new Date(Date.now() + 1000 * 60 * 60 * 24 * 7);
@@ -109,8 +109,25 @@ export async function writeThread(formData: FormData) {
   });
   if (!isSuccess) {
     console.log(error);
-    return false;
+    return error || "글 작성에 실패했습니다.\n다시 시도해주세요.";
   }
   revalidatePath("/");
-  return true;
+  return null;
+}
+
+export async function deleteThreadById(id: string) {
+  const accessToken = cookies().get("access-token")?.value;
+  const { error, isSuccess } = await fetcher<null>(`/threads/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Cookie: `access-token=${accessToken};`,
+    },
+  });
+  if (!isSuccess) {
+    console.error(error);
+    return;
+  }
+  revalidatePath("/");
+  redirect("/");
 }

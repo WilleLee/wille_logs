@@ -1,14 +1,11 @@
 import Header from "@components/header";
-import { fetcher } from "@libs/data";
-import { IThread } from "@libs/types";
-import dayjs from "dayjs";
-import { cookies } from "next/headers";
+import { ThreadSkeleton } from "@components/home/skeletons";
+import Thread from "@components/thread/thread";
+import { getThreadById, getThreads } from "@libs/data";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
-  const { data: thread, isSuccess } = await fetcher<IThread>(
-    `/threads/${params.id}`,
-  );
+  const { data: thread, isSuccess } = await getThreadById(params.id);
 
   if (!isSuccess || !thread) {
     return {
@@ -23,7 +20,7 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 }
 
 export async function generateStaticParams() {
-  const { data: threads, isSuccess } = await fetcher<IThread[]>("/threads");
+  const { data: threads, isSuccess } = await getThreads();
 
   if (!isSuccess || !threads) {
     return [];
@@ -46,36 +43,9 @@ export default async function ThreadPage({
   return (
     <>
       <Header />
-      <Suspense fallback={<p>loading...</p>}>
+      <Suspense fallback={<ThreadSkeleton />}>
         <Thread id={params.id} />
       </Suspense>
     </>
-  );
-}
-
-async function Thread({ id }: { id: string }) {
-  const {
-    data: thread,
-    isSuccess,
-    error,
-  } = await fetcher<IThread>(`/threads/${id}`);
-
-  let isCreator = false;
-  const loggedinId = cookies().get("loggedin-id")?.value;
-
-  if (!isSuccess || !thread) {
-    return <p>{error}</p>;
-  }
-
-  if (loggedinId && thread.creator === loggedinId) {
-    isCreator = true;
-  }
-
-  return (
-    <div>
-      <h1>{thread.text}</h1>
-      <p>{dayjs(thread.createdAt).format("YYYY.MM.DD")}</p>
-      {isCreator && <button>삭제</button>}
-    </div>
   );
 }
