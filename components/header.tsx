@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Header() {
   return (
-    <header className="fixed left-[50%] top-0 z-50 flex h-[64px] w-full max-w-[520px] -translate-x-[50%] items-center justify-between bg-background px-[24px] dark:bg-darkBackground">
+    <header className="fixed left-[50%] top-0 z-50 flex h-[64px] w-full max-w-[520px] -translate-x-[50%] items-center justify-between px-[24px] backdrop-blur-sm">
       <Link href="/" aria-label="홈으로 이동" title="Wille logs...">
         <Image
           src="/logos/avatar168.png"
