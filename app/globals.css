@@ -43,3 +43,8 @@ h6 {
 .scrollbar-disabled::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera*/
 }
+
+.back-filter {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
