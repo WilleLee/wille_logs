@@ -55,7 +55,10 @@ function FormController({ children }: { children: ReactNode }) {
   });
 
   const handleAction = useCallback(async (formData: FormData) => {
-    await signup(formData);
+    const error = await signup(formData);
+    if (error) {
+      alert(error);
+    }
   }, []);
   return (
     <FormContext.Provider

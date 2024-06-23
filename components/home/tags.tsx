@@ -6,7 +6,7 @@ export default async function Tags() {
   const { data, isSuccess } = await getTags();
 
   if (!isSuccess || data === null) {
-    return <p>error</p>;
+    return null;
   }
 
   if (data.length === 0) {

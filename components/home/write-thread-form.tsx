@@ -22,7 +22,6 @@ import {
   useFormContext,
 } from "react-hook-form";
 import { FormView, SubWrapper, Wrapper } from "./write-thread-form-view";
-import Text from "@components/text";
 
 const useRegisterOptions = (): Record<
   keyof FormState,
@@ -137,16 +136,17 @@ const initialFormState: FormState = {
   tags: "",
   book_title: "",
   book_author: "",
-  book_page: 0,
+  book_page: "0",
 };
 
 function FormController({ children }: { children: ReactNode }) {
   const methods = useForm<FormState>({ defaultValues: initialFormState });
   const handleAction = useCallback(
     async (formData: FormData) => {
-      const isSuccess = await writeThread(formData);
-      if (isSuccess) {
-        console.log("success!");
+      const error = await writeThread(formData);
+      if (error) {
+        alert(error);
+      } else {
         methods.reset(initialFormState);
       }
     },
@@ -301,7 +301,7 @@ function WriteButton() {
     watch,
     formState: { errors },
   } = useFormContext<FormState>();
-  const { text, book_author, book_title } = watch();
+  const { text, book_author, book_title, book_page } = watch();
 
   const isDisabled = useMemo(() => {
     if (pending) {
@@ -340,5 +340,5 @@ type FormState = {
   tags: string;
   book_title: string;
   book_author: string;
-  book_page: number;
+  book_page: string;
 };

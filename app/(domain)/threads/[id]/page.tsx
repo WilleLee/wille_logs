@@ -1,7 +1,7 @@
 import Header from "@components/header";
+import { ThreadSkeleton } from "@components/home/skeletons";
+import Thread from "@components/thread/thread";
 import { getThreadById, getThreads } from "@libs/data";
-import dayjs from "dayjs";
-import { cookies } from "next/headers";
 import { Suspense } from "react";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
@@ -43,32 +43,9 @@ export default async function ThreadPage({
   return (
     <>
       <Header />
-      <Suspense fallback={<p>loading...</p>}>
+      <Suspense fallback={<ThreadSkeleton />}>
         <Thread id={params.id} />
       </Suspense>
     </>
-  );
-}
-
-async function Thread({ id }: { id: string }) {
-  const { data: thread, isSuccess, error } = await getThreadById(id);
-
-  let isCreator = false;
-  const loggedinId = cookies().get("loggedin-id")?.value;
-
-  if (!isSuccess || !thread) {
-    return <p>{error}</p>;
-  }
-
-  if (loggedinId && thread.creator === loggedinId) {
-    isCreator = true;
-  }
-
-  return (
-    <div>
-      <h1>{thread.text}</h1>
-      <p>{dayjs(thread.createdAt).format("YYYY.MM.DD")}</p>
-      {isCreator && <button>삭제</button>}
-    </div>
   );
 }

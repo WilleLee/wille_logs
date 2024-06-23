@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { AllHTMLAttributes, ReactNode } from "react";
 
 interface Props extends AllHTMLAttributes<HTMLSpanElement> {
-  type?: "small" | "medium" | "large";
+  type?: "small" | "medium" | "large" | "meta";
   textWrap?: boolean;
   children: ReactNode;
 }
@@ -24,6 +24,8 @@ export default function Text(props: Props) {
           "text-[10px] font-semibold": type === "small",
           "text-[15px] font-light": type === "medium",
           "text-[20px] font-normal": type === "large",
+          "text-[12px] font-light text-grey-600 dark:text-grey-400":
+            type === "meta",
         },
         className,
       )}

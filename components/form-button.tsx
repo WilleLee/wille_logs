@@ -24,7 +24,7 @@ const FormButton = forwardRef(function FormButton(
       ref={ref}
       className={clsx(
         "h-[38px] cursor-pointer items-center justify-center rounded-[5px] px-[6px] text-[15px] font-medium text-grey-200 transition-colors disabled:cursor-not-allowed disabled:opacity-[0.42] dark:text-grey-900",
-        fullWidth ? "mt-[16px] w-full" : "",
+        fullWidth ? "mt-[16px] w-full" : "min-w-[100px]",
         isError
           ? "bg-red-400 hover:bg-red-500 active:bg-red-600"
           : "bg-blue-300 hover:bg-blue-400 active:bg-blue-500",

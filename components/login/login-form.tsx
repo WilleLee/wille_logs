@@ -47,7 +47,10 @@ function FormController({ children }: { children: ReactNode }) {
     defaultValues: initialFormState,
   });
   const handleAction = useCallback(async (formData: FormData) => {
-    await login(formData);
+    const error = await login(formData);
+    if (error) {
+      alert(error);
+    }
   }, []);
   return (
     <FormContext.Provider

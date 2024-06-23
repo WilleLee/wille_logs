@@ -1,16 +1,25 @@
 import { getThreads } from "@libs/data";
 import Thread from "./thread";
 import { ReactNode } from "react";
+import Text from "@components/text";
 
 export default async function Threads() {
-  const { data, isSuccess } = await getThreads();
+  const { data, isSuccess, error } = await getThreads();
 
   if (!isSuccess || data === null) {
-    return <p>error</p>;
+    return (
+      <div className="flex w-full items-center justify-center px-[24px] py-[16px]">
+        <Text>{error || "스레드를 불러오는 중 오류가 발생했습니다."}</Text>
+      </div>
+    );
   }
 
   if (data.length === 0) {
-    return <p>스레드가 없습니다.</p>;
+    return (
+      <div className="flex w-full items-center justify-center px-[24px] py-[16px]">
+        <Text>아직 저장된 스레드가 없습니다.</Text>
+      </div>
+    );
   }
 
   return (
