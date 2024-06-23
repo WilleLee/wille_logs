@@ -10,6 +10,7 @@ import { IThread } from "./types";
 export async function logout() {
   cookies().delete("access-token");
   cookies().delete("user-nickname");
+  cookies().delete("loggedin-id");
   revalidatePath("/");
   redirect("/");
 }
