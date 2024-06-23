@@ -2,8 +2,10 @@ import { getThreadById } from "@libs/data";
 import { cookies } from "next/headers";
 import ThreadView from "./thread-view";
 import Text from "@components/text";
+import { unstable_noStore } from "next/cache";
 
 export default async function Thread({ id }: { id: string }) {
+  unstable_noStore();
   const { data: thread, isSuccess, error } = await getThreadById(id);
 
   let isCreator = false;
