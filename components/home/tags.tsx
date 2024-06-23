@@ -16,13 +16,21 @@ export default async function Tags() {
   return (
     <Wrapper>
       <ResetTag />
-      {data.map((tag) => (
-        <Tag key={tag._id} tag={tag} />
-      ))}
+      {data
+        .sort((a, b) => b.threads.length - a.threads.length)
+        .map((tag) => (
+          <Tag key={tag._id} tag={tag} />
+        ))}
     </Wrapper>
   );
 }
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
-  return <div>{children}</div>;
+  return (
+    <div className="py-[8px]">
+      <div className="scrollbar-disabled flex h-[32px] w-full items-center gap-[4px] overflow-x-scroll">
+        {children}
+      </div>
+    </div>
+  );
 };

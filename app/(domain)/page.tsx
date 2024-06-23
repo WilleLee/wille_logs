@@ -12,11 +12,9 @@ export default function HomePage() {
       <Header />
       <HomeHeader />
       <TagProvider>
-        <TagsSkeleton />
         <Suspense fallback={<TagsSkeleton />}>
           <Tags />
         </Suspense>
-        <ThreadsSkeleton />
         <Suspense fallback={<ThreadsSkeleton />}>
           <Threads />
         </Suspense>

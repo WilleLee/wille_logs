@@ -1,5 +1,6 @@
 import { getThreads } from "@libs/data";
 import Thread from "./thread";
+import { ReactNode } from "react";
 
 export default async function Threads() {
   const { data, isSuccess } = await getThreads();
@@ -13,10 +14,14 @@ export default async function Threads() {
   }
 
   return (
-    <>
+    <Wrapper>
       {data.map((thread) => (
         <Thread key={thread._id} thread={thread} />
       ))}
-    </>
+    </Wrapper>
   );
+}
+
+function Wrapper({ children }: { children: ReactNode }) {
+  return <div className="flex flex-col gap-[16px]">{children}</div>;
 }

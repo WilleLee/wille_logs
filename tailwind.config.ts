@@ -8,6 +8,10 @@ const config: Config = {
   ],
   darkMode: "selector",
   theme: {
+    boxShadow: {
+      light: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+      dark: "0 0 5px 0 rgba(122, 122, 122, 0.3)",
+    },
     screens: {
       xs: "420px",
     },

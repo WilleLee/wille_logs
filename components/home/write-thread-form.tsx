@@ -96,14 +96,14 @@ const useRegisterOptions = (): Record<
 export default function WriteThreadForm() {
   return (
     <>
-      <FormWrapper>
+      <FormController>
         <Form>
           <TextInput />
           <TagsInput />
           <BookInputs />
           <WriteButton />
         </Form>
-      </FormWrapper>
+      </FormController>
     </>
   );
 }
@@ -116,7 +116,7 @@ const initialFormState: FormState = {
   book_page: 0,
 };
 
-function FormWrapper({ children }: { children: ReactNode }) {
+function FormController({ children }: { children: ReactNode }) {
   const methods = useForm<FormState>({ defaultValues: initialFormState });
   return <FormProvider {...methods}>{children}</FormProvider>;
 }

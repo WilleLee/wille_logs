@@ -12,13 +12,17 @@ export default async function HomeHeader() {
     <>
       {isLoggedin ? (
         <div>
-          <Link
-            href="/my"
-            title="마이 페이지로"
-            aria-label="마이 페이지로 이동"
-          >
-            <button aria-hidden>마이 페이지</button>
-          </Link>
+          <div className="flex justify-end">
+            <Link
+              href="/my"
+              title="마이 페이지로"
+              aria-label="마이 페이지로 이동"
+            >
+              <FormButton isError fullWidth={false} aria-hidden>
+                마이 페이지
+              </FormButton>
+            </Link>
+          </div>
           <WriteThreadForm />
         </div>
       ) : (

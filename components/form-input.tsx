@@ -25,7 +25,7 @@ const FormInput = forwardRef(function FormInput(
       <input
         ref={ref}
         id={id}
-        className={`inline-flex h-[32px] items-center rounded-[5px] border-2 border-solid bg-transparent px-[6px] text-[15px] font-normal text-grey-900 focus:outline-none dark:text-grey-200 ${error ? "border-red-400 caret-red-400 focus:border-red-400" : "border-transparent caret-blue-300 focus:border-blue-300"}`}
+        className={`shadow-light dark:shadow-dark inline-flex h-[32px] items-center rounded-[5px] border-2 border-solid bg-transparent px-[6px] text-[15px] font-normal text-grey-900 transition-colors focus:outline-none dark:text-grey-200 ${error ? "border-red-400 caret-red-400 focus:border-red-400" : "border-transparent caret-blue-300 focus:border-blue-300"}`}
         {...rest}
       />
       {error && (
