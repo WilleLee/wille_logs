@@ -54,3 +54,18 @@ export async function getThreadById(id: string) {
   const result = await fetcher<IThread>(`/threads/${id}`);
   return result;
 }
+
+export async function getTagById(id: string) {
+  noStore();
+  const result = await fetcher<string>(`/tags/${id}`);
+  return result;
+}
+
+export async function getTagsByIds(ids: string[]) {
+  noStore();
+  if (!ids || ids.length === 0) {
+    return [];
+  }
+  const results = await Promise.all(ids.map((id) => getTagById(id)));
+  return results;
+}

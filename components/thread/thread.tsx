@@ -1,4 +1,4 @@
-import { getThreadById } from "@libs/data";
+import { getTagsByIds, getThreadById } from "@libs/data";
 import { cookies } from "next/headers";
 import ThreadView from "./thread-view";
 import Text from "@components/text";
@@ -7,6 +7,7 @@ import { unstable_noStore } from "next/cache";
 export default async function Thread({ id }: { id: string }) {
   unstable_noStore();
   const { data: thread, isSuccess, error } = await getThreadById(id);
+  const r = await getTagsByIds(thread?.tags || []);
 
   let isCreator = false;
   const loggedinId = cookies().get("loggedin-id")?.value;
@@ -23,5 +24,11 @@ export default async function Thread({ id }: { id: string }) {
     isCreator = true;
   }
 
-  return <ThreadView thread={thread} isCreator={isCreator} />;
+  return (
+    <ThreadView
+      tags={r.map((t) => t.data || "")}
+      thread={thread}
+      isCreator={isCreator}
+    />
+  );
 }
