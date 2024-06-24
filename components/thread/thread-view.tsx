@@ -3,19 +3,34 @@
 import FormButton from "@components/form-button";
 import Text from "@components/text";
 import { deleteThreadById } from "@libs/actions";
-import { IThread } from "@libs/types";
+import { ITag, IThread } from "@libs/types";
 import dayjs from "dayjs";
 import { memo } from "react";
 
 const ThreadView = memo(function ThreadView({
   thread,
   isCreator,
+  tags,
 }: {
   thread: IThread;
   isCreator: boolean;
+  tags: string[];
 }) {
+  console.log(tags);
   return (
     <div className="mx-[24px] py-[16px]">
+      {tags.length > 0 && (
+        <div className="mb-[8px] flex items-center gap-[8px]">
+          {tags.map((tag, i) => (
+            <p
+              className="inline-flex h-[28px] cursor-default select-none items-center rounded-[999px] bg-grey-300 px-[8px] dark:bg-grey-700"
+              key={i}
+            >
+              <Text type="meta">{tag}</Text>
+            </p>
+          ))}
+        </div>
+      )}
       <div className="mb-[8px]">
         <Text type="medium">{thread.text}</Text>
       </div>
