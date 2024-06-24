@@ -12,6 +12,7 @@ import {
 import dayjs from "dayjs";
 import clsx from "clsx";
 import useInternalRouter from "@hooks/useInternalRouter";
+import Text from "@components/text";
 
 export default function Thread({ thread }: { thread: IThread }) {
   const { push } = useInternalRouter();
@@ -46,49 +47,14 @@ const ThreadView = memo(function ThreadView({
     <button
       onClick={() => onRoute(thread._id)}
       aria-label={`스레드 상세 페이지로 이동, 스레드 아이디는 ${thread._id}`}
-      className="flex w-full flex-col gap-[8px] rounded-[10px] bg-grey-200 p-[16px] opacity-100 hover:opacity-85 active:opacity-70 dark:bg-grey-900"
+      className="grid w-full grid-cols-[1fr] gap-y-[8px] rounded-[10px] bg-grey-100 p-[16px] opacity-100 hover:opacity-85 active:opacity-70 dark:bg-grey-900"
     >
-      <div className="inline-flex w-full items-center justify-start overflow-hidden text-ellipsis rounded-[5px] bg-grey-300 px-[12px] py-[8px] dark:bg-grey-800">
-        <Text data-testid="thread_text" textWrap>
-          {thread.text}
-        </Text>
-      </div>
-      <div className="inline-flex w-full items-center justify-end">
-        <Text type="small">{dayjs(thread.createdAt).format("YYYY.MM.DD")}</Text>
-      </div>
+      <Text data-testid="thread_text" textWrap>
+        {thread.text}
+      </Text>
+      <Text align="right" type="small">
+        {dayjs(thread.createdAt).format("YYYY.MM.DD")}
+      </Text>
     </button>
   );
 });
-
-interface TextProps extends AllHTMLAttributes<HTMLSpanElement> {
-  type?: "small" | "medium" | "large";
-  textWrap?: boolean;
-  children: ReactNode;
-}
-
-function Text(props: TextProps) {
-  const {
-    children,
-    className,
-    textWrap = false,
-    type = "medium",
-    ...rest
-  } = props;
-  return (
-    <span
-      className={clsx(
-        "inline-flex items-center",
-        {
-          "text-ellipsis text-nowrap": textWrap,
-          "text-[10px] font-semibold": type === "small",
-          "text-[15px] font-light": type === "medium",
-          "text-[20px] font-normal": type === "large",
-        },
-        className,
-      )}
-      {...rest}
-    >
-      {children}
-    </span>
-  );
-}

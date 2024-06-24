@@ -16,7 +16,6 @@ const ThreadView = memo(function ThreadView({
   isCreator: boolean;
   tags: string[];
 }) {
-  console.log(tags);
   return (
     <div className="mx-[24px] py-[16px]">
       {tags.length > 0 && (
@@ -35,7 +34,7 @@ const ThreadView = memo(function ThreadView({
         <Text type="medium">{thread.text}</Text>
       </div>
       <p className="flex items-center gap-[4px]">
-        <Text type="meta">{thread.book.author}</Text>
+        <Text type="meta">{thread.book.title}</Text>
         <Text type="meta">{thread.book.author}</Text>
         <Text type="meta">p.{thread.book.page}</Text>
         <Text type="meta">{dayjs(thread.createdAt).format("YYYY.MM.DD")}</Text>
