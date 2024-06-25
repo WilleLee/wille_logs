@@ -6,6 +6,8 @@ import { Metadata } from "next";
 import { unstable_noStore } from "next/cache";
 import { cookies } from "next/headers";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "마이 페이지",
 };
