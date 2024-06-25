@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@api/index";
 import mongoose from "mongoose";
+import userModel from "@libs/models/userModel";
 
 export const dynamic = "force-dynamic";
 
@@ -85,6 +86,20 @@ export async function POST(req: NextRequest) {
     }
 
     await connectMongo();
+
+    const foundUser = await userModel
+      .findById(decodedId)
+      .then((data) => data)
+      .catch(() => null);
+
+    if (!foundUser) {
+      return NextResponse.json(
+        {
+          error: "회원 정보를 찾을 수 없습니다.",
+        },
+        { status: 404 },
+      );
+    }
 
     const tagIds: mongoose.Schema.Types.ObjectId[] = [];
 

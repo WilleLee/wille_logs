@@ -22,7 +22,7 @@ const ThreadView = memo(function ThreadView({
         <div className="mb-[8px] flex items-center gap-[8px]">
           {tags.map((tag, i) => (
             <p
-              className="inline-flex h-[28px] cursor-default select-none items-center rounded-[999px] bg-grey-300 px-[8px] dark:bg-grey-700"
+              className="inline-flex h-[28px] cursor-default select-none items-center rounded-[999px] bg-grey-200 px-[8px] dark:bg-grey-800"
               key={i}
             >
               <Text type="meta">{tag}</Text>

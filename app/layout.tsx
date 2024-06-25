@@ -4,6 +4,7 @@ import "./globals.css";
 import { PortalProvider } from "./global-portal";
 import { ReactNode } from "react";
 import ThemeInitializer from "./theme-initializer";
+import { Analytics } from "@vercel/analytics/react";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
           <PortalProvider>{children}</PortalProvider>
         </Layout>
         <ThemeInitializer />
+        <Analytics />
       </body>
     </html>
   );
@@ -86,7 +88,7 @@ export default function RootLayout({
 
 function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden text-grey-800 dark:text-grey-100">
+    <div className="h-auto min-h-screen w-full max-w-full overflow-x-hidden text-grey-900 dark:text-grey-50">
       <div className="mx-auto my-0 w-full max-w-[520px] px-[8px] py-[64px]">
         {children}
       </div>
