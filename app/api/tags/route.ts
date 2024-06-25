@@ -3,6 +3,8 @@ import connectMongo from "@libs/connectMongo";
 import tagModel from "@libs/models/tagModel";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
   try {
     await connectMongo();
