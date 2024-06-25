@@ -7,6 +7,8 @@ import { isEmailFormat } from "@libs/formats";
 import { cookies } from "next/headers";
 import jwt from "jsonwebtoken";
 
+export const dynamic = "force-dynamic";
+
 // get user info
 export async function GET() {
   try {

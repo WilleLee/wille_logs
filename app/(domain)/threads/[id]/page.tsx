@@ -4,6 +4,8 @@ import Thread from "@components/thread/thread";
 import { getThreadById, getThreads } from "@libs/data";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const { data: thread, isSuccess } = await getThreadById(params.id);
 

@@ -7,6 +7,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { isAuthenticated } from "@api/index";
 import mongoose from "mongoose";
 
+export const dynamic = "force-dynamic";
+
 // 스레드 불러오기
 export async function GET() {
   try {
