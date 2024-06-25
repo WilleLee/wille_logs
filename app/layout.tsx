@@ -48,10 +48,19 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
+    locale: "ko_KR",
     title: "Wille logs...",
     description: "빌레는 오늘 어떤 책을 읽었을까?",
     url: "https://wille-logs.vercel.app",
     siteName: "Wille logs",
+    images: [
+      {
+        url: "https://wille-logs.vercel.app/og-image.png", //1686 882
+        width: 1686,
+        height: 882,
+        alt: "Wille logs",
+      },
+    ],
   },
 };
 
