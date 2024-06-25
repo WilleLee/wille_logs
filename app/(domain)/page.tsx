@@ -6,6 +6,8 @@ import Tags from "@components/home/tags";
 import Threads from "@components/home/threads";
 import { Suspense } from "react";
 
+export const dynamic = "force-dynamic";
+
 export default function HomePage() {
   return (
     <>
