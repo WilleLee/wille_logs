@@ -1,4 +1,4 @@
-# Wille logs v2.0.1
+# Wille logs v2.0.2
 
 ## 개발 명세
 
