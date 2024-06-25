@@ -4,6 +4,7 @@ import "./globals.css";
 import { PortalProvider } from "./global-portal";
 import { ReactNode } from "react";
 import ThemeInitializer from "./theme-initializer";
+import { Analytics } from "@vercel/analytics/react";
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ["latin"],
@@ -79,6 +80,7 @@ export default function RootLayout({
           <PortalProvider>{children}</PortalProvider>
         </Layout>
         <ThemeInitializer />
+        <Analytics />
       </body>
     </html>
   );
